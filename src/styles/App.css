@@ -1,0 +1,109 @@
+/* @font-face {
+  font-family: 'Biome';
+  src: url('../fonts/Biome-W01-Regular-1.ttf') format('truetype');
+} */
+
+body {
+  font-family: 'Arial';
+  width: 100%;
+  margin: 0 auto;
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.cards-vehicle-list {
+  display: grid;
+  /* grid-gap: 15px; */
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .cards-vehicle-list {
+    grid-template-columns: 1fr;
+  }
+  .vehicle-image img {
+    height: calc(80vw - 100px); /* Adjust the formula as needed */
+  }
+  .vehicle-card {
+    width: 100% !important;
+  }
+  .title {
+    white-space: unset !important;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .cards-vehicle-list {
+    grid-template-columns: 1fr 1fr;
+  }
+  .vehicle-image img {
+    height: calc(45vw - 100px); /* Adjust the formula as needed */
+  }
+}
+
+/* Laptop */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .cards-vehicle-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .vehicle-image img {
+    height: calc(25vw - 100px); /* Adjust the formula as needed */
+  }
+}
+
+/* Big Screen */
+@media (min-width: 1440px) {
+  .cards-vehicle-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  .vehicle-image img {
+    height: calc(20vw - 100px); /* Adjust the formula as needed */
+  }
+}
+
+.cards-vehicle-list {
+  padding-top: 30px;
+}
+
+.vehicle-card {
+  border: 1px solid #ddd;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+  /* width: calc(33.33% - 20px); */
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vehicle-image img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.vehicle-details h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.vehicle-details p {
+  margin: 5px 0;
+}
+
+.vehicle-details {
+  padding: 15px;
+}
+
+.vehicle-card {
+  margin-bottom: 15px;
+}
