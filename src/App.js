@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from 'react';
 import data from './data/data.json'; // Adjust the path based on your project structure
 import './styles/App.css'; // Import your CSS file for styling
 import bannerImage from './assets/banner.jpg';
-import VehicleDetailPage from './components/VehicleDetailPage';
 import VehicleDetailModal from './components/VehicleDetailModal'; // Import your modal component
 
 function App() {
@@ -89,7 +88,7 @@ function App() {
       <div className="cards-vehicle-list" style={{ display: selectedVehicle ? 'none' : 'grid' }}>
         {vehiclesData.map(vehicle => (
           <div key={vehicle.vehicle_id}
-            className={`vehicle-card ${animateDetails ? 'animate' : ''}`}
+            className="vehicle-card"
             style={{ width: `${windowWidth}px` }}
             onClick={() => handleVehicleClick(vehicle)}
           >
@@ -98,13 +97,23 @@ function App() {
                 src={vehicle.images[0]} alt={vehicle.title}
               />
             </div>
-            <div className={`vehicle-details ${animateDetails ? 'animate' : ''}`}>
-              <h2 className={`title ${animateDetails ? 'animate' : ''}`}>{vehicle.title}</h2>
-              <p>Make: {vehicle.make}</p>
-              <p>Model: {vehicle.model}</p>
-              <p>Year: {vehicle.year}</p>
-              <p>Price: {formatPrice(vehicle.price)}</p>
-            </div>
+            <div >
+              <div className={`vehicle-details ${animateDetails ? 'animate' : ''}`}>
+                <h2 className={`titleHome ${animateDetails ? 'animate' : ''}`}>{vehicle.title}</h2>
+                <p className={`montadora ${animateDetails ? 'animate' : ''}`}>Montadora: {vehicle.make}</p>
+                <p className={`modelo ${animateDetails ? 'animate' : ''}`}>Modelo: {vehicle.model}</p>
+                <p className={`ano ${animateDetails ? 'animate' : ''}`}>Ano: {vehicle.year}</p>
+              </div>
+              <span
+                className={`price ${animateDetails ? 'animate' : ''}`}
+                >
+                {vehicle.price == 0 ? (
+                  "Consulte-nos"
+                ) : (
+                  formatPrice(vehicle.price)
+                )}
+              </span>
+              </div>
           </div>
         ))}
       </div>
