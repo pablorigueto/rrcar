@@ -105,7 +105,7 @@ function App() {
                 <p className={`ano ${animateDetails ? 'animate' : ''}`}>Ano: {vehicle.year}</p>
               </div>
               <span
-                className={`price ${animateDetails ? 'animate' : ''}`}
+                className={`color-transition-button price ${animateDetails ? 'animate' : ''}`}
                 >
                 {vehicle.price == 0 ? (
                   "Consulte-nos"

@@ -70,13 +70,14 @@ body {
 }
 
 .vehicle-card {
-  background-color: #dddddd54;
   border: 1px solid #ddd;
   max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
   /* width: calc(33.33% - 20px); */
   margin: 0 auto;
+  margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .vehicle-image img {
@@ -98,10 +99,6 @@ body {
   padding: 15px;
 }
 
-.vehicle-card {
-  margin-bottom: 15px;
-}
-
 .banner {
   position: relative;
   overflow: hidden;
@@ -114,26 +111,6 @@ body {
   display: block;
   margin: 0 auto;
 }
-
-/* .banner:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent);
-}
-
-.banner:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.6), transparent);
-} */
 
 .titleHome, .modelo {
   white-space: nowrap;
@@ -202,7 +179,8 @@ body {
   transition: opacity 0.5s ease, transform 2s ease;
 
 
-  background: #005587;
+  /* background: #005587; */
+  /* background-color: #181717; */
   color: #fff;
   height: 45px;
   display: flex;
@@ -214,8 +192,18 @@ body {
   font-weight: bolder;
 }
 
+
+/* .banner:before {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent);
+}*/
+
+
 p {
   font-size: 16px;
+}
+
+h2, p {
+  color: #181717;
 }
 
 .price.animate {
@@ -224,24 +212,22 @@ p {
   transform: translateY(0);
 }
 
-/* .animate-enter {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.color-transition-button {
+  /* background: linear-gradient(to right, #181717 0%, #181717 50%, transparent 50%, transparent 100%); */
+  background: linear-gradient(to right, transparent 0%, transparent 50%, #181818 50%, #181818 100%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: background-position 0.5s ease, color 0.5s ease, border 0.5s ease, font-size 0.5s ease; 
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border: 2px solid #181818;
 }
 
-.animate-enter-active {
-  opacity: 1;
-  transform: translateY(0);
+.color-transition-button:hover {
+  background-position: 0 0;
+  color: #181818;
+  border: 2px solid #181818;
+  font-size: 22px;
+  /* transition: font-size 0.5s ease;  */
 }
-
-.animate-exit {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.animate-exit-active {
-  opacity: 0;
-  transform: translateY(-10px);
-} */
