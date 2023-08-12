@@ -296,3 +296,18 @@ h2 {
   transform: translateY(0);
   transition: opacity 700ms, transform 700ms;
 }
+
+
+/* Style the carousel */
+.carousel-root {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Customize carousel indicators and slides */
+.carousel .slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,7 +1,12 @@
 import React, {  useState, useEffect } from 'react';
 import '../styles/App.css';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 function VehicleDetailModal({ vehicle, onClose }) {
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
 
   function formatPrice(price) {
       const numericPrice = parseFloat(price);
@@ -30,10 +35,27 @@ function VehicleDetailModal({ vehicle, onClose }) {
           Close
         </button>
 
-        <div className="vehicle-image">
-            <img
+        <div className="vehicle-image-datailed ">
+            {/* <img
             src={vehicle.images[0]} alt={vehicle.title}
-            />
+            /> */}
+          <Carousel
+            selectedItem={currentImageIndex}
+            showStatus={false}
+            showThumbs={true}
+            infiniteLoop={true}
+            autoPlay={true}
+            interval={2000}
+            onChange={(index) => setCurrentImageIndex(index)}
+            dynamicHeight
+          >
+            {vehicle.images.map((image, index) => (
+              <div key={index}>
+                <img src={image} alt={`Image ${index}`} />
+              </div>
+            ))}
+          </Carousel>
+
         </div>
         <div className={`vehicle-details ${animateDetails ? 'animate' : ''}`}>
             <h2 className={`title ${animateDetails ? 'animate' : ''}`}>{vehicle.title}</h2>
