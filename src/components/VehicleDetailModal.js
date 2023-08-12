@@ -3,25 +3,25 @@ import '../styles/App.css';
 
 function VehicleDetailModal({ vehicle, onClose }) {
 
-    function formatPrice(price) {
-        const numericPrice = parseFloat(price);
-        if (isNaN(numericPrice)) {
-          return 'Invalid Price';
-        }
-        return `R$ ${numericPrice.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
-    }
-    
-    const [animateDetails, setAnimateDetails] = useState(false); // State to trigger animation
-
-    useEffect(() => {
-      const animationTimeout = setTimeout(() => {
-        setAnimateDetails(true);
-      }, 200);
+  function formatPrice(price) {
+      const numericPrice = parseFloat(price);
+      if (isNaN(numericPrice)) {
+        return 'Invalid Price';
+      }
+      return `R$ ${numericPrice.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
+  }
   
-      return () => {
-        clearTimeout(animationTimeout);
-      };
-    }, []);
+  const [animateDetails, setAnimateDetails] = useState(false); // State to trigger animation
+
+  useEffect(() => {
+    const animationTimeout = setTimeout(() => {
+      setAnimateDetails(true);
+    }, 200);
+
+    return () => {
+      clearTimeout(animationTimeout);
+    };
+  }, []);
 
   return (
     <div className="modal-overlay">

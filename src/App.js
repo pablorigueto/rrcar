@@ -5,6 +5,7 @@ import bannerImage from './assets/banner.jpg';
 import logoImage from './assets/logo.png';
 import textImage from './assets/rrmultimarcas.png';
 import VehicleDetailModal from './components/VehicleDetailModal'; // Import your modal component
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 function App() {
   const [vehiclesData, setVehiclesData] = useState([]);
@@ -84,8 +85,7 @@ function App() {
   return (
     <div>
       <div className="banner">
-
-      <div className='logo'
+        <div className='logo'
           style={{
             position: 'absolute',
             zIndex: 15,
@@ -96,7 +96,6 @@ function App() {
               height: '100%',
             }}
           />
-
           <div className='rrMulti'
             style={{
               position: 'absolute',
@@ -109,22 +108,15 @@ function App() {
               }}
             />
           </div>
-
         </div>
-
-
-
-        
         <img src={bannerImage} alt="Banner" 
           style={{ 
             width: `${window.innerWidth}px`,
             overflow: 'hidden',
         }}
         />
-
-
-
       </div>
+
       <div className="cards-vehicle-list" style={{ display: selectedVehicle ? 'none' : 'flex' }}>
         {vehiclesData.map(vehicle => (
           <div key={vehicle.vehicle_id}
@@ -171,12 +163,27 @@ function App() {
           </div>
         ))}
       </div>
-      {selectedVehicle && (
+      {/* {selectedVehicle && (
         <VehicleDetailModal
           vehicle={selectedVehicle}
           onClose={() => setSelectedVehicle(null)}
         />
-      )}
+      )} */}
+
+      <TransitionGroup>
+        {selectedVehicle && (
+          <CSSTransition
+            key={selectedVehicle.vehicle_id}
+            timeout={300}
+            classNames="vehicle-details"
+          >
+            <VehicleDetailModal
+              vehicle={selectedVehicle}
+              onClose={() => setSelectedVehicle(null)}
+            />
+          </CSSTransition>
+        )}
+      </TransitionGroup>
     </div>
   );
 }
