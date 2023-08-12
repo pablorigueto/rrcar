@@ -6,6 +6,7 @@ import logoImage from './assets/logo.png';
 import textImage from './assets/rrmultimarcas.png';
 import VehicleDetailModal from './components/VehicleDetailModal'; // Import your modal component
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 
 function App() {
   const [vehiclesData, setVehiclesData] = useState([]);
@@ -148,7 +149,8 @@ function App() {
                 <h2 className={`titleHome ${animateDetails ? 'animate' : ''}`}>{vehicle.title}</h2>
                 <p className={`montadora ${animateDetails ? 'animate' : ''}`}>Montadora: {vehicle.make}</p>
                 <p className={`modelo ${animateDetails ? 'animate' : ''}`}>Modelo: {vehicle.model}</p>
-                <p className={`ano ${animateDetails ? 'animate' : ''}`}>Ano: {vehicle.year}</p>
+                <p className={`fuel ${animateDetails ? 'animate' : ''}`}>Combustível: {vehicle.fuel}</p>
+                <p className={`ano ${animateDetails ? 'animate' : ''}`}>Ano: {vehicle.fabric_year}/{vehicle.year}</p>
               </div>
               <span
                 className={`color-transition-button price ${animateDetails ? 'animate' : ''}`}
@@ -159,16 +161,10 @@ function App() {
                   formatPrice(vehicle.price)
                 )}
               </span>
-              </div>
-          </div>
+            </div>
+        </div>
         ))}
       </div>
-      {/* {selectedVehicle && (
-        <VehicleDetailModal
-          vehicle={selectedVehicle}
-          onClose={() => setSelectedVehicle(null)}
-        />
-      )} */}
 
       <TransitionGroup>
         {selectedVehicle && (
@@ -184,6 +180,42 @@ function App() {
           </CSSTransition>
         )}
       </TransitionGroup>
+
+      <div className="footer">
+        <div className="container">
+          <div className="footer-parent">
+            <div className="whoarewe">
+              <h1>QUEM SOMOS</h1>
+              <p>
+                Somos especializados na venda de veículos novos e usados,
+                nacionais e importados. Com certeza você não só apreciará como irá comprar seu veículo conosco.
+                Todos nossos veículos são revisados criteriosamente, possibilitando dar aos nossos clientes tranquilidade
+                na hora da compra. Não perca tempo! Compre seu veículo com quem mais entende do assunto.
+                Nossos vendedores terão o prazer em atendê-lo.
+              </p>
+            </div>
+            <div className="location">
+              <h1>LOCALIZAÇÃO E CONTATO</h1>
+              <p>
+                Endereço:
+                Rua 24 de Outubro, 1096 - Centro, Artur Nogueira - SP, 13160-060
+                Telefone: (19) 97817-5588
+              </p>
+              <div className="footer-bottom-middle-right social-icon-footer">
+                <ul className="social-icons">
+                  <li><a href="https://www.instagram.com/rrmultimarcasan/" target="_blank"><FaInstagram size={30} color='#fff'/></a></li>
+                  <li><a href="https://wa.me/+5519978175588" target="_blank"><FaWhatsapp size={30} color='#fff'/></a></li>
+                </ul>
+              </div>
+              <div className="copyright">
+                © 2023 develop by rgto
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   );
 }
