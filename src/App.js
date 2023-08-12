@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import data from './data/data.json'; // Adjust the path based on your project structure
 import './styles/App.css'; // Import your CSS file for styling
 import bannerImage from './assets/banner.jpg';
+import logoImage from './assets/logo.png';
 import VehicleDetailModal from './components/VehicleDetailModal'; // Import your modal component
 
 function App() {
@@ -78,12 +79,33 @@ function App() {
   return (
     <div>
       <div className="banner">
+
+      <div className='logo'
+          style={{
+            paddingTop: 30,
+            paddingLeft: 20,
+            height: '130px',
+            position: 'absolute',
+            zIndex: 15,
+          }}
+        >
+          <img src={logoImage} alt="Banner"
+            style={{ 
+              height: '100%',
+              // position: 'absolute',
+            }}
+          />
+        </div>
+
         <img src={bannerImage} alt="Banner" 
           style={{ 
             width: `${window.innerWidth}px`,
             overflow: 'hidden',
         }}
         />
+
+
+
       </div>
       <div className="cards-vehicle-list" style={{ display: selectedVehicle ? 'none' : 'grid' }}>
         {vehiclesData.map(vehicle => (
@@ -92,6 +114,19 @@ function App() {
             style={{ width: `${windowWidth}px` }}
             onClick={() => handleVehicleClick(vehicle)}
           >
+
+            {/* <div className="vehicle-logo">
+              <img
+                src={logoImage} alt="Logo"
+                style={{
+                  height: 55, // Adjust the height as needed
+                  paddingLeft: 0, // Add some spacing
+                  paddingTop: 5,
+                  position: 'absolute',
+                }}
+              />
+            </div> */}
+
             <div className="vehicle-image">
               <img
                 src={vehicle.images[0]} alt={vehicle.title}
