@@ -3,6 +3,7 @@ import data from './data/data.json'; // Adjust the path based on your project st
 import './styles/App.css'; // Import your CSS file for styling
 import bannerImage from './assets/banner.jpg';
 import logoImage from './assets/logo.png';
+import textImage from './assets/rrmultimarcas.png';
 import VehicleDetailModal from './components/VehicleDetailModal'; // Import your modal component
 
 function App() {
@@ -89,14 +90,35 @@ function App() {
             zIndex: 15,
           }}
         >
-          <img src={logoImage} alt="Banner"
+          <img src={logoImage} alt="logo"
             style={{ 
               height: '100%',
               // position: 'absolute',
             }}
           />
+
+          <div className='logo'
+            style={{
+              paddingTop: 0,
+              paddingLeft: 26,
+              height: 20,
+              position: 'absolute',
+              zIndex: 15,
+            }}
+          >
+            <img src={textImage} alt="text"
+              style={{ 
+                height: '100%',
+                // position: 'absolute',
+              }}
+            />
+          </div>
+
         </div>
 
+
+
+        
         <img src={bannerImage} alt="Banner" 
           style={{ 
             width: `${window.innerWidth}px`,
@@ -115,17 +137,17 @@ function App() {
             onClick={() => handleVehicleClick(vehicle)}
           >
 
-            {/* <div className="vehicle-logo">
+            <div className="vehicle-logo">
               <img
                 src={logoImage} alt="Logo"
                 style={{
-                  height: 55, // Adjust the height as needed
+                  height: 35, // Adjust the height as needed
                   paddingLeft: 0, // Add some spacing
                   paddingTop: 5,
                   position: 'absolute',
                 }}
               />
-            </div> */}
+            </div>
 
             <div className="vehicle-image">
               <img

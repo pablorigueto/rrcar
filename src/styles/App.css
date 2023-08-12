@@ -205,9 +205,10 @@ body {
 
 p {
   font-size: 16px;
+  color: #312e2eeb;
 }
 
-h2, p {
+h2 {
   color: #181717;
 }
 
@@ -218,21 +219,24 @@ h2, p {
 }
 
 .color-transition-button {
-  /* background: linear-gradient(to right, #181717 0%, #181717 50%, transparent 50%, transparent 100%); */
-  background: linear-gradient(to right, transparent 0%, transparent 50%, #181818 50%, #181818 100%);
+  background: linear-gradient(to right, #060606ed 0%, #060606ed 50%, #141414 50%, #000000 100%);
+
+  /* background: linear-gradient(to right, #000000 0%, #141414 50%, #141414f0 50%, #141414f0 100%); */
+
+
   background-size: 200% 100%;
   background-position: 100% 0;
-  transition: background-position 0.5s ease, color 0.5s ease, border 0.5s ease, font-size 0.5s ease; 
+  transition: background-position 0.5s ease, font-size 0.5s ease; 
   color: #fff;
   border: none;
   cursor: pointer;
-  border: 2px solid #181818;
+  /* border: 2px solid transparent; */
 }
 
 .color-transition-button:hover {
   background-position: 0 0;
-  color: #181818;
-  border: 2px solid #181818;
+  /* color: #181818; */
+  /* border: 2px solid #312e2e; */
   font-size: 22px;
   /* transition: font-size 0.5s ease;  */
 }
