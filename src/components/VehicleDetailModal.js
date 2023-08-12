@@ -2,6 +2,7 @@ import React, {  useState, useEffect } from 'react';
 import '../styles/App.css';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import backIcon from '../assets/back.png';
 
 function VehicleDetailModal({ vehicle, onClose }) {
 
@@ -31,9 +32,13 @@ function VehicleDetailModal({ vehicle, onClose }) {
   return (
     <div className="modal-overlay">
       <div className="modal">
-        <button className="close-button" onClick={onClose}>
+        {/* <button className="close-button" onClick={onClose}>
           Close
-        </button>
+        </button> */}
+ 
+        <div className="close-button" onClick={onClose}>
+          <img className="close-icon" src={backIcon} alt="backIcon"/>
+        </div>
 
         <div className="vehicle-image-datailed ">
             {/* <img
@@ -44,8 +49,9 @@ function VehicleDetailModal({ vehicle, onClose }) {
             showStatus={false}
             showThumbs={true}
             infiniteLoop={true}
-            autoPlay={true}
-            interval={2000}
+            autoPlay={false}
+            interval={5000}
+            showIndicators={false}
             onChange={(index) => setCurrentImageIndex(index)}
             dynamicHeight
           >

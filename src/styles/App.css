@@ -311,3 +311,64 @@ h2 {
   justify-content: center;
   align-items: center;
 }
+
+li.slide div {
+  border: 15px solid #fff;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px 20px 0 0;
+}
+
+li.slide div img {
+  border-radius: 20px 20px 0 0;
+}
+
+li.thumb {
+  border-radius: 5px;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.15);
+  height: 62.5px;
+}
+
+li.thumb:last-child {
+  margin-right: 11px;
+}
+
+.carousel .thumb.selected, .carousel .thumb:hover {
+  border: 2px solid #fff !important;
+  transition: border 300ms;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.carousel .thumbs-wrapper {
+  margin: unset;
+}
+
+
+.carousel .thumb img {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.close-button {
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+.close-icon {
+  cursor: pointer;
+  width: 25px;
+  padding: 7px 17px;
+  transition: box-shadow 0.5s ease;
+  border-radius: 8px;
+}
+
+.close-icon:hover{
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
