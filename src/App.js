@@ -28,14 +28,18 @@ function App() {
   const calculateWidth = () => {
     const screenWidth = window.innerWidth;
 
-    if (screenWidth >= 1440) {
-      return screenWidth / 5 -10;
+    if (screenWidth >= 2001) {
+      return screenWidth / 6 - 10;
+    } else if (screenWidth >= 1440 && screenWidth < 2001) {
+      return screenWidth / 5 - 10;
     } else if (screenWidth >= 1024 && screenWidth < 1440) {
-      return screenWidth / 4 -10;
+      return screenWidth / 4 - 10;
     } else if (screenWidth >= 767 && screenWidth < 1024) {
-      return screenWidth / 2 - 5;
+      return screenWidth / 3 - 10;
+    } else if (screenWidth >= 450 && screenWidth < 767) {
+      return screenWidth / 2 - 10;
     } else {
-      return 0;
+      return screenWidth / 1 - 10;
     }
   };
 
@@ -83,25 +87,18 @@ function App() {
 
       <div className='logo'
           style={{
-            paddingTop: 30,
-            paddingLeft: 20,
-            height: '130px',
             position: 'absolute',
             zIndex: 15,
           }}
         >
-          <img src={logoImage} alt="logo"
+          <img className="logoImg" src={logoImage} alt="logo"
             style={{ 
               height: '100%',
-              // position: 'absolute',
             }}
           />
 
-          <div className='logo'
+          <div className='rrMulti'
             style={{
-              paddingTop: 0,
-              paddingLeft: 26,
-              height: 20,
               position: 'absolute',
               zIndex: 15,
             }}
@@ -109,7 +106,6 @@ function App() {
             <img src={textImage} alt="text"
               style={{ 
                 height: '100%',
-                // position: 'absolute',
               }}
             />
           </div>
@@ -129,11 +125,12 @@ function App() {
 
 
       </div>
-      <div className="cards-vehicle-list" style={{ display: selectedVehicle ? 'none' : 'grid' }}>
+      <div className="cards-vehicle-list" style={{ display: selectedVehicle ? 'none' : 'flex' }}>
         {vehiclesData.map(vehicle => (
           <div key={vehicle.vehicle_id}
             className="vehicle-card"
             style={{ width: `${windowWidth}px` }}
+            
             onClick={() => handleVehicleClick(vehicle)}
           >
 
