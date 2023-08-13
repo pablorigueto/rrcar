@@ -7,6 +7,9 @@ import textImage from './assets/rrmultimarcas.png';
 import VehicleDetailModal from './components/VehicleDetailModal'; // Import your modal component
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import Lottie from "lottie-react";
+import animation_ll8vh8ci from "./assets/find/animation_ll8vh8ci.json";
+import animation_ll8vuwur from "./assets/filter/animation_ll8vuwur.json";
 
 function App() {
   const [vehiclesData, setVehiclesData] = useState([]);
@@ -83,6 +86,27 @@ function App() {
     setSelectedVehicle(vehicle);
   };
 
+  const interactivity = {
+    mode: "scroll",
+    actions: [
+      {
+        visibility: [0, 0.2],
+        type: "stop",
+        frames: [0],
+      },
+      {
+        visibility: [0.2, 0.45],
+        type: "seek",
+        frames: [0, 45],
+      },
+      {
+        visibility: [0.45, 1.0],
+        type: "loop",
+        frames: [45, 60],
+      },
+    ],
+  };
+
   return (
     <div>
       <div className="banner">
@@ -117,8 +141,31 @@ function App() {
         }}
         />
       </div>
-
+      
+      <div
+        style={{ 
+          display: selectedVehicle ? 'none' : 'flex',
+          paddingLeft: 15,
+          paddingTop: 2,
+        }}
+      >
+      <Lottie 
+        animationData={animation_ll8vh8ci}
+        loop={true}
+        style={{width: 57}}
+        // interactivity={interactivity}
+      />
+      <Lottie 
+        animationData={animation_ll8vuwur}
+        loop={true}
+        style={{width: 57}}
+        //interactivity={interactivity}
+      />
+      </div>
       <div className="cards-vehicle-list" style={{ display: selectedVehicle ? 'none' : 'flex' }}>
+
+
+
         {vehiclesData.map(vehicle => (
           <div key={vehicle.vehicle_id}
             className="vehicle-card"
