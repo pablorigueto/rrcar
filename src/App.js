@@ -6,7 +6,7 @@ import logoImage from './assets/logo.png';
 import textImage from './assets/rrmultimarcas.png';
 import VehicleDetailModal from './components/VehicleDetailModal'; // Import your modal component
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import { FaPhoneAlt, FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import Lottie from "lottie-react";
 import animation_ll8vh8ci from "./assets/find/animation_ll8vh8ci.json";
 import animation_ll8vuwur from "./assets/filter/animation_ll8vuwur.json";
@@ -113,20 +113,13 @@ function App() {
         <div className='logo'
           style={{
             position: 'absolute',
-            zIndex: 15,
-          }}
-        >
+          }}>
           <img className="logoImg" src={logoImage} alt="logo"
             style={{ 
               height: '100%',
             }}
           />
-          <div className='rrMulti'
-            style={{
-              position: 'absolute',
-              zIndex: 15,
-            }}
-          >
+          <div className='rrMulti'>
             <img src={textImage} alt="text"
               style={{ 
                 height: '100%',
@@ -134,12 +127,39 @@ function App() {
             />
           </div>
         </div>
+
+        <div className='contactTop'
+          style={{
+            // position: 'absolute',
+            right: 0,
+            position: 'fixed',
+            zIndex: 5,
+          }}
+        >
+        <ul className='contactTopUl'>
+          {/* <li className='liPhone'><span className='icon'><FaPhoneAlt size={20} color='#fff'/></span><span>(19) 97817-5588</span></li> */}
+          <li className='liInstagram'><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank"><span className='icon'><FaInstagram size={30} color='#fff'/></span></a></li>
+          <li className='liWhatsapp'><a href="https://wa.me/+5519978175588" rel="noreferrer" target="_blank"><span className='icon'><FaWhatsapp size={30} color='#fff'/></span></a></li>
+        </ul>
+          {/* <div className='rrMulti'>
+            <img src={textImage} alt="text"
+              style={{ 
+                height: '100%',
+              }}
+            />
+          </div> */}
+        </div>
+
         <img src={bannerImage} alt="Banner" 
           style={{ 
-            width: `${window.innerWidth}px`,
+            // width: `${window.innerWidth}px`,
+            width: '100%',
             overflow: 'hidden',
-        }}
+          }}
         />
+
+
+
       </div>
       
       <div
@@ -202,7 +222,7 @@ function App() {
               <span
                 className={`color-transition-button price ${animateDetails ? 'animate' : ''}`}
                 >
-                {vehicle.price == 0 ? (
+                {vehicle.price === 0 ? (
                   "Consulte-nos"
                 ) : (
                   formatPrice(vehicle.price)
@@ -232,32 +252,62 @@ function App() {
         <div className="container">
           <div className="footer-parent">
             <div className="whoarewe">
-              <h1>QUEM SOMOS</h1>
-              <p>
-                Somos especializados na venda de veículos novos e usados,
-                nacionais e importados. Com certeza você não só apreciará como irá comprar seu veículo conosco.
-                Todos nossos veículos são revisados criteriosamente, possibilitando dar aos nossos clientes tranquilidade
-                na hora da compra. Não perca tempo! Compre seu veículo com quem mais entende do assunto.
-                Nossos vendedores terão o prazer em atendê-lo.
-              </p>
-            </div>
-            <div className="location">
-              <h1>LOCALIZAÇÃO E CONTATO</h1>
+
+            <h1>LOCALIZAÇÃO E CONTATO</h1>
               <p>
                 Endereço:
-                Rua 24 de Outubro, 1096 - Centro, Artur Nogueira - SP, 13160-060
-                Telefone: (19) 97817-5588
-              </p>
-              <div className="footer-bottom-middle-right social-icon-footer">
-                <ul className="social-icons">
-                  <li><a href="https://www.instagram.com/rrmultimarcasan/" target="_blank"><FaInstagram size={30} color='#fff'/></a></li>
-                  <li><a href="https://wa.me/+5519978175588" target="_blank"><FaWhatsapp size={30} color='#fff'/></a></li>
+                Rua Rui Barbosa 839 - Centro, Artur Nogueira - SP, 13160-060<br/>
+                <ul className="social-icons"
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'start',
+                    alignItems: 'center',
+                  }}
+                >  
+                 <li><FaPhoneAlt size={18} color='#fff'/><span
+                  style={{
+                    marginLeft: 15,
+                    fontWeight: 600,
+                    fontSize: 18, 
+                  }}
+                  >(19) 97817-5588</span></li>
+                  <li><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank"><FaInstagram size={30} color='#fff'/></a></li>
+                  <li><a href="https://wa.me/+5519978175588" rel="noreferrer" target="_blank"><FaWhatsapp size={30} color='#fff'/></a></li>
                 </ul>
-              </div>
-              <div className="copyright">
-                © 2023 develop by rgto
-              </div>
+           
+                <iframe
+                  title="RR Multimarcas"
+                  frameborder="0"
+                  style={{
+                    border:0,
+                    padding:0,
+                    margin:0,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    width: '100%',
+                    height: 250,
+                  }}
+                  src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m4!2m1!1sR.+Rui+Barbosa,+839+-+Santo+Amaro,+Artur+Nogueira+-+SP,+13160-090%2C+BR!5e0!6i14!5m1!1sen"
+                  allowfullscreen
+
+                >
+                </iframe>
+              </p>
             </div>
+            <div className="location"> 
+              <h1>QUEM SOMOS</h1>
+              <p>
+              Com uma tradição familiar enraizada, somos uma empresa respeitável e confiável no ramo de venda de automóveis novos, seminovos e usados. Nosso compromisso de longa data com a qualidade e a satisfação do cliente nos destaca como uma escolha líder no mercado. Há anos, construímos relações duradouras baseadas na confiança mútua, transparência e integridade.
+              <br/>
+              Nossa equipe dedicada é apaixonada por carros e está empenhada em entender suas necessidades individuais, ajudando-o a encontrar o veículo perfeito para se adequar ao seu estilo de vida e orçamento. Cada carro em nosso inventário passa por rigorosas inspeções para garantir que você esteja recebendo um produto confiável e de qualidade.
+              <br/>
+              Desde jovens motoristas até famílias em busca de espaço, nossa ampla seleção oferece opções para todos. Guiamos você por todas as etapas do processo de compra, proporcionando uma experiência tranquila e sem complicações. Se você procura não apenas um carro, mas uma parceria duradoura, estamos aqui para tornar sua jornada automotiva memorável e empolgante.
+              </p>
+            </div>
+          </div>
+
+          <div className="copyright">
+            © 2023 develop by rgto
           </div>
         </div>
       </div>

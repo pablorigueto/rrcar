@@ -397,7 +397,7 @@ li.thumb:last-child {
   padding-top: 10px;
 }
 
-.footer li {
+.footer li, .contactTopUl li {
   list-style-type: none; /* This removes the default bullet points */
 }
 
@@ -405,6 +405,63 @@ li.thumb:last-child {
   display: flex;
   gap: 20px;
   padding-inline-start: unset;
+}
+
+.contactTopUl {
+  width: 60px;
+}
+
+.contactTopUl li {
+  padding-left: 15px;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+  color: #fff;
+  gap: 5px;
+}
+
+.contactTopUl .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding-left: 5px; */
+}
+
+.liPhone {
+  background: linear-gradient(144deg,
+    transparent 0%, /* Top-left color */ 
+    transparent 20%, /* Middle color */ 
+    #a57a7a 70%, /* Bottom-right color */ 
+    #ff5500 100% /* Bottom-right color */);
+  height: 40px;
+}
+
+.liInstagram {
+  background: linear-gradient(121deg, 
+  /* transparent 0%,
+  transparent 20%, */
+  #833ab4 0%,
+  #fd1d1d 70%,   /* Middle color (Red/Pink) */
+  #fcb045 100%   /* Bottom-right color (Orange) */);
+  height: 40px;
+  border-radius: 5px 5px 0 0;
+}
+
+.contactTop ul {
+  padding-inline-start: unset;
+}
+.liWhatsapp {
+  background: linear-gradient(121deg,
+  /* transparent 0%,
+  transparent 20%, */
+  #25D366 0%,
+  #075E54 70%,   /* Middle color (Darker Green) */
+  #128C7E 100%   /* Bottom-right color (Teal) */);
+  height: 40px;
+  border-radius: 0 0 5px 5px;
 }
 
 
@@ -519,6 +576,12 @@ li.thumb:last-child {
   .close-icon {
     padding: 0;
   }
+  .location {
+    margin-left: 0;
+  }
+  .whoarewe {
+    margin-right: 0;
+  }
 }
 /* Mobile */
 @media (min-width: 425px) and (max-width: 767px) {
@@ -566,6 +629,12 @@ li.thumb:last-child {
   }
   .close-icon {
     padding: 0;
+  }
+  .location {
+    margin-left: 0;
+  }
+  .whoarewe {
+    margin-right: 0;
   }
 }
 
