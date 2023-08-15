@@ -85,26 +85,6 @@ function App() {
     setSelectedVehicle(vehicle);
   };
 
-  const interactivity = {
-    mode: "scroll",
-    actions: [
-      {
-        visibility: [0, 0.2],
-        type: "stop",
-        frames: [0],
-      },
-      {
-        visibility: [0.2, 0.45],
-        type: "seek",
-        frames: [0, 45],
-      },
-      {
-        visibility: [0.45, 1.0],
-        type: "loop",
-        frames: [45, 60],
-      },
-    ],
-  };
 
   return (
     <div>
@@ -129,24 +109,16 @@ function App() {
 
         <div className='contactTop'
           style={{
-            // position: 'absolute',
             right: 0,
             position: 'fixed',
             zIndex: 5,
           }}
         >
         <ul className='contactTopUl'>
-          {/* <li className='liPhone'><span className='icon'><FaPhoneAlt size={20} color='#fff'/></span><span>(19) 97817-5588</span></li> */}
           <li className='liWhatsapp'><a href="https://wa.me/+5519978175588" rel="noreferrer" target="_blank"><span className='icon'><FaWhatsapp size={30} color='#fff'/></span></a></li>
           <li className='liInstagram'><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank"><span className='icon'><FaInstagram size={30} color='#fff'/></span></a></li>
         </ul>
-          {/* <div className='rrMulti'>
-            <img src={textImage} alt="text"
-              style={{ 
-                height: '100%',
-              }}
-            />
-          </div> */}
+
         </div>
 
         <img src={bannerImage} alt="Banner" 
@@ -156,9 +128,6 @@ function App() {
             overflow: 'hidden',
           }}
         />
-
-
-
       </div>
 
       <div
@@ -190,14 +159,7 @@ function App() {
           width: 90,
           paddingBottom: 10,
         }}
-        // interactivity={interactivity}
       />
-      {/* <Lottie 
-        animationData={animation_ll8vuwur}
-        loop={true}
-        style={{width: 57}}
-        //interactivity={interactivity}
-      /> */}
       </div>
       <div className="cards-vehicle-list" style={{ display: selectedVehicle ? 'none' : 'flex' }}>
 
