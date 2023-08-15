@@ -447,7 +447,7 @@ li.thumb:last-child {
   #fd1d1d 70%,   /* Middle color (Red/Pink) */
   #fcb045 100%   /* Bottom-right color (Orange) */);
   height: 40px;
-  border-radius: 5px 5px 0 0;
+  border-radius: 0 0 5px 5px;
 }
 
 .contactTop ul {
@@ -461,7 +461,7 @@ li.thumb:last-child {
   #075E54 70%,   /* Middle color (Darker Green) */
   #128C7E 100%   /* Bottom-right color (Teal) */);
   height: 40px;
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px 5px 0 0;
 }
 
 

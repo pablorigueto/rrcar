@@ -4,12 +4,11 @@ import './styles/App.css'; // Import your CSS file for styling
 import bannerImage from './assets/banner.jpg';
 import logoImage from './assets/logo.png';
 import textImage from './assets/rrmultimarcas.png';
-import VehicleDetailModal from './components/VehicleDetailModal'; // Import your modal component
+import VehicleDetailModal from './components/VehicleDetailModal';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { FaPhoneAlt, FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import Lottie from "lottie-react";
 import animation_ll8vh8ci from "./assets/find/animation_ll8vh8ci.json";
-import animation_ll8vuwur from "./assets/filter/animation_ll8vuwur.json";
 
 function App() {
   const [vehiclesData, setVehiclesData] = useState([]);
@@ -138,8 +137,8 @@ function App() {
         >
         <ul className='contactTopUl'>
           {/* <li className='liPhone'><span className='icon'><FaPhoneAlt size={20} color='#fff'/></span><span>(19) 97817-5588</span></li> */}
-          <li className='liInstagram'><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank"><span className='icon'><FaInstagram size={30} color='#fff'/></span></a></li>
           <li className='liWhatsapp'><a href="https://wa.me/+5519978175588" rel="noreferrer" target="_blank"><span className='icon'><FaWhatsapp size={30} color='#fff'/></span></a></li>
+          <li className='liInstagram'><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank"><span className='icon'><FaInstagram size={30} color='#fff'/></span></a></li>
         </ul>
           {/* <div className='rrMulti'>
             <img src={textImage} alt="text"
@@ -161,26 +160,44 @@ function App() {
 
 
       </div>
-      
+
       <div
         style={{ 
           display: selectedVehicle ? 'none' : 'flex',
+          justifyContent: 'center',
+          paddingTop: 20,
+        }}
+        >
+        <h2>
+            Encontre o carro ideal para você
+        </h2>
+      </div>
+
+      <div
+        style={{ 
+          display: selectedVehicle ? 'none' : 'flex',
+          justifyContent: 'center',
           paddingLeft: 15,
           paddingTop: 2,
         }}
       >
+
+
       <Lottie 
         animationData={animation_ll8vh8ci}
         loop={true}
-        style={{width: 57}}
+        style={{
+          width: 90,
+          paddingBottom: 10,
+        }}
         // interactivity={interactivity}
       />
-      <Lottie 
+      {/* <Lottie 
         animationData={animation_ll8vuwur}
         loop={true}
         style={{width: 57}}
         //interactivity={interactivity}
-      />
+      /> */}
       </div>
       <div className="cards-vehicle-list" style={{ display: selectedVehicle ? 'none' : 'flex' }}>
 
@@ -255,8 +272,6 @@ function App() {
 
             <h1>LOCALIZAÇÃO E CONTATO</h1>
               <p>
-                Endereço:
-                Rua Rui Barbosa 839 - Centro, Artur Nogueira - SP, 13160-060<br/>
                 <ul className="social-icons"
                   style={{
                     display: 'flex',
@@ -271,8 +286,8 @@ function App() {
                     fontSize: 18, 
                   }}
                   >(19) 97817-5588</span></li>
-                  <li><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank"><FaInstagram size={30} color='#fff'/></a></li>
                   <li><a href="https://wa.me/+5519978175588" rel="noreferrer" target="_blank"><FaWhatsapp size={30} color='#fff'/></a></li>
+                  <li><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank"><FaInstagram size={30} color='#fff'/></a></li>
                 </ul>
            
                 <iframe
@@ -289,9 +304,10 @@ function App() {
                   }}
                   src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m4!2m1!1sR.+Rui+Barbosa,+839+-+Santo+Amaro,+Artur+Nogueira+-+SP,+13160-090%2C+BR!5e0!6i14!5m1!1sen"
                   allowfullscreen
-
                 >
                 </iframe>
+                Endereço:
+                Rua Rui Barbosa 839 - Centro, Artur Nogueira - SP, 13160-060<br/>
               </p>
             </div>
             <div className="location"> 
