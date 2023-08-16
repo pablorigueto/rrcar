@@ -2,7 +2,7 @@ import React from 'react';
 import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import bannerImage from '../assets/banner.jpg';
 import logoImage from '../assets/logo.png';
-import textImage from '../assets/rrmultimarcas.png';
+// import textImage from '../assets/rrmultimarcas.png';
 
 function Banner(vehicle) {
   return (
@@ -10,9 +10,9 @@ function Banner(vehicle) {
         <div className="banner">
             <div className='logo'>
             <img className="logoImg" src={logoImage} alt="logo"/>
-            <div className='rrMulti'>
+            {/* <div className='rrMulti'>
                 <img src={textImage} alt="text" className='imageText'/>
-            </div>
+            </div> */}
             </div>
 
             <div className='contactTop'>

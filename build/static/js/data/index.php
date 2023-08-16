@@ -19,9 +19,16 @@ $lastSuccessTimestamp = trim(file_get_contents($successLog));
 $currentTimestamp = time();
 
 if ($lastSuccessTimestamp !== "" && ($currentTimestamp - strtotime($lastSuccessTimestamp)) < $fetchInterval) {
-    echo "Data was fetched less than 1 hour ago. Skipping data fetch.";
+    // If data was fetched less than 1 hour ago, read and print the contents of the local JSON file
+    $jsonData = file_get_contents($dataFileName);
+    if ($jsonData !== false) {
+        // echo "Data was fetched less than 1 hour ago:\n";
+        echo $jsonData;
+    } else {
+        echo "Error reading local JSON file.";
+    }
 } else {
-    echo 'pegando novo arquivo';
+    // echo 'Fetching new data...';
     for ($retryCount = 1; $retryCount <= $maxRetries; $retryCount++) {
         $response = file_get_contents($url);
 
@@ -29,12 +36,13 @@ if ($lastSuccessTimestamp !== "" && ($currentTimestamp - strtotime($lastSuccessT
             // Save JSON to a local file.
             if (file_put_contents($dataFileName, $response) !== false) {
                 $logMessage = "JSON data saved successfully.";
-                echo "JSON data saved successfully.";
+                //echo "JSON data saved successfully.";
 
-                // Log the timestamp when JSON data was saved.
                 // Log the timestamp when JSON data was saved.
                 $successLogMessage = date("Y-m-d H:i:s");
                 file_put_contents($successLog, $successLogMessage);
+                
+                echo $response;
             } else {
                 $logMessage = "Error saving JSON data.";
             }
@@ -54,3 +62,4 @@ if ($lastSuccessTimestamp !== "" && ($currentTimestamp - strtotime($lastSuccessT
         file_put_contents($logFileName, date("Y-m-d H:i:s") . ": " . $logMessage . "\n", FILE_APPEND);
     }
 }
+?>
