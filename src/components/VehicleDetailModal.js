@@ -3,19 +3,11 @@ import '../styles/App.css';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import backIcon from '../assets/back.png';
+import { formatPrice } from '../utils/helper'; // Import the formatPrice function
 
 function VehicleDetailModal({ vehicle, onClose }) {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-
-  function formatPrice(price) {
-      const numericPrice = parseFloat(price);
-      if (isNaN(numericPrice)) {
-        return 'Invalid Price';
-      }
-      return `R$ ${numericPrice.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`;
-  }
   
   const [animateDetails, setAnimateDetails] = useState(false); // State to trigger animation
 
@@ -28,8 +20,6 @@ function VehicleDetailModal({ vehicle, onClose }) {
       clearTimeout(animationTimeout);
     };
   }, []);
-
-
 
   const hideMiddleChars = (str) => {
     if (str.length <= 2) {
@@ -46,18 +36,12 @@ function VehicleDetailModal({ vehicle, onClose }) {
   return (
     <div className="modal-overlay">
       <div className="modal">
-        {/* <button className="close-button" onClick={onClose}>
-          Close
-        </button> */}
- 
+
         <div className="close-button" onClick={onClose}>
           <img className="close-icon" src={backIcon} alt="backIcon"/>
         </div>
 
         <div className="vehicle-image-datailed ">
-            {/* <img
-            src={vehicle.images[0]} alt={vehicle.title}
-            /> */}
           <Carousel
             selectedItem={currentImageIndex}
             showStatus={false}
@@ -71,7 +55,7 @@ function VehicleDetailModal({ vehicle, onClose }) {
           >
             {vehicle.images.map((image, index) => (
               <div key={index} className='detailed-frame'>
-                <img src={image} alt={`Image ${index}`} />
+                <img src={image} alt={`srcImage ${index}`} />
               </div>
             ))}
           </Carousel>
@@ -91,9 +75,6 @@ function VehicleDetailModal({ vehicle, onClose }) {
 
             <div
               className={`color-transition-button priceDetailed ${animateDetails ? 'animate' : ''}`}
-              // style={{
-              //   color: "#000"
-              // }}
               >
               {vehicle.price == 0 ? (
                 "Consulte-nos"
