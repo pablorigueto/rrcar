@@ -10,18 +10,10 @@ function Footer() {
 
         <h1>LOCALIZAÇÃO E CONTATO</h1>
           <p>
-            <ul className="social-icons"
-            >  
-             <li><FaPhoneAlt size={18} color='#fff'/><span
-             className='liPhoneAlt'
-              >(19) 97817-5588</span></li>
-              <li><a href="https://wa.me/+5519978175588" rel="noreferrer" target="_blank"><FaWhatsapp size={30} color='#fff'/></a></li>
-              <li><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank"><FaInstagram size={30} color='#fff'/></a></li>
-            </ul>
+
        
             <iframe
               title="RR Multimarcas"
-              frameBorder="0"
               className='iframeGmaps'
               src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m4!2m1!1sR.+Rui+Barbosa,+839+-+Santo+Amaro,+Artur+Nogueira+-+SP,+13160-090%2C+BR!5e0!6i14!5m1!1sen"
               allowFullScreen
@@ -30,6 +22,16 @@ function Footer() {
             Endereço:
             Rua Rui Barbosa 839 - Centro, Artur Nogueira - SP, 13160-060<br/>
           </p>
+
+            <ul className="social-icons"
+            >  
+             <li><FaPhoneAlt size={18} color='#fff'/><span
+             className='liPhoneAlt'
+              >(19) 97817-5588</span></li>
+              <li><a href="https://wa.me/+5519978175588" rel="noreferrer" target="_blank"><FaWhatsapp size={30} color='#fff'/></a></li>
+              <li><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank"><FaInstagram size={30} color='#fff'/></a></li>
+            </ul>
+
         </div>
         <div className="location"> 
           <h1>QUEM SOMOS</h1>
@@ -44,7 +46,7 @@ function Footer() {
       </div>
 
       <div className="copyright">
-        © 2023 develop by rgto
+        © 2023 develop by <a className='dc' taget='_blank' href='https://dotcomma.dev'>DC</a>
       </div>
     </div>
   </div>

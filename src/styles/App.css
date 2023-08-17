@@ -510,6 +510,7 @@ li.thumb:last-child {
   align-items: center;
   justify-content: center;
   padding-top: 15px;
+  text-align: center;
 }
 
 .bannerOfPage {
@@ -521,6 +522,7 @@ li.thumb:last-child {
   right: 0;
   position: fixed;
   z-index: 5;
+  padding-top: 8px;
 }
 
 .imageText, .logoImg {
@@ -744,4 +746,10 @@ li.thumb:last-child {
 
 .vehicle-screen-detailed span {
   padding: 3px 0;
+}
+
+.dc {
+  text-decoration: unset;
+  font-weight: 800;
+  color: #000062;
 }
