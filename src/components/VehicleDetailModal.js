@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import backIcon from '../assets/back.png';
 import { formatPrice } from '../utils/helper'; // Import the formatPrice function
+import ContactForm from './contactForm';
 
 function VehicleDetailModal({ vehicle, onClose }) {
 
@@ -59,21 +60,11 @@ function VehicleDetailModal({ vehicle, onClose }) {
               </div>
             ))}
           </Carousel>
-
         </div>
 
-        <div >
-          <div className={`vehicle-screen-detailed ${animateDetails ? 'animate' : ''}`}>
-            <h2>{vehicle.title}</h2>
-            <span >Descrição: {vehicle.description}</span>
-            <span >Acessórios: {vehicle.accessories}</span>
-            <span >Montadora: {vehicle.make}</span>
-            <span >Modelo: {vehicle.model}</span>
-            <span >Cor: {vehicle.color}</span>
-            <span >Portas: {vehicle.doors}</span>
-            <span >Combustível: {vehicle.fuel}</span>
-
-            <div
+          <div className={`vehicle-screen-detailed ${animateDetails ? 'animate' : ''}`}>  
+          <h2 className='titleDetailed'>{vehicle.title}</h2>
+             <div
               className={`color-transition-button priceDetailed ${animateDetails ? 'animate' : ''}`}
               >
               {vehicle.price == 0 ? (
@@ -83,12 +74,58 @@ function VehicleDetailModal({ vehicle, onClose }) {
               )}
             </div>
 
-            <span className='gear'>Câmbio: {vehicle.gear}</span>
-            <span >Condição: {vehicle.condition}</span>
-            <span >Ano: {vehicle.fabric_year}/{vehicle.year}</span>
-            <span className='plate'>Placa: {hideMiddleChars(vehicle.plate)}</span>
+            <div className='fabandmodel'>
+              <div className='summaryDetailedModel'>
+                <span className='titleDetailedTable'>Montadora</span>
+                <span>{vehicle.make}</span>
+              </div>
+              <div className='summaryDetailedModel'>
+                <span className='titleDetailedTable'>Modelo</span>
+                <span>{vehicle.model}</span>
+              </div>
+            </div>
+
+            <div className='summaryDetailedParent'>
+              <div className='summaryDetailed'>
+                <span className='titleDetailedTable'>Cor</span>
+                <span>{vehicle.color}</span>
+              </div>
+              <div className='summaryDetailed'>
+                <span className='titleDetailedTable'>Combustível</span>
+                <span>{vehicle.fuel}</span>
+              </div>
+              <div className='summaryDetailed'>
+                <span className='titleDetailedTable'>Câmbio</span>
+                <span>{vehicle.gear}</span>
+              </div>
+              <div className='summaryDetailed'>
+                <span className='titleDetailedTable'>Ano</span>
+                <span>{vehicle.fabric_year}/{vehicle.year}</span>
+              </div>
+              <div className='summaryDetailed'>
+                <span className='titleDetailedTable'>Placa</span>
+                <span>{hideMiddleChars(vehicle.plate)}</span>
+              </div>
+              <div className='summaryDetailed'>
+                <span className='titleDetailedTable'>Condição</span>
+                <span>{vehicle.condition}</span>
+              </div>
+              <div className='summaryDetailed'>
+                <span className='titleDetailedTable'>Portas</span>
+                <span>{vehicle.doors}</span>
+              </div>
+            </div>
+
+            <div className='descriptionParent'>
+              <div className='descriptionsummaryDetailed'>
+                <span className='titleDetailedTable'>Descrição</span>
+                <span>{vehicle.description}</span>
+              </div>
+            </div>
+
           </div>
-        </div>
+
+          <ContactForm car={vehicle.title}/>
 
       </div>
     </div>
