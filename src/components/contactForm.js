@@ -1,7 +1,86 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/ContactForm.css';
 
 const ContactForm = (car) => {
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [unfillFields, setUnfillFields] = useState(false);
+
+  const handleCloseSuccessMessage = () => {
+    setShowSuccessMessage(false);
+  };
+
+  useEffect(() => {
+    const handleEscapeKeyPress = (event) => {
+      if (event.key === 'Escape') {
+        handleCloseSuccessMessage();
+        setUnfillFields(false);
+      }
+    };
+
+    const handleClickOutside = (event) => {
+      if (event.target.classList.contains('modalOverlay')) {
+        handleCloseSuccessMessage();
+        setUnfillFields(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscapeKeyPress);
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKeyPress);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!isFormValid()) {
+      //console.log('Preencha os campos obrigatórios.');
+      setUnfillFields(true);
+      return;
+    }
+
+    setUnfillFields(false);
+
+    try {
+      //const response = await fetch('http://127.0.0.1/post/saveForm.php', {
+      const response = await fetch('https://test.boaerd.com/static/js/post/saveForm.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      //console.log('formData: ' + response)
+      if (response.ok) {
+        const responseData = await response.json();
+        //console.log(responseData.message);
+
+        // Show a success message using window.alert()
+        setShowSuccessMessage(true);
+
+        // Optionally, you can reset the form data here
+        setFormData({
+          name: '',
+          email: '',
+          cellphone: '',
+          description: '',
+          wantsToFinance: false,
+          wantsToTradeVehicle: false,
+          wantsToReceivePromotions: false,
+          // agreesToPrivacyPolicy: false,
+        });
+      } else {
+        console.error('Error saving form data:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error saving form data:', error);
+    }
+  };
+
 
   const [formData, setFormData] = useState({
     name: '',
@@ -11,7 +90,7 @@ const ContactForm = (car) => {
     wantsToFinance: false,
     wantsToTradeVehicle: false,
     wantsToReceivePromotions: false,
-    agreesToPrivacyPolicy: false,
+    // agreesToPrivacyPolicy: false,
   });
 
   const handleInputChange = (event) => {
@@ -23,10 +102,15 @@ const ContactForm = (car) => {
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Here you can implement the submission logic
-    console.log(formData); // For demonstration, log the form data
+  const isFormValid = () => {
+    // Perform validation on all fields
+    // formData.agreesToPrivacyPolicy
+    return (
+      formData.name.trim() !== '' &&
+      formData.email.trim() !== '' &&
+      formData.cellphone.trim() !== ''
+      // && formData.agreesToPrivacyPolicy
+    );
   };
 
   return (
@@ -37,7 +121,7 @@ const ContactForm = (car) => {
             type="text"
             id="name"
             name="name"
-            placeholder="Nome Completo"
+            placeholder="Nome Completo *"
             value={formData.name}
             onChange={handleInputChange}
             required
@@ -47,7 +131,7 @@ const ContactForm = (car) => {
             type="email"
             id="email"
             name="email"
-            placeholder="Email"
+            placeholder="Email *"
             value={formData.email}
             onChange={handleInputChange}
             required
@@ -57,7 +141,7 @@ const ContactForm = (car) => {
             type="tel"
             id="cellphone"
             name="cellphone"
-            placeholder="Telefone"
+            placeholder="Telefone *"
             value={formData.cellphone}
             onChange={handleInputChange}
             required
@@ -100,7 +184,7 @@ const ContactForm = (car) => {
             />
             Quero receber aviso e promoções
           </label>
-          <label>
+          {/* <label>
             <input
               type="checkbox"
               name="agreesToPrivacyPolicy"
@@ -108,17 +192,28 @@ const ContactForm = (car) => {
               onChange={handleInputChange}
               required
             />
-            Lí e concordo com a política de privacidade
-          </label>
+            Lí e concordo com a política de privacidade *
+          </label> */}
         </div>
+
+        {showSuccessMessage && (
+          <div className='modalOverlay'>
+            <div className='successMessage'>
+              <p>Muito obrigado pela sua proposta! <br/> Iremos avaliar e entrar em contato o mais breve possível!</p>
+            </div>
+          </div>
+        )}
+
+        {unfillFields && (
+          <div className='modalOverlay'>
+            <div className='successMessage' style={{background: '#930808'}}>
+              <p>Preencha os campos obrigatórios.</p>
+            </div>
+          </div>
+        )}
 
         <button type="submit" id="submit" onClick={handleSubmit}>Enviar</button>
       </div>
-
-      
-      {/* <div className='submitBtn'>
-       
-      </div> */}
     </div>
   );
 };
