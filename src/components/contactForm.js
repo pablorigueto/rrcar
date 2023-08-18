@@ -45,8 +45,8 @@ const ContactForm = (car) => {
     setUnfillFields(false);
 
     try {
-      //const response = await fetch('http://127.0.0.1/post/saveForm.php', {
-      const response = await fetch('https://test.boaerd.com/static/js/post/saveForm.php', {
+      const response = await fetch('http://127.0.0.1/post/saveForm.php', {
+      //const response = await fetch('https://test.boaerd.com/static/js/post/saveForm.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
