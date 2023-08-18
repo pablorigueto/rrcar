@@ -2,9 +2,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     width: 670px;
     margin: 0 auto;
+    box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    border-radius: 6px;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .contactParent {
@@ -13,6 +20,27 @@
     flex-direction: column;
     align-items: flex-start;
 }
+
+#submit {
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(to right, #060606ed 0%, #060606ed 50%, #141414 50%, #000000 100%);
+    border: unset;
+    border-radius: 6px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    height: 45px;
+    background-size: 200% 100%;
+}
+
+#submit:hover {
+    background: #000;
+    transition: transform 0.2s ease;
+    transform: scale(1.1);
+}
+
 
 .checkboxGroup {
     display: flex;
@@ -47,6 +75,8 @@ textarea {
     background-color: #fff;
     background-image: none;
     border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0;
 }
 
 #cellphone, #email, #name, #submit, textarea {
@@ -54,30 +84,37 @@ textarea {
     margin-bottom: 10px;
     font-size: 14px;
     line-height: 1.43;
+    padding: 5px;
+}
+
+#submit {
+    width: 103%;
 }
 
 input[type="text" i], input[type="email" i], input[type="tel" i], input[type="file" i], input[type="image" i], input[type="checkbox" i], input[type="radio" i], input[type="submit" i] {
     padding: 0;
 }
 
-textarea {
-    padding: 0;
-}
-
 /* Mini mobile */
 @media (max-width: 424px) {
     .formContact {
-        width: 98%;
+        width: 92%;
         margin: 0 auto;
         align-items: unset;
+    }
+    .contactParent {
+        margin-left: -10px;
     }
   }
   /* Mobile */
   @media (min-width: 425px) and (max-width: 767px) {
     .formContact {
-        width: 98%;
+        width: 92%;
         margin: 0 auto;
         align-items: unset;
+    }
+    .contactParent {
+        margin-left: -10px;
     }
   }
   

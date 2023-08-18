@@ -62,7 +62,7 @@ function VehicleDetailModal({ vehicle, onClose }) {
           </Carousel>
         </div>
 
-          <div className={`vehicle-screen-detailed ${animateDetails ? 'animate' : ''}`}>  
+        <div className={`vehicle-screen-detailed ${animateDetails ? 'animate' : ''}`}>  
           <h2 className='titleDetailed'>{vehicle.title}</h2>
              <div
               className={`color-transition-button priceDetailed ${animateDetails ? 'animate' : ''}`}

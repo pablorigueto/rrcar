@@ -112,7 +112,7 @@ const ContactForm = (car) => {
           </label>
         </div>
 
-        <button type="submit" id="submit" onClick={handleSubmit}>Submit</button>
+        <button type="submit" id="submit" onClick={handleSubmit}>Enviar</button>
       </div>
 
       

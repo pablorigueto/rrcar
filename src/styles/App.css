@@ -291,7 +291,7 @@ li.thumb:last-child {
 }
 
 .vehicle-screen-detailed span {
-  font-size: 16px;
+  font-size: 15px;
   color: #312e2eeb;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -559,8 +559,8 @@ li.thumb:last-child {
   border-radius: 6px;
   display: flex;
   flex-direction: column;
-  min-width: 105px;
-  max-width: 120px;
+  width: 94.7px;
+  /* max-width: 96px; */
   text-align: center;
   /* border-left: 1px solid #312e2eeb; */
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
@@ -616,6 +616,8 @@ li.thumb:last-child {
   justify-content: center;
   align-items: center;
   transition: transform 0.2s ease;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .summaryDetailedModel:hover {
