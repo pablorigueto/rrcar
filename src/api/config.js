@@ -1,7 +1,9 @@
-// api.js
+const data = window.location.href + 'data/index.php';
+
 export const fetchData = async () => {
   try {
-    const phpResponse = await fetch('https://test.boaerd.com/static/js/data/index.php');
+    const phpResponse = await fetch(data);
+    //const phpResponse = await fetch('https://test.boaerd.com/static/js/data/index.php');
     const phpData = await phpResponse.json();
     const vehiclesArray = phpData.vehicles;
     return vehiclesArray;

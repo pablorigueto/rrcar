@@ -125,7 +125,7 @@ function VehicleDetailModal({ vehicle, onClose }) {
 
           </div>
 
-          <ContactForm car={vehicle.title}/>
+          <ContactForm car={vehicle} />
 
       </div>
     </div>

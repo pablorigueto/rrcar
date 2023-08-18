@@ -17,6 +17,12 @@ function App() {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
 
   useEffect(() => {
+    if (selectedVehicle) {
+      window.scrollTo(0, 0);
+    }
+  }, [selectedVehicle]);
+
+  useEffect(() => {
     fetchData().then((vehiclesArray) => {
       setVehiclesData(vehiclesArray);
     });

@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import '../styles/ContactForm.css';
 
 const ContactForm = (car) => {
+
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [unfillFields, setUnfillFields] = useState(false);
+  const carIDOrigin = car.car.vehicle_id;
+  const saveForm = window.location.href + 'post/saveForm.php';
 
   const handleCloseSuccessMessage = () => {
     setShowSuccessMessage(false);
@@ -45,8 +48,8 @@ const ContactForm = (car) => {
     setUnfillFields(false);
 
     try {
-      const response = await fetch('http://127.0.0.1/post/saveForm.php', {
-      //const response = await fetch('https://test.boaerd.com/static/js/post/saveForm.php', {
+      //const response = await fetch('http://127.0.0.1/post/saveForm.php', {
+      const response = await fetch(saveForm, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -62,8 +65,9 @@ const ContactForm = (car) => {
         // Show a success message using window.alert()
         setShowSuccessMessage(true);
 
-        // Optionally, you can reset the form data here
+        // Reset the form.
         setFormData({
+          carID: carIDOrigin,
           name: '',
           email: '',
           cellphone: '',
@@ -81,8 +85,8 @@ const ContactForm = (car) => {
     }
   };
 
-
   const [formData, setFormData] = useState({
+    carID: carIDOrigin,
     name: '',
     email: '',
     cellphone: '',
@@ -150,7 +154,7 @@ const ContactForm = (car) => {
           <textarea
             id="description"
             name="description"
-            placeholder={`Olá, gostaria de saber mais sobre esse carro ou fazer uma proposta para ${car.car}`}
+            placeholder={`Olá, gostaria de saber mais sobre esse carro ou fazer uma proposta para ${car.car.title}`}
             value={formData.description}
             onChange={handleInputChange}
             required
@@ -194,6 +198,13 @@ const ContactForm = (car) => {
             />
             Lí e concordo com a política de privacidade *
           </label> */}
+
+          {/* <input
+            type="hidden"
+            id="carId"
+            name="carId"
+            value={formData.car.car.vehicle_id}
+          /> */}
         </div>
 
         {showSuccessMessage && (
