@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/ContactForm.css';
+import LgpdPage from './policy';
 
 const ContactForm = (car) => {
 
@@ -7,6 +8,11 @@ const ContactForm = (car) => {
   const [unfillFields, setUnfillFields] = useState(false);
   const carIDOrigin = car.car.vehicle_id;
   const saveForm = window.location.href + 'post/saveForm.php';
+  const [openLgdp, setOpenLgdp] = useState(null);
+
+  const handlePrivacyPolicyClick = () => {
+    setOpenLgdp(true);
+  };
 
   const handleCloseSuccessMessage = () => {
     setShowSuccessMessage(false);
@@ -17,6 +23,7 @@ const ContactForm = (car) => {
       if (event.key === 'Escape') {
         handleCloseSuccessMessage();
         setUnfillFields(false);
+        setOpenLgdp(false);
       }
     };
 
@@ -75,7 +82,7 @@ const ContactForm = (car) => {
           wantsToFinance: false,
           wantsToTradeVehicle: false,
           wantsToReceivePromotions: false,
-          // agreesToPrivacyPolicy: false,
+          agreesToPrivacyPolicy: false,
         });
       } else {
         console.error('Error saving form data:', response.statusText);
@@ -94,7 +101,7 @@ const ContactForm = (car) => {
     wantsToFinance: false,
     wantsToTradeVehicle: false,
     wantsToReceivePromotions: false,
-    // agreesToPrivacyPolicy: false,
+    agreesToPrivacyPolicy: false,
   });
 
   const handleInputChange = (event) => {
@@ -113,7 +120,7 @@ const ContactForm = (car) => {
       formData.name.trim() !== '' &&
       formData.email.trim() !== '' &&
       formData.cellphone.trim() !== ''
-      // && formData.agreesToPrivacyPolicy
+      && formData.agreesToPrivacyPolicy
     );
   };
 
@@ -188,7 +195,7 @@ const ContactForm = (car) => {
             />
             Quero receber aviso e promoções
           </label>
-          {/* <label>
+          <label>
             <input
               type="checkbox"
               name="agreesToPrivacyPolicy"
@@ -196,15 +203,9 @@ const ContactForm = (car) => {
               onChange={handleInputChange}
               required
             />
-            Lí e concordo com a política de privacidade *
-          </label> */}
-
-          {/* <input
-            type="hidden"
-            id="carId"
-            name="carId"
-            value={formData.car.car.vehicle_id}
-          /> */}
+              Lí e concordo com a{' '}
+                <span className='policy' onClick={handlePrivacyPolicyClick}>política de privacidade *</span>
+          </label>
         </div>
 
         {showSuccessMessage && (
@@ -221,6 +222,18 @@ const ContactForm = (car) => {
               <p>Preencha os campos obrigatórios.</p>
             </div>
           </div>
+        )}
+
+        {unfillFields && (
+          <div className='modalOverlay'>
+            <div className='successMessage' style={{background: '#930808'}}>
+              <p>Preencha os campos obrigatórios.</p>
+            </div>
+          </div>
+        )}
+
+        {openLgdp && (
+          <LgpdPage onClose={() => setOpenLgdp(false)} />
         )}
 
         <button type="submit" id="submit" onClick={handleSubmit}>Enviar</button>

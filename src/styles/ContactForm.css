@@ -133,6 +133,12 @@ input[type="text" i], input[type="email" i], input[type="tel" i], input[type="fi
     margin-top: 10px;
   }
 
+  .policy {
+    color: #fd1f1f;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
 /* Mini mobile */
 @media (max-width: 424px) {
     .formContact {

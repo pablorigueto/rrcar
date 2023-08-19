@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $worksheet->setCellValue('G' . $nextRow, $formData['wantsToFinance']);
     $worksheet->setCellValue('H' . $nextRow, $formData['wantsToTradeVehicle']);
     $worksheet->setCellValue('I' . $nextRow, $formData['wantsToReceivePromotions']);
-    // $worksheet->setCellValue('J' . $nextRow, $formData['agreesToPrivacyPolicy']);
+    $worksheet->setCellValue('J' . $nextRow, $formData['agreesToPrivacyPolicy']);
 
     $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
     $writer->save($filename);
