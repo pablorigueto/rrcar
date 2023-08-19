@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/ContactForm.css';
 import LgpdPage from './policy';
+import Lottie from "lottie-react";
+import animation_lliert45 from "../assets/send/animation_lliert45.json";
 
 const ContactForm = (car) => {
 
@@ -9,6 +11,7 @@ const ContactForm = (car) => {
   const carIDOrigin = car.car.vehicle_id;
   const saveForm = window.location.href + 'post/saveForm.php';
   const [openLgdp, setOpenLgdp] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handlePrivacyPolicyClick = () => {
     setOpenLgdp(true);
@@ -53,6 +56,8 @@ const ContactForm = (car) => {
     }
 
     setUnfillFields(false);
+    // Start loading.
+    setLoading(true);
 
     try {
       //const response = await fetch('http://127.0.0.1/post/saveForm.php', {
@@ -89,6 +94,10 @@ const ContactForm = (car) => {
       }
     } catch (error) {
       console.error('Error saving form data:', error);
+    } finally {
+       // Stop loading.
+       console.log('fechando');
+      setLoading(false);
     }
   };
 
@@ -207,6 +216,16 @@ const ContactForm = (car) => {
                 <span className='policy' onClick={handlePrivacyPolicyClick}>política de privacidade *</span>
           </label>
         </div>
+
+        {loading && (
+          <div className='modalOverlay'>
+            <Lottie
+            className='sendLottie'
+            animationData={animation_lliert45}
+            loop={true}
+            />
+          </div>
+        )}
 
         {showSuccessMessage && (
           <div className='modalOverlay'>

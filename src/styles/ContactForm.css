@@ -139,6 +139,15 @@ input[type="text" i], input[type="email" i], input[type="tel" i], input[type="fi
     cursor: pointer;
   }
 
+  .sendLottiefile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
 /* Mini mobile */
 @media (max-width: 424px) {
     .formContact {

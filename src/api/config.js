@@ -1,6 +1,5 @@
 
 export const fetchData = async () => {
-
   const data = window.location.href + 'data/index.php';
 
   try {

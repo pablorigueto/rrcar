@@ -662,9 +662,18 @@ li.thumb:last-child {
   transform: scale(1.05);
 }
 
-
-
-
+.fetchOverlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffffa1;
+  z-index: 1000;
+}
 
 /* Mini mobile */
 @media (max-width: 424px) {

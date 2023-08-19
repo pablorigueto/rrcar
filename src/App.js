@@ -5,6 +5,7 @@ import VehicleDetailModal from './components/VehicleDetailModal';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Lottie from "lottie-react";
 import animation_ll8vh8ci from "./assets/find/animation_ll8vh8ci.json";
+import animation_llieshlr from "./assets/fetch/animation_llieshlr.json";
 import { fetchData } from './api/config';
 import { formatPrice } from './utils/helper';
 import Footer from './components/footer';
@@ -15,6 +16,7 @@ function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [animateDetails, setAnimateDetails] = useState(false);
   const [selectedVehicle, setSelectedVehicle] = useState(null);
+  const [loadingFetch, setLoadingFetch] = useState(true);
 
   useEffect(() => {
     if (selectedVehicle) {
@@ -23,9 +25,16 @@ function App() {
   }, [selectedVehicle]);
 
   useEffect(() => {
-    fetchData().then((vehiclesArray) => {
-      setVehiclesData(vehiclesArray);
-    });
+    fetchData()
+      .then((vehiclesArray) => {
+        setVehiclesData(vehiclesArray);
+      })
+      .catch((error) => {
+        console.error('Data fetching error:', error);
+      })
+      .finally(() => {
+        setLoadingFetch(false);
+      });
   }, []);
 
   const calculateWidth = () => {
@@ -137,6 +146,16 @@ function App() {
         </div>
         ))}
       </div>
+
+      {loadingFetch && (
+        <div className='fetchOverlay'>
+          <Lottie
+          className='fetchLottie'
+          animationData={animation_llieshlr}
+          loop={true}
+          />
+        </div>
+      )}
 
       <TransitionGroup>
         {selectedVehicle && (
