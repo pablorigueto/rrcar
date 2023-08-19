@@ -96,7 +96,6 @@ const ContactForm = (car) => {
       console.error('Error saving form data:', error);
     } finally {
        // Stop loading.
-       console.log('fechando');
       setLoading(false);
     }
   };
