@@ -18,10 +18,6 @@ function App() {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [loadingFetch, setLoadingFetch] = useState(true);
 
-  // Read query parameter from the URL.
-  const urlParams = new URLSearchParams(window.location.search);
-  const initialSelectedItemId = urlParams.get('c');
-
   useEffect(() => {
     if (selectedVehicle) {
       window.scrollTo(0, 0);
@@ -33,6 +29,10 @@ function App() {
       .then((vehiclesArray) => {
         setVehiclesData(vehiclesArray);
   
+          // Read query parameter from the URL.
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialSelectedItemId = urlParams.get('c');
+
         // Check on fetch if has the id of car to set.
         const initialSelectedVehicle = vehiclesArray.find(vehicle => vehicle.vehicle_id == initialSelectedItemId);
   

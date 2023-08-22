@@ -9,7 +9,15 @@ const ContactForm = (car) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [unfillFields, setUnfillFields] = useState(false);
   const carIDOrigin = car.car.vehicle_id;
-  const saveForm = window.location.href + 'post/saveForm.php';
+
+  // Get the parts of the current URL
+  const protocol = window.location.protocol;
+  const host = window.location.host;
+  const pathname = '/post/saveForm.php';
+
+  // Create the new URL without query parameters
+  const newURL = `${protocol}//${host}${pathname}`;
+
   const [openLgdp, setOpenLgdp] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -61,7 +69,7 @@ const ContactForm = (car) => {
 
     try {
       //const response = await fetch('http://127.0.0.1/post/saveForm.php', {
-      const response = await fetch(saveForm, {
+      const response = await fetch(newURL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

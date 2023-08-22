@@ -1,10 +1,16 @@
 
 export const fetchData = async () => {
-  const data = window.location.href + 'data/index.php';
+  // Get the parts of the current URL
+  const protocol = window.location.protocol;
+  const host = window.location.host;
+  const pathname = '/data/index.php'; // New pathname to merge
+
+  // Create the new URL without query parameters
+  const newURL = `${protocol}//${host}${pathname}`;
 
   try {
-    const phpResponse = await fetch(data);
-    //const phpResponse = await fetch('https://test.boaerd.com/data/index.php');
+    const phpResponse = await fetch(newURL);
+    //const phpResponse = await fetch('http://127.0.0.1/fetch/index.php');
     const phpData = await phpResponse.json();
     const vehiclesArray = phpData.vehicles;
     return vehiclesArray;
