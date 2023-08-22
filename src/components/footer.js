@@ -28,8 +28,8 @@ function Footer() {
              <li><FaPhoneAlt size={18} color='#fff'/><span
              className='liPhoneAlt'
               >(19) 97817-5588</span></li>
-              <li><a href="https://wa.me/+5519978175588" rel="noreferrer" target="_blank"><FaWhatsapp size={30} color='#fff'/></a></li>
-              <li><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank"><FaInstagram size={30} color='#fff'/></a></li>
+              <li><a href="https://wa.me/+5519978175588" rel="noreferrer" target="_blank" aria-label="Whatsapp link"><FaWhatsapp size={30} color='#fff'/></a></li>
+              <li><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank" aria-label="Instagram link"><FaInstagram size={30} color='#fff'/></a></li>
             </ul>
 
         </div>

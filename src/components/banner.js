@@ -17,8 +17,8 @@ function Banner(vehicle) {
 
             <div className='contactTop'>
             <ul className='contactTopUl'>
-                <li className='liWhatsapp'><a href="https://wa.me/+5519978175588" rel="noreferrer" target="_blank"><span className='icon'><FaWhatsapp size={30} color='#fff'/></span></a></li>
-                <li className='liInstagram'><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank"><span className='icon'><FaInstagram size={30} color='#fff'/></span></a></li>
+                <li className='liWhatsapp'><a href="https://wa.me/+5519978175588" rel="noreferrer" target="_blank" aria-label="Whatsapp link"><span className='icon'><FaWhatsapp size={30} color='#fff'/></span></a></li>
+                <li className='liInstagram'><a href="https://www.instagram.com/rrmultimarcasan/" rel="noreferrer" target="_blank" aria-label="Instagram link"><span className='icon'><FaInstagram size={30} color='#fff'/></span></a></li>
             </ul>
             </div>
 

@@ -367,7 +367,7 @@ li.thumb:last-child {
 
 .footer {
   font-family: Arial, Helvetica, sans-serif;
-  background: #515151;
+  background: #181818;
   color: #fff;
   padding: 20px;
 
@@ -408,7 +408,7 @@ li.thumb:last-child {
 .dc {
   text-decoration: unset;
   font-weight: 800;
-  color: #000062;
+  color: #fff;
 }
 
 .footer li, .contactTopUl li {
