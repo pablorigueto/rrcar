@@ -18,6 +18,10 @@ function App() {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [loadingFetch, setLoadingFetch] = useState(true);
 
+  // Read query parameter from the URL.
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialSelectedItemId = urlParams.get('c');
+
   useEffect(() => {
     if (selectedVehicle) {
       window.scrollTo(0, 0);
@@ -28,6 +32,14 @@ function App() {
     fetchData()
       .then((vehiclesArray) => {
         setVehiclesData(vehiclesArray);
+  
+        // Check on fetch if has the id of car to set.
+        const initialSelectedVehicle = vehiclesArray.find(vehicle => vehicle.vehicle_id == initialSelectedItemId);
+  
+        if (initialSelectedVehicle) {
+          setSelectedVehicle(initialSelectedVehicle);
+        }
+
       })
       .catch((error) => {
         console.error('Data fetching error:', error);
@@ -79,7 +91,13 @@ function App() {
   }, []);
 
   const handleVehicleClick = (vehicle) => {
+
     setSelectedVehicle(vehicle);
+
+    // Update the URL with the selected vehicle's ID.
+    const newUrl = `${window.location.pathname}?c=${vehicle.vehicle_id}`;
+    window.history.pushState(null, '', newUrl);
+
   };
 
   return (
