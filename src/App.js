@@ -29,7 +29,7 @@ function App() {
       .then((vehiclesArray) => {
         setVehiclesData(vehiclesArray);
   
-          // Read query parameter from the URL.
+        // Read query parameter from the URL.
         const urlParams = new URLSearchParams(window.location.search);
         const initialSelectedItemId = urlParams.get('c');
 
@@ -103,7 +103,6 @@ function App() {
   return (
     <div>
       <Banner vehicle={selectedVehicle}/>
-
       <div
         className='divLottie'
         style={{ 
@@ -127,7 +126,8 @@ function App() {
 
           <div key={vehicle.vehicle_id}
             className="vehicle-card"
-            style={{ width: `${windowWidth}px` }}
+            // style={{ width: `${windowWidth}px` }}
+            style={{ width: 310 }}
             onClick={() => handleVehicleClick(vehicle)}
           >
 
@@ -137,11 +137,20 @@ function App() {
                 src={logoImage} alt="Logo"
               />
             </div>
-
+            
             <div className="vehicle-image">
-              <img
-                src={vehicle.images[0]} alt={vehicle.title}
-              />
+              {vehicle.images && vehicle.images.length > 0 ? (
+                <img
+                  src={vehicle.images[0]}
+                  alt={vehicle.title}
+                />
+              ) : (
+                <img
+                  src={logoImage}
+                  alt={vehicle.title}
+                />
+              )}
+             
             </div>
             <div>
               <div className={`vehicle-details ${animateDetails ? 'animate' : ''}`}>

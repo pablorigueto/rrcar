@@ -5,9 +5,10 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import backIcon from '../assets/back.png';
 import { formatPrice } from '../utils/helper'; // Import the formatPrice function
 import ContactForm from './contactForm';
+import logoImage from '../assets/logo.png';
 
 function VehicleDetailModal({ vehicle, onClose }) {
-
+  console.log(logoImage);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const [animateDetails, setAnimateDetails] = useState(false); // State to trigger animation
@@ -54,13 +55,27 @@ function VehicleDetailModal({ vehicle, onClose }) {
             onChange={(index) => setCurrentImageIndex(index)}
             dynamicHeight
           >
-            {vehicle.images.map((image, index) => (
+            {/* {vehicle.images.map((image, index) => (
               <div key={index} className='detailed-frame'>
                 <img src={image} alt={`srcImage ${index}`} />
               </div>
-            ))}
+            ))} */}
+            {vehicle.images && vehicle.images.length > 0 ? (
+              vehicle.images.map((image, index) => (
+                <div key={index} className='detailed-frame'>
+                  <img src={image} alt={`srcImage ${index}`} />
+                </div>
+              ))
+            ) : (
+              <div key='logo' className='detailed-frame'>
+                <img src={logoImage} alt='srcImage logo' />
+              </div>
+            )}
           </Carousel>
         </div>
+
+
+
 
         <div className={`vehicle-screen-detailed ${animateDetails ? 'animate' : ''}`}>  
           <h2 className='titleDetailed'>{vehicle.title}</h2>
