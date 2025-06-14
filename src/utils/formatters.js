@@ -59,3 +59,23 @@ export const parseCurrency = (value) => {
   // Parse to a float
   return parseFloat(strValue) || 0;
 };
+
+// utils/formatters.js (add this function to your existing formatters file)
+
+export const formatPhone = (value) => {
+  if (!value) return '';
+  
+  // Remove all non-digits
+  const digits = value.replace(/\D/g, '');
+  
+  // Format based on the number of digits
+  if (digits.length <= 2) {
+    return `(${digits}`;
+  } else if (digits.length <= 6) {
+    return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  } else if (digits.length <= 10) {
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+  } else {
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
+  }
+};

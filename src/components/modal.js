@@ -74,6 +74,31 @@ function Modal({ isOpen, onClose, vehicleData }) {
         [field]: null
       });
     }
+
+    // If storing raw values is needed for submission
+    if (field === 'phone') {
+      // Store the formatted value for display
+      setCustomerInfo({
+        ...customerInfo,
+        [field]: value,
+        // Optionally store the raw phone number (just digits) in a separate field
+        phoneRaw: value.replace(/\D/g, '')
+      });
+    } else {
+      setCustomerInfo({
+        ...customerInfo,
+        [field]: value
+      });
+    }
+    
+    // Clear error for this field if it exists
+    if (errors[field]) {
+      setErrors({
+        ...errors,
+        [field]: null
+      });
+    }
+    
   };
   
   // Handle input changes for customer info
@@ -121,6 +146,23 @@ function Modal({ isOpen, onClose, vehicleData }) {
     // Basic email validation
     if (customerInfo.email && !/\S+@\S+\.\S+/.test(customerInfo.email)) {
       newErrors.email = 'Email inválido';
+    }
+    
+    // Phone validation - check if we have enough digits
+    if (customerInfo.phone) {
+      const phoneDigits = customerInfo.phone.replace(/\D/g, '');
+      if (phoneDigits.length < 10) {
+        newErrors.phone = 'Telefone inválido';
+      }
+    }
+    
+    // Date validation (optional)
+    if (customerInfo.birthDate) {
+      // Check if the date format is DD/MM/YYYY
+      const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+      if (!dateRegex.test(customerInfo.birthDate)) {
+        newErrors.birthDate = 'Data inválida. Use o formato DD/MM/AAAA';
+      }
     }
     
     setErrors(newErrors);

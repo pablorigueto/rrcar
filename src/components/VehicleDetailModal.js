@@ -125,18 +125,18 @@ function VehicleDetailModal({ vehicle, onClose }) {
                 <span className='titleDetailedTable'>Condição</span>
                 <span>{vehicle.condition}</span>
               </div>
-              <div className='summaryDetailed'>
+              {/* <div className='summaryDetailed'>
                 <span className='titleDetailedTable'>Portas</span>
                 <span>{vehicle.doors}</span>
-              </div>
+              </div> */}
             </div>
 
-            <div className='descriptionParent'>
+            {/* <div className='descriptionParent'>
               <div className='descriptionsummaryDetailed'>
                 <span className='titleDetailedTable'>Descrição</span>
                 <span>{vehicle.description}</span>
               </div>
-            </div>
+            </div> */}
 
           </div>
 

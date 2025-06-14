@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatPhone } from '../utils/formatters';
 
 function CustomerFormStep({ 
   customerInfo, 
@@ -73,9 +74,19 @@ function CustomerFormStep({
               type="tel" 
               id="phone" 
               value={customerInfo.phone} 
-              onChange={(e) => handleCustomerInfoChange('phone', e.target.value)}
+              onChange={(e) => {
+                const formattedValue = formatPhone(e.target.value);
+                handleCustomerInfoChange('phone', formattedValue);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Backspace' && customerInfo.phone.endsWith('-')) {
+                  e.preventDefault();
+                  const newValue = customerInfo.phone.slice(0, -1);
+                  handleCustomerInfoChange('phone', newValue);
+                }
+              }}
               className={`form-control ${errors.phone ? 'input-error' : ''}`}
-              placeholder="Telefone"
+              placeholder="(00) 00000-0000"
             />
             {errors.phone && <div className="error-message">{errors.phone}</div>}
           </div>
