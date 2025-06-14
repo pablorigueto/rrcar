@@ -117,10 +117,10 @@ function VehicleDetailModal({ vehicle, onClose }) {
                 <span className='titleDetailedTable'>Ano</span>
                 <span>{vehicle.fabric_year}/{vehicle.year}</span>
               </div>
-              <div className='summaryDetailed'>
+              {/* <div className='summaryDetailed'>
                 <span className='titleDetailedTable'>Placa</span>
                 <span>{hideMiddleChars(vehicle.plate)}</span>
-              </div>
+              </div> */}
               <div className='summaryDetailed'>
                 <span className='titleDetailedTable'>Condição</span>
                 <span>{vehicle.condition}</span>

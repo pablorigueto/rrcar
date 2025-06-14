@@ -43,7 +43,28 @@ function VehicleFormStep({
           />
           {errors.price && <div className="error-message">{errors.price}</div>}
         </div>
-        
+                
+        <div className="form-group">
+          <label htmlFor="down_payment">Entrada:<span className="required">*</span></label>
+          <input 
+            type="text" 
+            id="down_payment" 
+            value={editableData.down_payment || ''} 
+            onChange={(e) => {
+              // Format as currency
+              let value = e.target.value;
+              value = value.replace(/\D/g, '');
+              value = value.replace(/(\d)(\d{2})$/, '$1,$2');
+              value = value.replace(/(?=(\d{3})+(\D))\B/g, '.');
+              
+              handleInputChange('down_payment', value);
+            }}
+            className={`form-control ${errors.down_payment ? 'input-error' : ''}`}
+            placeholder="R$ 0,00"
+          />
+          {errors.down_payment && <div className="error-message">{errors.down_payment}</div>}
+        </div>
+
         <div className="details-grid-editable">
           <div className="form-group">
             <label htmlFor="make">Montadora:<span className="required">*</span></label>
@@ -126,7 +147,7 @@ function VehicleFormStep({
             {errors.year && <div className="error-message">{errors.year}</div>}
           </div>
           
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="plate">Placa:</label>
             <input 
               type="text" 
@@ -135,7 +156,7 @@ function VehicleFormStep({
               onChange={(e) => handleInputChange('plate', e.target.value)}
               className="form-control"
             />
-          </div>
+          </div> */}
           
           <div className="form-group">
             <label htmlFor="condition">Condição:<span className="required">*</span></label>

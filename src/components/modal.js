@@ -77,7 +77,7 @@ function Modal({ isOpen, onClose, vehicleData }) {
   // Validate vehicle data
   const validateVehicleData = () => {
     const newErrors = {};
-    const requiredFields = ['title', 'price', 'make', 'model', 'year', 'condition'];
+    const requiredFields = ['title', 'price', 'down_payment', 'make', 'model', 'year', 'condition'];
     
     requiredFields.forEach(field => {
       if (!editableData[field]) {
