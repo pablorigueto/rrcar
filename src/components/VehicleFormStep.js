@@ -28,39 +28,41 @@ function VehicleFormStep({
             id="title" 
             value={editableData.title || ''} 
             onChange={(e) => handleInputChange('title', e.target.value)}
-            className={`form-control ${errors.title ? 'input-error' : ''}`}
+            className={`car-name-field form-control ${errors.title ? 'input-error' : ''}`}
           />
           {errors.title && <div className="error-message">{errors.title}</div>}
         </div>
         
-        <div className="form-group">
-          <label htmlFor="price">Preço:<span className="required">*</span></label>
-          <input 
-            type="text" 
-            id="price" 
-            value={editableData.price || ''} 
-            onChange={(e) => {
-              handleInputChange('price', formatCurrency(e.target.value));
-            }}
-            className={`form-control ${errors.price ? 'input-error' : ''}`}
-            placeholder="0,00"
-          />
-          {errors.price && <div className="error-message">{errors.price}</div>}
-        </div>
+        <div className='space-between'>
+          <div className="form-group">
+            <label htmlFor="price">Preço:<span className="required">*</span></label>
+            <input 
+              type="text" 
+              id="price" 
+              value={editableData.price || ''} 
+              onChange={(e) => {
+                handleInputChange('price', formatCurrency(e.target.value));
+              }}
+              className={`form-control ${errors.price ? 'input-error' : ''}`}
+              placeholder="0,00"
+            />
+            {errors.price && <div className="error-message">{errors.price}</div>}
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="down_payment">Entrada:<span className="required">*</span></label>
-          <input 
-            type="text" 
-            id="down_payment" 
-            value={editableData.down_payment || ''} 
-            onChange={(e) => {
-              handleInputChange('down_payment', formatCurrency(e.target.value));
-            }}
-            className={`form-control ${errors.down_payment ? 'input-error' : ''}`}
-            placeholder="0,00"
-          />
-          {errors.down_payment && <div className="error-message">{errors.down_payment}</div>}
+          <div className="form-group">
+            <label htmlFor="down_payment">Entrada:<span className="required">*</span></label>
+            <input 
+              type="text" 
+              id="down_payment" 
+              value={editableData.down_payment || ''} 
+              onChange={(e) => {
+                handleInputChange('down_payment', formatCurrency(e.target.value));
+              }}
+              className={`form-control ${errors.down_payment ? 'input-error' : ''}`}
+              placeholder="0,00"
+            />
+            {errors.down_payment && <div className="error-message">{errors.down_payment}</div>}
+          </div>
         </div>
 
         <div className="details-grid-editable">
@@ -171,11 +173,14 @@ function VehicleFormStep({
             </select>
             {errors.condition && <div className="error-message">{errors.condition}</div>}
           </div>
+
+          <div className="form-group site-info">
+            <small>Site: {editableData.siteName || window.location.hostname}</small>
+          </div>
+
         </div>
         
-        <div className="form-group site-info">
-          <small>Site: {editableData.siteName || window.location.hostname}</small>
-        </div>
+
         
         <div className="modal-actions">
           <button type="button" className="btn-cancel" onClick={onClose}>Cancelar</button>

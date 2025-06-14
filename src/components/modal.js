@@ -201,6 +201,12 @@ function Modal({ isOpen, onClose, vehicleData }) {
   return (
     <div className="modal-overlay-zinix" onClick={onClose}>
       <div className="modal-content-zinix wizard-modal" onClick={(e) => e.stopPropagation()}>
+
+        <div class="site-branding__inner">
+          <a href="" rel="home" class="site-branding__logo">
+          <img src="https://saas.zinix.com.br/sites/default/files/zinix%20logo.png" alt="Início" fetchpriority="high">
+        </a>
+
         <button className="modal-close-zinix" onClick={onClose}>×</button>
         
         {/* Progress indicator */}
