@@ -34,7 +34,7 @@ const LgpdPage = ({onClose}) => {
 
 		<h3>1. DAS INFORMAÇÕES GERAIS</h3>
 
-		<table class="table-unbordered">
+		<table className="table-unbordered">
 			<tbody>
 				<tr>
 					<td>1.1. </td>
@@ -47,7 +47,7 @@ const LgpdPage = ({onClose}) => {
 					<td>1.2. </td>
 					<td>
 						<p>Dos termos e definições</p>
-						<table class="table-unbordered">
+						<table className="table-unbordered">
 							<tbody><tr>
 								<td>I.</td>
 								<td>Autoridade Nacional de Proteção de Dados (ANPD): órgão da administração pública federal, integrante da Presidência da República a qual compete, sem limitação, zelar pela proteção dos dados pessoais, fiscalizar e aplicar sanções em caso de tratamento de dados realizado em descumprimento à legislação, nos termos da Lei Geral de Proteção de Dados (LGPD);</td>
@@ -111,7 +111,7 @@ const LgpdPage = ({onClose}) => {
 					<td>1.3.1. </td>
 					<td>
 						<p>Os dados são coletados de duas formas pela :</p>
-						<table class="table-unbordered">
+						<table className="table-unbordered">
 							<tbody><tr>
 								<td>(a)</td>
 								<td>
@@ -257,7 +257,7 @@ const LgpdPage = ({onClose}) => {
 
 		<h3>2. DA FORMA DE ARMAZENAMENTO E PRAZO</h3>
 
-		<table class="table-unbordered">
+		<table className="table-unbordered">
 			<tbody>
 				<tr>
 					<td>2.1</td>
@@ -266,7 +266,7 @@ const LgpdPage = ({onClose}) => {
 				<tr>
 					<td colspan="2">
 						<theader>
-								</theader><table class="table-bordered">
+								</theader><table className="table-bordered">
 							<tbody><tr><th>DADOS PESSOAIS</th>
 								<th>PRAZO DE ARMAZENAMENTO</th>
 								<th>FUNDAMENTO LEGAL</th>
@@ -331,7 +331,7 @@ const LgpdPage = ({onClose}) => {
 
 		<h3>3. DOS DIREITOS DO TITULAR E O CANAL DE COMUNICAÇÃO</h3>
 
-		<table class="table-unbordered">
+		<table className="table-unbordered">
 			<tbody>
 				<tr>
 					<td>3.1.</td>
@@ -383,7 +383,7 @@ const LgpdPage = ({onClose}) => {
 
 		<h3>4. DA COLETA DOS DADOS COMPORTAMENTAIS</h3>
 
-		<table class="table-unbordered">
+		<table className="table-unbordered">
 			<tbody>
 				<tr>
 					<td>4.1.</td>
@@ -455,7 +455,7 @@ const LgpdPage = ({onClose}) => {
 
 		<h3>5. DA SEGURANÇA</h3>
 
-		<table class="table-unbordered">
+		<table className="table-unbordered">
 			<tbody>
 				<tr>
 					<td>5.1.</td>
@@ -479,7 +479,7 @@ const LgpdPage = ({onClose}) => {
 
 		<h3>6. DA ATUAÇÃO PERANTE À AUTORIDADE NACIONAL DE PROTEÇÃO DE DADOS</h3>
 
-		<table class="table-unbordered">
+		<table className="table-unbordered">
 			<tbody><tr>
 				<td>6.1.</td>
 				<td>A  atuará em conjunto com a Autoridade Nacional de Proteção de Dados para zelar pela proteção de dados pessoais nos limites da legislação vigente.</td>
@@ -504,7 +504,7 @@ const LgpdPage = ({onClose}) => {
 
 		<h3>7. DISPOSIÇÕES GERAIS</h3>
 
-		<table class="table-unbordered">
+		<table className="table-unbordered">
 			<tbody><tr>
 				<td>7.1. </td>
 				<td>Nenhuma tecnologia utilizada pela  infringe qualquer legislação vigente e estes Termos de Privacidade, além de ter o objetivo de proteger os dados pessoais e garantir a privacidade do Titular.</td>
@@ -532,7 +532,7 @@ const LgpdPage = ({onClose}) => {
 		</tbody></table>
 
 		<h3>8. DA LEI APLICÁVEL E JURISDIÇÃO</h3>
-		<table class="table-unbordered">
+		<table className="table-unbordered">
 			<tbody><tr>
 				<td>8.1</td>
 				<td>O presente Termos de Privacidade será regido e interpretado segundo a legislação brasileira, no idioma português, sendo eleito o Foro da Comarca de domicílio do Titular para dirimir qualquer litígio ou controvérsia envolvendo o presente documento, salvo ressalva específica de competência pessoal, territorial ou funcional pela legislação aplicável.</td>
