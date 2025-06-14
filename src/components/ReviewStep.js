@@ -14,11 +14,16 @@ function ReviewStep({ fullData, goToPreviousStep, handleSubmit }) {
           </div>
           <div className="review-item">
             <span className="review-label">Preço:</span>
-            <span className="review-value">{fullData.vehicle.price}</span>
+            <span className="review-value">
+              {fullData.vehicle.price ? `R$ ${fullData.vehicle.price}` : "-"}
+            </span>
           </div>
+
           <div className="review-item">
             <span className="review-label">Entrada:</span>
-            <span className="review-value">{fullData.vehicle.down_payment}</span>
+            <span className="review-value">
+              {fullData.vehicle.down_payment ? `R$ ${fullData.vehicle.down_payment}` : "-"}
+            </span>
           </div>
           <div className="review-item">
             <span className="review-label">Montadora:</span>

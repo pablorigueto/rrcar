@@ -33,10 +33,27 @@ function Modal({ isOpen, onClose, vehicleData }) {
     if (vehicleData) {
       // Add the current site name to the data when initializing
       const currentSiteName = window.location.hostname;
-      setEditableData({ 
-        ...vehicleData,
-        siteName: currentSiteName 
-      });
+      
+      // Create a copy of vehicleData to avoid modifying the original
+      const formattedData = { ...vehicleData, siteName: currentSiteName };
+      
+      // Format the price field if it exists
+      if (formattedData.price) {
+        // Remove 'R$' prefix and format
+        let priceValue = formattedData.price.toString().replace(/^R\$\s*/i, '');
+        priceValue = priceValue.trim();
+        formattedData.price = priceValue;
+      }
+      
+      // Format the down_payment field if it exists
+      if (formattedData.down_payment) {
+        // Remove 'R$' prefix and format
+        let downPaymentValue = formattedData.down_payment.toString().replace(/^R\$\s*/i, '');
+        downPaymentValue = downPaymentValue.trim();
+        formattedData.down_payment = downPaymentValue;
+      }
+      
+      setEditableData(formattedData);
     }
   }, [vehicleData]);
   

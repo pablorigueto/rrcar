@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatCurrency } from '../utils/formatters';
 
 function VehicleFormStep({ 
   editableData, 
@@ -38,12 +39,16 @@ function VehicleFormStep({
             type="text" 
             id="price" 
             value={editableData.price || ''} 
-            onChange={(e) => handleInputChange('price', e.target.value)}
+            onChange={(e) => {
+              handleInputChange('price', formatCurrency(e.target.value));
+            }}
             className={`form-control ${errors.price ? 'input-error' : ''}`}
+            placeholder="0,00"
           />
           {errors.price && <div className="error-message">{errors.price}</div>}
         </div>
-                
+
+        // Similarly for down_payment
         <div className="form-group">
           <label htmlFor="down_payment">Entrada:<span className="required">*</span></label>
           <input 
@@ -51,16 +56,10 @@ function VehicleFormStep({
             id="down_payment" 
             value={editableData.down_payment || ''} 
             onChange={(e) => {
-              // Format as currency
-              let value = e.target.value;
-              value = value.replace(/\D/g, '');
-              value = value.replace(/(\d)(\d{2})$/, '$1,$2');
-              value = value.replace(/(?=(\d{3})+(\D))\B/g, '.');
-              
-              handleInputChange('down_payment', value);
+              handleInputChange('down_payment', formatCurrency(e.target.value));
             }}
             className={`form-control ${errors.down_payment ? 'input-error' : ''}`}
-            placeholder="R$ 0,00"
+            placeholder="0,00"
           />
           {errors.down_payment && <div className="error-message">{errors.down_payment}</div>}
         </div>
