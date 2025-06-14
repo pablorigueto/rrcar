@@ -88,10 +88,10 @@
 .modal-close-zinix {
   position: absolute;
   top: 15px;
-  right: 15px;
+  right: 18px;
   border: none;
   background: none;
-  font-size: 24px;
+  font-size: 30px;
   cursor: pointer;
   color: #333;
 }
@@ -307,6 +307,28 @@ input[type="tel" i] {
   padding: 0 2rem 2rem 2rem;
 }
 
-.car-name-field {
+input[type="text" i].car-name-field {
   width: 454px;
+}
+
+.site-branding__inner  {
+
+  position: absolute;
+  top: 12px;
+  left: 24px;
+
+  img {
+    width: 140px;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    text-decoration: unset;
+    color: #000;
+    gap: 0.5rem;
+  }
+
 }

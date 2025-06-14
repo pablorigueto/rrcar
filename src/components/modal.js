@@ -5,6 +5,7 @@ import VehicleFormStep from './VehicleFormStep';
 import CustomerFormStep from './CustomerFormStep';
 import ReviewStep from './ReviewStep';
 import ProgressIndicator from './ProgressIndicator';
+import zinixdarklogo from '../assets/zinix-logo-dark.png';
 
 function Modal({ isOpen, onClose, vehicleData }) {
   // State to store editable vehicle data
@@ -203,9 +204,15 @@ function Modal({ isOpen, onClose, vehicleData }) {
       <div className="modal-content-zinix wizard-modal" onClick={(e) => e.stopPropagation()}>
 
         <div class="site-branding__inner">
-          <a href="" rel="home" class="site-branding__logo">
-          <img src="https://saas.zinix.com.br/sites/default/files/zinix%20logo.png" alt="Início" fetchpriority="high">
-        </a>
+          <a href="https://zinix.com.br" rel="home" target="_blank" class="site-branding__logo">
+            <img 
+              src={zinixdarklogo} 
+              alt="Inicio" 
+              fetchpriority="high"
+            />
+            Melhore suas vendas!
+          </a>
+        </div>
 
         <button className="modal-close-zinix" onClick={onClose}>×</button>
         
