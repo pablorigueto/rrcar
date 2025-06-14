@@ -7,6 +7,20 @@ function CustomerFormStep({
   goToNextStep, 
   goToPreviousStep 
 }) {
+  // Handle date formatting for birthDate field
+  const handleDataNascimentoChange = (e) => {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length > 2) value = value.replace(/^(\d{2})(\d)/, '$1/$2');
+    if (value.length > 5) value = value.replace(/^(\d{2})\/(\d{2})(\d)/, '$1/$2/$3');
+    
+    // Maximum length for DD/MM/YYYY is 10 characters
+    if (value.length > 10) {
+      value = value.slice(0, 10);
+    }
+    
+    handleCustomerInfoChange('birthDate', value);
+  };
+
   return (
     <div className="wizard-step-content">
       <h2>Seus Dados</h2>
@@ -83,12 +97,13 @@ function CustomerFormStep({
           <div className="form-group">
             <label htmlFor="birthDate">Data de Nascimento:</label>
             <input 
-              type="date" 
+              type="text" 
               id="birthDate" 
               value={customerInfo.birthDate} 
-              onChange={(e) => handleCustomerInfoChange('birthDate', e.target.value)}
+              onChange={handleDataNascimentoChange}
               className="form-control"
-              placeholder="Data de Nascimento"
+              placeholder="DD/MM/AAAA"
+              maxLength="10"
             />
           </div>
           
