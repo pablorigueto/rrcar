@@ -7,6 +7,9 @@ import ReviewStep from './ReviewStep';
 import ProgressIndicator from './ProgressIndicator';
 import zinixdarklogo from '../assets/zinix-logo-dark.png';
 
+import { sanitizeLeadData } from '../utils/sanitizeLeadData';
+import { sendLead } from '../api/sendLead';
+
 function Modal({ isOpen, onClose, vehicleData }) {
   // State to store editable vehicle data
   const [editableData, setEditableData] = useState({});
@@ -198,13 +201,21 @@ function Modal({ isOpen, onClose, vehicleData }) {
   };
   
   // Handle final submission
-  const handleSubmit = () => {
-    console.log('Submitting full data:', fullData);
-    // Here you would typically send this data to your API
-    
-    // Close the modal
+  const handleSubmit = async () => {
+    const sanitizedData = sanitizeLeadData(fullData);
+
+    console.log('Sanitized Data:', sanitizedData);
+
+    try {
+      const apiResponse = await sendLead(sanitizedData);
+      console.log('API Response:', apiResponse);
+    } catch (error) {
+      console.error('Falha no envio do lead:', error);
+    }
+
     onClose();
   };
+
 
   // Render the appropriate step based on wizardStep
   const renderStep = () => {
