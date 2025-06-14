@@ -442,7 +442,7 @@ li.thumb:last-child {
 }
 
 .contactTopUl li {
-  padding-left: 15px;
+  justify-content: center;
   font-weight: 600;
   font-size: 18px;
   display: flex;
@@ -949,4 +949,17 @@ li.thumb:last-child {
     transform: unset !important;
   }
   
+}
+
+.zinixplugin {
+  background: #000;
+  margin-top: 1rem;
+  border-radius: 5px;
+  padding: 5px;
+
+  img {
+    height: 40px;
+    width: auto;
+  }
+
 }
