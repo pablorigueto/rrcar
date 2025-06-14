@@ -43,12 +43,21 @@
 }
 
 .btn-save {
-  background-color: #4CAF50;
+  background-color: #000;
+  border: 1px solid #000;
   color: white;
 }
 
 .btn-save:hover {
-  background-color: #3e8e41;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.btn-next:hover, .btn-submit:hover {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
 }
 
 .btn-cancel {
@@ -133,7 +142,7 @@
 }
 
 .wizard-step.active .step-number {
-  background-color: #4CAF50;
+  background-color: #000;
   color: white;
 }
 
@@ -187,7 +196,7 @@
 
 .form-control:focus {
   outline: none;
-  border-color: #4CAF50;
+  border-color: #000;
   background-color: #fff;
   box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
 }
@@ -210,6 +219,7 @@
   cursor: pointer;
   border: none;
   transition: background-color 0.3s;
+  border: 1px solid #00000000;
 }
 
 .btn-cancel {
@@ -231,12 +241,8 @@
 }
 
 .btn-next, .btn-submit {
-  background-color: #4CAF50;
+  background-color: #000;
   color: white;
-}
-
-.btn-next:hover, .btn-submit:hover {
-  background-color: #3e8e41;
 }
 
 /* Full width elements */
