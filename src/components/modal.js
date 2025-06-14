@@ -1,10 +1,32 @@
 // Modal.js
 import React, { useState, useEffect } from 'react';
 import '../styles/modal.css';
+import VehicleFormStep from './VehicleFormStep';
+import CustomerFormStep from './CustomerFormStep';
+import ReviewStep from './ReviewStep';
+import ProgressIndicator from './ProgressIndicator';
 
 function Modal({ isOpen, onClose, vehicleData }) {
   // State to store editable vehicle data
   const [editableData, setEditableData] = useState({});
+  // State to track which step of the wizard we're on
+  const [wizardStep, setWizardStep] = useState(1);
+  // State for customer information
+  const [customerInfo, setCustomerInfo] = useState({
+    cpfCnpj: '',
+    gender: '',
+    fullName: '',
+    phone: '',
+    email: '',
+    birthDate: '',
+    state: '',
+    city: '',
+    hasCNH: ''
+  });
+  // State for form validation errors
+  const [errors, setErrors] = useState({});
+  // Full data for submission and review
+  const [fullData, setFullData] = useState(null);
   
   // Update editable data when vehicleData changes
   useEffect(() => {
@@ -20,182 +42,155 @@ function Modal({ isOpen, onClose, vehicleData }) {
   
   if (!isOpen) return null;
   
-  // Handle input changes
+  // Handle input changes for vehicle data
   const handleInputChange = (field, value) => {
     setEditableData({
       ...editableData,
       [field]: value
     });
+    
+    // Clear error for this field if it exists
+    if (errors[field]) {
+      setErrors({
+        ...errors,
+        [field]: null
+      });
+    }
   };
   
-  // Handle save/submit
-  const handleSave = () => {
-    // Here you can add logic to save the updated data
-    console.log('Saving updated vehicle data:', editableData);
-    // You could call an API here or pass the data back to the parent component
+  // Handle input changes for customer info
+  const handleCustomerInfoChange = (field, value) => {
+    setCustomerInfo({
+      ...customerInfo,
+      [field]: value
+    });
+    
+    // Clear error for this field if it exists
+    if (errors[field]) {
+      setErrors({
+        ...errors,
+        [field]: null
+      });
+    }
+  };
+  
+  // Validate vehicle data
+  const validateVehicleData = () => {
+    const newErrors = {};
+    const requiredFields = ['title', 'price', 'make', 'model', 'year', 'condition'];
+    
+    requiredFields.forEach(field => {
+      if (!editableData[field]) {
+        newErrors[field] = 'Este campo é obrigatório';
+      }
+    });
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+  
+  // Validate customer info
+  const validateCustomerInfo = () => {
+    const newErrors = {};
+    const requiredFields = ['cpfCnpj', 'fullName', 'phone', 'email'];
+    
+    requiredFields.forEach(field => {
+      if (!customerInfo[field]) {
+        newErrors[field] = 'Este campo é obrigatório';
+      }
+    });
+    
+    // Basic email validation
+    if (customerInfo.email && !/\S+@\S+\.\S+/.test(customerInfo.email)) {
+      newErrors.email = 'Email inválido';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+  
+  // Move to next step in wizard
+  const goToNextStep = () => {
+    if (wizardStep === 1) {
+      if (validateVehicleData()) {
+        setWizardStep(2);
+      }
+    } else if (wizardStep === 2) {
+      if (validateCustomerInfo()) {
+        // Prepare full data for review
+        const combinedData = {
+          vehicle: editableData,
+          customer: customerInfo,
+          siteName: editableData.siteName || window.location.hostname,
+          submittedAt: new Date().toISOString()
+        };
+        setFullData(combinedData);
+        setWizardStep(3);
+      }
+    }
+  };
+  
+  // Go back to previous step
+  const goToPreviousStep = () => {
+    if (wizardStep > 1) {
+      setWizardStep(wizardStep - 1);
+    }
+  };
+  
+  // Handle final submission
+  const handleSubmit = () => {
+    console.log('Submitting full data:', fullData);
+    // Here you would typically send this data to your API
     
     // Close the modal
     onClose();
   };
 
+  // Render the appropriate step based on wizardStep
+  const renderStep = () => {
+    if (wizardStep === 1 && vehicleData) {
+      return (
+        <VehicleFormStep 
+          editableData={editableData}
+          handleInputChange={handleInputChange}
+          errors={errors}
+          goToNextStep={goToNextStep}
+          onClose={onClose}
+        />
+      );
+    } else if (wizardStep === 2) {
+      return (
+        <CustomerFormStep 
+          customerInfo={customerInfo}
+          handleCustomerInfoChange={handleCustomerInfoChange}
+          errors={errors}
+          goToNextStep={goToNextStep}
+          goToPreviousStep={goToPreviousStep}
+        />
+      );
+    } else if (wizardStep === 3 && fullData) {
+      return (
+        <ReviewStep 
+          fullData={fullData}
+          goToPreviousStep={goToPreviousStep}
+          handleSubmit={handleSubmit}
+        />
+      );
+    } else {
+      return <p>Carregando informações...</p>;
+    }
+  };
+
   return (
     <div className="modal-overlay-zinix" onClick={onClose}>
-      <div className="modal-content-zinix" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-content-zinix wizard-modal" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close-zinix" onClick={onClose}>×</button>
-        <h2>Detalhes do Veículo</h2>
         
-        {vehicleData ? (
-          <form className="vehicle-info-form" onSubmit={(e) => e.preventDefault()}>
-            {/* Hidden field for site name */}
-            <input 
-              type="hidden" 
-              id="siteName" 
-              name="siteName" 
-              value={editableData.siteName || window.location.hostname} 
-            />
-            
-            <div className="form-group">
-              <label htmlFor="title">Título:</label>
-              <input 
-                type="text" 
-                id="title" 
-                value={editableData.title || ''} 
-                onChange={(e) => handleInputChange('title', e.target.value)}
-                className="form-control"
-              />
-            </div>
-            
-            <div className="form-group">
-              <label htmlFor="price">Preço:</label>
-              <input 
-                type="text" 
-                id="price" 
-                value={editableData.price || ''} 
-                onChange={(e) => handleInputChange('price', e.target.value)}
-                className="form-control"
-              />
-            </div>
-            
-            <div className="details-grid-editable">
-              <div className="form-group">
-                <label htmlFor="make">Montadora:</label>
-                <input 
-                  type="text" 
-                  id="make" 
-                  value={editableData.make || ''} 
-                  onChange={(e) => handleInputChange('make', e.target.value)}
-                  className="form-control"
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="model">Modelo:</label>
-                <input 
-                  type="text" 
-                  id="model" 
-                  value={editableData.model || ''} 
-                  onChange={(e) => handleInputChange('model', e.target.value)}
-                  className="form-control"
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="color">Cor:</label>
-                <input 
-                  type="text" 
-                  id="color" 
-                  value={editableData.color || ''} 
-                  onChange={(e) => handleInputChange('color', e.target.value)}
-                  className="form-control"
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="fuel">Combustível:</label>
-                <select 
-                  id="fuel" 
-                  value={editableData.fuel || ''} 
-                  onChange={(e) => handleInputChange('fuel', e.target.value)}
-                  className="form-control"
-                >
-                  <option value="">Selecione</option>
-                  <option value="FLEX">FLEX</option>
-                  <option value="GASOLINA">GASOLINA</option>
-                  <option value="DIESEL">DIESEL</option>
-                  <option value="ÁLCOOL">ÁLCOOL</option>
-                  <option value="ELÉTRICO">ELÉTRICO</option>
-                  <option value="HÍBRIDO">HÍBRIDO</option>
-                </select>
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="transmission">Câmbio:</label>
-                <select 
-                  id="transmission" 
-                  value={editableData.transmission || ''} 
-                  onChange={(e) => handleInputChange('transmission', e.target.value)}
-                  className="form-control"
-                >
-                  <option value="">Selecione</option>
-                  <option value="Manual">Manual</option>
-                  <option value="Automático">Automático</option>
-                  <option value="CVT">CVT</option>
-                  <option value="Semi-automático">Semi-automático</option>
-                </select>
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="year">Ano:</label>
-                <input 
-                  type="text" 
-                  id="year" 
-                  value={editableData.year || ''} 
-                  onChange={(e) => handleInputChange('year', e.target.value)}
-                  className="form-control"
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="plate">Placa:</label>
-                <input 
-                  type="text" 
-                  id="plate" 
-                  value={editableData.plate || ''} 
-                  onChange={(e) => handleInputChange('plate', e.target.value)}
-                  className="form-control"
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="condition">Condição:</label>
-                <select 
-                  id="condition" 
-                  value={editableData.condition || ''} 
-                  onChange={(e) => handleInputChange('condition', e.target.value)}
-                  className="form-control"
-                >
-                  <option value="">Selecione</option>
-                  <option value="NOVO">NOVO</option>
-                  <option value="USADO">USADO</option>
-                  <option value="SEMINOVO">SEMINOVO</option>
-                </select>
-              </div>
-
-            </div>
-            
-            {/* Optional: Display the site name (for debugging) */}
-            <div className="form-group site-info">
-              <small>Site: {editableData.siteName || window.location.hostname}</small>
-            </div>
-            
-            <div className="modal-actions">
-              <button type="button" className="btn-cancel" onClick={onClose}>Cancelar</button>
-              <button type="button" className="btn-save" onClick={handleSave}>Salvar</button>
-            </div>
-          </form>
-        ) : (
-          <p>Carregando informações do veículo...</p>
-        )}
+        {/* Progress indicator */}
+        <ProgressIndicator wizardStep={wizardStep} />
+        
+        {/* Render the current step */}
+        {renderStep()}
       </div>
     </div>
   );
