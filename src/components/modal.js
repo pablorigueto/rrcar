@@ -14,14 +14,14 @@ function Modal({ isOpen, onClose, vehicleData }) {
   // State for customer information
   const [customerInfo, setCustomerInfo] = useState({
     cpfCnpj: '',
-    gender: '',
+    gender: 'M',
     fullName: '',
     phone: '',
     email: '',
     birthDate: '',
     state: '',
     city: '',
-    hasCNH: ''
+    hasCNH: 'Sim'
   });
   // State for form validation errors
   const [errors, setErrors] = useState({});

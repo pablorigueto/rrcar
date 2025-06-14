@@ -48,7 +48,6 @@ function VehicleFormStep({
           {errors.price && <div className="error-message">{errors.price}</div>}
         </div>
 
-        // Similarly for down_payment
         <div className="form-group">
           <label htmlFor="down_payment">Entrada:<span className="required">*</span></label>
           <input 

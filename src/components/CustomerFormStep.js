@@ -48,8 +48,7 @@ function CustomerFormStep({
               onChange={(e) => handleCustomerInfoChange('gender', e.target.value)}
               className="form-control"
             >
-              <option value="">Gênero</option>
-              <option value="M">Masculino</option>
+              <option value="M" default>Masculino</option>
               <option value="F">Feminino</option>
               <option value="O">Outro</option>
             </select>
