@@ -7,6 +7,7 @@ import { formatPrice } from '../utils/helper'; // Import the formatPrice functio
 import ContactForm from './contactForm';
 import logoImage from '../assets/logo.png';
 import Modal from './modal';
+// import ZIcon from '../assets/zicon.png';
 
 function VehicleDetailModal({ vehicle, onClose }) {
 
@@ -190,6 +191,7 @@ function VehicleDetailModal({ vehicle, onClose }) {
                 style={{ cursor: 'pointer' }} 
               >
                 <span className='simule'>Simule sem compromisso</span>
+                {/* <img src={ZIcon}/> */}
               </div>
 
             </div>

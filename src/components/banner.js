@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
 import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import bannerImage from '../assets/banner.jpg';
 import logoImage from '../assets/logo.png';
-
 
 function Banner() {
 

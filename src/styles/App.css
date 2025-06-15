@@ -13,11 +13,6 @@
   --medium-gray-color: #7f7c7c;
 }
 
-.simule {
-  color: var(--white-color);
-  font-size: 18px;
-}
-
 body {
   font-family: 'Arial';
   width: 100%;
@@ -967,3 +962,7 @@ li.thumb:last-child {
   gap: 2rem;
 }
 
+.zinixbutton span.simule {
+  color: var(--white-color);
+  font-size: 18px;
+}
