@@ -6,9 +6,102 @@ import backIcon from '../assets/back.png';
 import { formatPrice } from '../utils/helper'; // Import the formatPrice function
 import ContactForm from './contactForm';
 import logoImage from '../assets/logo.png';
+import Modal from './modal';
 
 function VehicleDetailModal({ vehicle, onClose }) {
-  console.log(logoImage);
+
+
+  // State to control modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // State to store the crawled vehicle data
+  const [vehicleData, setVehicleData] = useState(null);
+
+  // Function to crawl vehicle information from the page
+  const crawlVehicleInfo = () => {
+    try {
+      // Get the vehicle detail container
+      const vehicleContainer = document.querySelector('.vehicle-screen-detailed');
+      
+      if (!vehicleContainer) {
+        console.error('Vehicle information container not found');
+        return null;
+      }
+      
+      // Extract information
+      const title = vehicleContainer.querySelector('.titleDetailed')?.textContent || '';
+      const price = vehicleContainer.querySelector('.priceDetailed')?.textContent || '';
+      
+      // Extract vehicle details using the structure from your HTML
+      const details = {};
+      
+      // Get make and model
+      const makeElement = vehicleContainer.querySelectorAll('.summaryDetailedModel')[0];
+      const modelElement = vehicleContainer.querySelectorAll('.summaryDetailedModel')[1];
+      
+      details.make = makeElement?.querySelector('span:last-child')?.textContent || '';
+      details.model = modelElement?.querySelector('span:last-child')?.textContent || '';
+      
+      // Get other vehicle details
+      const summaryElements = vehicleContainer.querySelectorAll('.summaryDetailed');
+      summaryElements.forEach(element => {
+        const label = element.querySelector('.titleDetailedTable')?.textContent?.trim().toLowerCase() || '';
+        const value = element.querySelector('span:last-child')?.textContent || '';
+        
+        switch(label) {
+          case 'cor':
+            details.color = value;
+            break;
+          case 'combustível':
+            details.fuel = value;
+            break;
+          case 'câmbio':
+            details.transmission = value;
+            break;
+          case 'ano':
+            details.year = value;
+            break;
+          case 'placa':
+            details.plate = value;
+            break;
+          case 'condição':
+            details.condition = value;
+            break;
+          case 'portas':
+            details.doors = value;
+            break;
+          default:
+            break;
+        }
+      });
+      
+      // Get description
+      const description = vehicleContainer.querySelector('.descriptionsummaryDetailed span:last-child')?.textContent || '';
+      
+      // Return the collected data
+      return {
+        title,
+        price,
+        ...details,
+        description,
+      };
+    } catch (error) {
+      console.error('Error crawling vehicle information:', error);
+      return null;
+    }
+  };
+
+  // Function to open modal and crawl data
+  const openModal = () => {
+    const data = crawlVehicleInfo();
+    setVehicleData(data);
+    setIsModalOpen(true);
+  };
+  
+  // Function to close modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const [animateDetails, setAnimateDetails] = useState(false); // State to trigger animation
@@ -79,14 +172,26 @@ function VehicleDetailModal({ vehicle, onClose }) {
 
         <div className={`vehicle-screen-detailed ${animateDetails ? 'animate' : ''}`}>  
           <h2 className='titleDetailed'>{vehicle.title}</h2>
-             <div
-              className={`color-transition-button priceDetailed ${animateDetails ? 'animate' : ''}`}
+
+            <div className='zinixplugin'>
+              <div
+                className={`color-transition-button priceDetailed ${animateDetails ? 'animate' : ''}`}
+                >
+                {vehicle.price == 0 ? (
+                  "Consulte-nos"
+                ) : (
+                  formatPrice(vehicle.price)
+                )}
+              </div>
+            
+              <div 
+                className='zinixbutton animate' 
+                onClick={openModal}
+                style={{ cursor: 'pointer' }} 
               >
-              {vehicle.price == 0 ? (
-                "Consulte-nos"
-              ) : (
-                formatPrice(vehicle.price)
-              )}
+                <span className='simule'>Simule sem compromisso</span>
+              </div>
+
             </div>
 
             <div className='fabandmodel'>
@@ -143,6 +248,14 @@ function VehicleDetailModal({ vehicle, onClose }) {
           <ContactForm car={vehicle} />
 
       </div>
+
+      {/* Modal with vehicle data */}
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+        vehicleData={vehicleData}
+      />
+
     </div>
   );
 }

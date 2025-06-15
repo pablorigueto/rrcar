@@ -13,6 +13,11 @@
   --medium-gray-color: #7f7c7c;
 }
 
+.simule {
+  color: var(--white-color);
+  font-size: 18px;
+}
+
 body {
   font-family: 'Arial';
   width: 100%;
@@ -194,7 +199,8 @@ h2 {
   padding-top: 10px;
 }
 
-.color-transition-button {
+.color-transition-button,
+.zinixbutton {
   background: linear-gradient(to right, #060606ed 0%, #060606ed 50%, #141414 50%, #000000 100%);
   background-size: 200% 100%;
   background-position: 100% 0;
@@ -205,7 +211,8 @@ h2 {
   /* border: 2px solid transparent; */
 }
 
-.color-transition-button:hover {
+.color-transition-button:hover,
+.zinixbutton:hover {
   background-position: 0 0;
   /* color: #181818; */
   /* border: 2px solid #312e2e; */
@@ -313,7 +320,8 @@ li.thumb:last-child {
 }
 
 
-.priceDetailed.animate {
+.priceDetailed.animate,
+.zinixbutton.animate {
   text-align: initial;
   opacity: 1;
   transform: translateY(0);
@@ -325,7 +333,8 @@ li.thumb:last-child {
 
 }
 
-.priceDetailed {
+.priceDetailed,
+.zinixbutton {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 2s ease;
@@ -344,7 +353,8 @@ li.thumb:last-child {
   transition: transform 0.2s ease;
 }
 
-.priceDetailed:hover {
+.priceDetailed:hover,
+.zinixbutton:hover {
   transition: transform 0.2s ease;
   transform: scale(1.1);
 }
@@ -706,7 +716,7 @@ li.thumb:last-child {
   .vehicle-screen-detailed {
     padding: 5px;
   }
-  .priceDetailed {
+  .priceDetailed, .zinixbutton {
     margin-bottom: 40px;
     margin-top: 10px;
   }
@@ -772,7 +782,7 @@ li.thumb:last-child {
   .rrMulti {
     height: 13px;
   }
-  .priceDetailed {
+  .priceDetailed, .zinixbutton {
     margin-bottom: 40px;
     margin-top: 10px;
   }
@@ -952,14 +962,8 @@ li.thumb:last-child {
 }
 
 .zinixplugin {
-  background: #000;
-  margin-top: 1rem;
-  border-radius: 5px;
-  padding: 5px;
-
-  img {
-    height: 40px;
-    width: auto;
-  }
-
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
+
