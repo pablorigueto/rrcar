@@ -712,8 +712,10 @@ li.thumb:last-child {
     padding: 5px;
   }
   .priceDetailed, .zinixbutton {
-    margin-bottom: 40px;
     margin-top: 10px;
+  }
+  .zinixbutton {
+    margin-bottom: 40px;
   }
   .carousel ul.thumbs {
     padding-inline-start: 0;
@@ -778,8 +780,10 @@ li.thumb:last-child {
     height: 13px;
   }
   .priceDetailed, .zinixbutton {
-    margin-bottom: 40px;
     margin-top: 10px;
+  }
+  .zinixbutton {
+    margin-bottom: 40px;
   }
   .vehicle-screen-detailed {
     padding-top: 20px;
@@ -960,9 +964,10 @@ li.thumb:last-child {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-}
 
-.zinixbutton span.simule {
-  color: var(--white-color);
-  font-size: 18px;
+  .zinixbutton span.simule {
+    color: var(--white-color);
+    font-size: 18px;
+  }
+
 }

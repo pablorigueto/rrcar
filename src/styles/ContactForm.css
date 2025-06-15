@@ -92,8 +92,10 @@ textarea {
     width: 103%;
 }
 
-input[type="text" i], input[type="email" i], input[type="tel" i], input[type="file" i], input[type="image" i], input[type="checkbox" i], input[type="radio" i], input[type="submit" i] {
-    padding: 0;
+.formContact {
+    input[type="text" i], input[type="email" i], input[type="tel" i], input[type="file" i], input[type="image" i], input[type="checkbox" i], input[type="radio" i], input[type="submit" i] {
+        padding: 0;
+    }
 }
 
 .modalOverlay {
@@ -153,7 +155,7 @@ input[type="text" i], input[type="email" i], input[type="tel" i], input[type="fi
 @media (max-width: 424px) {
     .formContact {
         width: 92%;
-        margin: 0 auto;
+        margin: 20px auto;
         align-items: unset;
     }
     .contactParent {
