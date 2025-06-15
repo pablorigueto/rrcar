@@ -82,7 +82,7 @@
     background-color: white;
     padding: 25px;
     border-radius: 8px;
-    max-width: 700px;
+    width: 518px;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
@@ -323,7 +323,7 @@
   .site-branding__inner  {
 
     position: absolute;
-    top: 12px;
+    top: 24px;
     left: 24px;
 
     img {
@@ -345,10 +345,7 @@
 
 
 
-  .zinixbutton span.simule {
-    color: var(--white-color);
-    font-size: 18px;
-  }
+
 
   @media (max-width: 575px) {
 

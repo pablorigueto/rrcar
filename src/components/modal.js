@@ -263,7 +263,7 @@ function Modal({ isOpen, onClose, vehicleData }) {
               alt="Inicio" 
               fetchpriority="high"
             />
-            Melhore suas vendas!
+            A melhor condição é aqui!
           </a>
         </div>
 

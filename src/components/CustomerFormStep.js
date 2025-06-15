@@ -24,7 +24,7 @@ function CustomerFormStep({
 
   return (
     <div className="wizard-step-content">
-      <h2>Seus Dados</h2>
+      {/* <h2>Seus Dados</h2> */}
       
       <form className="customer-info-form" onSubmit={(e) => e.preventDefault()}>
         <div className="details-grid-editable">

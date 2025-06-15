@@ -10,7 +10,7 @@ function VehicleFormStep({
 }) {
   return (
     <div className="wizard-step-content">
-      <h2>Detalhes do Veículo</h2>
+      {/* <h2>Detalhes do Veículo</h2> */}
       
       <form className="vehicle-info-form" onSubmit={(e) => e.preventDefault()}>
         {/* Hidden field for site name */}
