@@ -1,33 +1,6 @@
-// src/api/sendLead.js
-
-// import axios from 'axios';
-
-// export const sendLead = async (data) => {
-//   try {
-
-//     const protocol = window.location.protocol;
-//     const host = window.location.host;
-//     const pathname = '/data/api.php'; // New pathname to merge.
-//     // Create the new URL without query parameters
-//     const newURL = `${protocol}//${host}${pathname}`;
-
-//     //const response = await axios.post(newURL, data);
-//     // const response = await axios.post('http://127.0.0.1/rrcar/api.php', data);
-//     // const response = await axios.post('https://saas.zinix.com.br/pt-br/simulacoes/0/0', data);
-
-//     const response = await axios.post('https://zinix.lndo.site/pt-br/simulator/0/0', data);
-
-//     console.log(response);
-
-//     return response.data;
-//   } catch (error) {
-//     console.error('Erro ao enviar lead:', error);
-//     throw error;
-//   }
-// };
-
-
 import axios from 'axios';
+// Import the function from the utils directory
+import { findBestInstallmentOptions } from '../utils/findBestInstallmentOptions';
 
 export const sendLead = async (data) => {
   try {
@@ -48,14 +21,29 @@ export const sendLead = async (data) => {
     // Cria a string de consulta com os valores separados por vírgula
     const queryString = values.join(',');
 
-    console.log(encodeURIComponent(queryString));
+    // console.log(encodeURIComponent(queryString));
 
-    // Executa a solicitação GET com a query string
-    const response = await axios.get(`https://zinix.lndo.site/pt-br/simulator?data=${encodeURIComponent(queryString)}`);
-    
-    console.log(response);
+    try {
+      // Supondo que queryString esteja corretamente inicializado
+      const response = await axios.get(`https://zinix.lndo.site/pt-br/simulator?data=${encodeURIComponent(queryString)}`);
 
-    return response.data;
+      const data = JSON.parse(response.data[0]);
+      console.log( 'data: ', data);
+
+      const bestOptions = findBestInstallmentOptions(data);
+
+      console.log(bestOptions);
+
+      // Certifique-se de checar se jsonString é uma string válida
+      if (response) {
+        console.log(data);
+      } else {
+        console.error("Dados inválidos na resposta.");
+      }
+    } catch (error) {
+      console.error("Erro ao buscar os dados:", error);
+    }
+
   } catch (error) {
     console.error('Erro ao enviar lead:', error);
     throw error;
