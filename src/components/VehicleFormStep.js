@@ -175,7 +175,7 @@ function VehicleFormStep({
           </div>
 
           <div className="form-group site-info">
-            <small>Site: {editableData.siteName || window.location.hostname}</small>
+            <small>Site: { window.location.origin }</small>
           </div>
 
         </div>
