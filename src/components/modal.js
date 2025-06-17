@@ -36,7 +36,7 @@ function Modal({ isOpen, onClose, vehicleData }) {
   useEffect(() => {
     if (vehicleData) {
       // Add the current site name to the data when initializing
-      const currentSiteName = window.location.hostname;
+      const currentSiteName = window.location.origin;
       
       // Create a copy of vehicleData to avoid modifying the original
       const formattedData = { ...vehicleData, siteName: currentSiteName };
@@ -184,7 +184,7 @@ function Modal({ isOpen, onClose, vehicleData }) {
         const combinedData = {
           vehicle: editableData,
           customer: customerInfo,
-          siteName: editableData.siteName || window.location.hostname,
+          siteName: editableData.siteName || window.location.origin,
           submittedAt: new Date().toISOString()
         };
         setFullData(combinedData);

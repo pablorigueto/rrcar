@@ -18,7 +18,7 @@ function VehicleFormStep({
           type="hidden" 
           id="siteName" 
           name="siteName" 
-          value={editableData.siteName || window.location.hostname} 
+          value={editableData.siteName || window.location.origin} 
         />
         
         <div className="form-group">
@@ -175,7 +175,7 @@ function VehicleFormStep({
           </div>
 
           <div className="form-group site-info">
-            <small>Site: { window.location.origin }</small>
+            <small>Site: {editableData.siteName || window.location.origin }</small>
           </div>
 
         </div>
