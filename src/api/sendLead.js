@@ -59,21 +59,3 @@ export const sendLead = async (data) => {
     throw error;
   }
 };
-// // src/api/sendLead.js
-
-// import axios from 'axios';
-
-// export const sendLead = async (data) => {
-//   try {
-
-//     const response = await axios.post('https://zinix.lndo.site/pt-br/simulator', data);
-    
-//     console.log(response);
-
-//     return response.data;
-//   } catch (error) {
-//     console.error('Erro ao enviar lead:', error);
-//     throw error;
-//   }
-// };
-
