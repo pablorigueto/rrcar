@@ -38,6 +38,10 @@ function Modal({ isOpen, onClose, vehicleData }) {
   // Full data for submission and review
   const [fullData, setFullData] = useState(null);
   
+  const [submitResponse, setSubmitResponse] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+
   // Update editable data when vehicleData changes
   useEffect(() => {
     if (vehicleData) {
@@ -213,19 +217,19 @@ function Modal({ isOpen, onClose, vehicleData }) {
   
   // Handle final submission
   const handleSubmit = async () => {
+    setIsSubmitting(true); // Começa o loading
+    setSubmitError(null); // Limpa erro anterior
+
     const sanitizedData = sanitizeLeadData(fullData);
-
-    console.log('Sanitized Data:', sanitizedData);
-
     try {
       const apiResponse = await sendLead(sanitizedData);
-
-      console.log('API Response:', apiResponse);
+      setSubmitResponse(apiResponse);    // AQUI GUARDAMOS O RETORNO!
+      // NÃO chame onClose aqui, senão o modal fecha já (a menos que seja desejado)
     } catch (error) {
-      console.error('Falha no envio do lead:', error);
+      setSubmitError(error.message || 'Falha no envio do lead');
+    } finally {
+      setIsSubmitting(false);
     }
-
-    onClose();
   };
 
 
@@ -263,9 +267,12 @@ function Modal({ isOpen, onClose, vehicleData }) {
     } else if (wizardStep === 4 && finalSanitized) {
       return (
         <InstallmentOptionsStep
-          sanitizedData={finalSanitized} // Passe na prop
+          sanitizedData={finalSanitized}
           goToPreviousStep={goToPreviousStep}
           handleSubmit={handleSubmit}
+          submitResponse={submitResponse}      // <- Aqui, agora disponível!
+          isSubmitting={isSubmitting}
+          submitError={submitError}
         />
       );
     } else {
