@@ -5,7 +5,6 @@ import BestInstallmentCards from './BestInstallmentCards';
 const InstallmentOptionsStep = ({ 
   sanitizedData,
   goToPreviousStep,
-  handleSubmit,
   submitResponse,
   isSubmitting,
   submitError,
@@ -20,10 +19,7 @@ const InstallmentOptionsStep = ({
   return (
     <div>
 
-      <button onClick={handleSubmit} disabled={isSubmitting}>
-        {isSubmitting ? "Enviando..." : "Enviar"}
-      </button>
-
+      {isSubmitting ? "Realizando Simulação..." : ""}
       {submitError && <p style={{color: 'red'}}>{submitError}</p>}
 
       {submitResponse && (
@@ -38,7 +34,7 @@ const InstallmentOptionsStep = ({
 
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 24 }}>
         <button onClick={goToPreviousStep}>Voltar</button>
-        <button onClick={handleSubmit}>Finalizar</button>
+        {/* <button onClick={handleSubmit}>Finalizar</button> */}
       </div>
 
     </div>

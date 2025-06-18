@@ -201,6 +201,10 @@ function Modal({ isOpen, onClose, vehicleData }) {
       }
     } else if (wizardStep === 3) {
       const sanitizedData = sanitizeLeadData(fullData);
+      // submitAndProceed();
+
+      handleSubmit();
+      
       // OPÇÕES DE PARCELA: 
       // Se quiser, pode rodar o findBestInstallmentOptions(sanitizedData.aqui)!
       setFinalSanitized(sanitizedData);
@@ -265,12 +269,12 @@ function Modal({ isOpen, onClose, vehicleData }) {
       );
 
     } else if (wizardStep === 4 && finalSanitized) {
+
       return (
         <InstallmentOptionsStep
           sanitizedData={finalSanitized}
           goToPreviousStep={goToPreviousStep}
-          handleSubmit={handleSubmit}
-          submitResponse={submitResponse}      // <- Aqui, agora disponível!
+          submitResponse={submitResponse}
           isSubmitting={isSubmitting}
           submitError={submitError}
         />
