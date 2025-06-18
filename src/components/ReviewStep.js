@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ReviewStep({ fullData, goToPreviousStep, handleSubmit }) {
+function ReviewStep({ fullData, goToPreviousStep, goToNextStep }) {
   return (
     <div className="wizard-step-content review-screen">
       <h2>Confirme suas Informações</h2>
@@ -112,7 +112,7 @@ function ReviewStep({ fullData, goToPreviousStep, handleSubmit }) {
       
       <div className="modal-actions">
         <button type="button" className="btn-back" onClick={goToPreviousStep}>Voltar</button>
-        <button type="button" className="btn-submit" onClick={handleSubmit}>Confirmar</button>
+        <button type="button" className="btn-submit" onClick={goToNextStep}>Confirmar</button>
       </div>
     </div>
   );

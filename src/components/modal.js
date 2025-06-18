@@ -9,12 +9,18 @@ import zinixdarklogo from '../assets/zinix-logo-dark.png';
 
 import { sanitizeLeadData } from '../utils/sanitizeLeadData';
 import { sendLead } from '../api/sendLead';
+import InstallmentOptionsStep from './InstallmentOptionsStep';
+
 
 function Modal({ isOpen, onClose, vehicleData }) {
   // State to store editable vehicle data
   const [editableData, setEditableData] = useState({});
   // State to track which step of the wizard we're on
   const [wizardStep, setWizardStep] = useState(1);
+
+  // Adicione um state para guardar o sanitizedData final
+  const [finalSanitized, setFinalSanitized] = useState(null);
+
   // State for customer information
   const [customerInfo, setCustomerInfo] = useState({
     cpfCnpj: '',
@@ -180,7 +186,6 @@ function Modal({ isOpen, onClose, vehicleData }) {
       }
     } else if (wizardStep === 2) {
       if (validateCustomerInfo()) {
-        // Prepare full data for review
         const combinedData = {
           vehicle: editableData,
           customer: customerInfo,
@@ -190,6 +195,12 @@ function Modal({ isOpen, onClose, vehicleData }) {
         setFullData(combinedData);
         setWizardStep(3);
       }
+    } else if (wizardStep === 3) {
+      const sanitizedData = sanitizeLeadData(fullData);
+      // OPÇÕES DE PARCELA: 
+      // Se quiser, pode rodar o findBestInstallmentOptions(sanitizedData.aqui)!
+      setFinalSanitized(sanitizedData);
+      setWizardStep(4);
     }
   };
   
@@ -208,6 +219,7 @@ function Modal({ isOpen, onClose, vehicleData }) {
 
     try {
       const apiResponse = await sendLead(sanitizedData);
+
       console.log('API Response:', apiResponse);
     } catch (error) {
       console.error('Falha no envio do lead:', error);
@@ -243,6 +255,15 @@ function Modal({ isOpen, onClose, vehicleData }) {
       return (
         <ReviewStep 
           fullData={fullData}
+          goToPreviousStep={goToPreviousStep}
+          goToNextStep={goToNextStep}
+        />
+      );
+
+    } else if (wizardStep === 4 && finalSanitized) {
+      return (
+        <InstallmentOptionsStep
+          sanitizedData={finalSanitized} // Passe na prop
           goToPreviousStep={goToPreviousStep}
           handleSubmit={handleSubmit}
         />

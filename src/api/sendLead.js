@@ -2,6 +2,7 @@ import axios from 'axios';
 // Import the function from the utils directory
 // import findBestInstallmentOptions from '../utils/findBestInstallmentOptions';
 import findBestInstallmentOptions from '../utils/findBestInstallmentOptions';
+import BestInstallmentCards from '../components/BestInstallmentCards';
 
 export const sendLead = async (data) => {
   try {
@@ -33,23 +34,18 @@ export const sendLead = async (data) => {
 
       // 2) data === [ [ banco1, banco2, …, banco6 ] ]
       //    quero só a array interna de 6 items:
-      const proposals = data
+      // const proposals = data
 
       // 3) agora eu só loggo esse array de 6 objetos
-      console.log('proposals:', proposals)
+      // console.log('proposals:', proposals)
 
       // return proposals;
 
-      const bestOptions = findBestInstallmentOptions(proposals);
+      // const bestOptions = findBestInstallmentOptions(proposals);
 
-      console.log('bestOptions: ',bestOptions);
+      return findBestInstallmentOptions(data);
 
-      // Certifique-se de checar se jsonString é uma string válida
-      if (proposals) {
-        // console.log(data);
-      } else {
-        console.error("Dados inválidos na resposta.");
-      }
+
     } catch (error) {
       console.error("Erro ao buscar os dados:", error);
     }
