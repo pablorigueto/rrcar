@@ -18,9 +18,6 @@ function maskCurrency(num) {
 
 const BestInstallmentCards = ({ bestOptions }) => {
 
-  console.log('bestOptions: ', bestOptions);
-
-
   if (
     !bestOptions ||
     !bestOptions.installments_details ||

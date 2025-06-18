@@ -22,15 +22,15 @@ const InstallmentOptionsStep = ({
       {isSubmitting ? "Realizando Simulação..." : ""}
       {submitError && <p style={{color: 'red'}}>{submitError}</p>}
 
-      {submitResponse && (
+      {/* {submitResponse && (
         <div>
           <h4>Resposta da API:</h4>
           <pre>{JSON.stringify(submitResponse, null, 2)}</pre>
         </div>
-      )}
+      )} */}
 
       <h2>Melhor opção de financiamento encontrada</h2>
-      <BestInstallmentCards bestOptions={sanitizedData} />
+      <BestInstallmentCards bestOptions={submitResponse} />
 
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 24 }}>
         <button onClick={goToPreviousStep}>Voltar</button>
