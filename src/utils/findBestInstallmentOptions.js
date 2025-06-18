@@ -1,34 +1,51 @@
-export function findBestInstallmentOptions(data) {
-  const installmentsOptions = [12, 24, 36, 48, 60];
-  const results = {};
+/**
+ * Recebe um array de propostas (banks), verifica se pre_approval_status >= 2,
+ * e retorna o banco com menor parcela média entre installments_12 e installments_60.
+ * Caso todas as opções sejam null, retorna o texto padrão.
+ */
 
-  // Primeiro encontra um banco com valores válidos de parcelas
-  const bankWithValidInstallments = data.find(bank => {
-    if (!bank.installments_details) return false;
-    
-    // Verifica se tem pelo menos uma parcela com valor válido
-    return Object.values(bank.installments_details).some(installment => 
-      installment && installment.first_installment_value
-    );
+function findBestInstallmentOptions(data) {
+  // As propostas parecem vir em data[0], conforme a imagem
+  const proposals = Array.isArray(data) ? data[0] : [];
+
+  let bestBank = null;
+  let lowestInstallmentValue = null;
+
+  proposals.forEach((bank) => {
+    if (bank.pre_approval_status >= 2 && bank.installments_details) {
+      // Procurar em todas as opções (de 12 a 60)
+      const options = Object.values(bank.installments_details);
+
+      // Array de first_installment_value válidos (não null)
+      const validInstallmentValues = options
+        .filter(opt => opt && opt.first_installment_value != null)
+        .map(opt => opt.first_installment_value);
+
+      if (validInstallmentValues.length > 0) {
+        // Obtém o menor valor de parcela desse banco
+        const minValue = Math.min(...validInstallmentValues);
+
+        // Verifica se é a menor até aqui
+        if (lowestInstallmentValue === null || minValue < lowestInstallmentValue) {
+          lowestInstallmentValue = minValue;
+          bestBank = bank;
+        }
+      }
+    }
   });
 
-  // Se não encontrou nenhum banco com parcelas válidas
-  if (!bankWithValidInstallments) {
-    installmentsOptions.forEach(months => {
-      results[months] = 'Não há opções disponíveis de financiamento';
-    });
-    return results;
+  if (!bestBank) {
+    return "não há opções de financiamento disponiveis";
   }
 
-  // Se encontrou um banco válido, usa ele para todas as opções
-  installmentsOptions.forEach(months => {
-    const installmentOption = bankWithValidInstallments.installments_details[`installments_${months}`];
-    
-    results[months] = {
-      bank: bankWithValidInstallments.bank_name,
-      value: installmentOption?.first_installment_value || null
-    };
-  });
-
-  return results;
+  // Pode customizar o objeto retornado conforme necessidade
+  return {
+    bank_name: bestBank.bank_name,
+    bank_nickname: bestBank.bank_nickname,
+    bank_id: bestBank.bank_id,
+    lowestInstallmentValue,
+    installments_details: bestBank.installments_details
+  };
 }
+
+export default findBestInstallmentOptions;

@@ -1,6 +1,7 @@
 import axios from 'axios';
 // Import the function from the utils directory
-import { findBestInstallmentOptions } from '../utils/findBestInstallmentOptions';
+// import findBestInstallmentOptions from '../utils/findBestInstallmentOptions';
+import findBestInstallmentOptions from '../utils/findBestInstallmentOptions';
 
 export const sendLead = async (data) => {
   try {
@@ -39,9 +40,9 @@ export const sendLead = async (data) => {
 
       // return proposals;
 
-      // const bestOptions = findBestInstallmentOptions(data);
+      const bestOptions = findBestInstallmentOptions(proposals);
 
-      // console.log(bestOptions);
+      console.log('bestOptions: ',bestOptions);
 
       // Certifique-se de checar se jsonString é uma string válida
       if (proposals) {
