@@ -25,18 +25,27 @@ export const sendLead = async (data) => {
 
     try {
       // Supondo que queryString esteja corretamente inicializado
-      const response = await axios.get(`https://zinix.lndo.site/pt-br/simulator?data=${encodeURIComponent(queryString)}`);
+      const { data } = await axios.get(
+        'https://zinix.lndo.site/pt-br/simulator',
+        { params: { data: queryString } }
+      )
 
-      const data = JSON.parse(response.data[0]);
-      console.log( 'data: ', data);
+      // 2) data === [ [ banco1, banco2, …, banco6 ] ]
+      //    quero só a array interna de 6 items:
+      const proposals = data
 
-      const bestOptions = findBestInstallmentOptions(data);
+      // 3) agora eu só loggo esse array de 6 objetos
+      console.log('proposals:', proposals)
 
-      console.log(bestOptions);
+      // return proposals;
+
+      // const bestOptions = findBestInstallmentOptions(data);
+
+      // console.log(bestOptions);
 
       // Certifique-se de checar se jsonString é uma string válida
-      if (response) {
-        console.log(data);
+      if (proposals) {
+        // console.log(data);
       } else {
         console.error("Dados inválidos na resposta.");
       }
