@@ -7,6 +7,54 @@
     color: #000;
   }
 
+  .best-installment-main-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+
+    .image-relative-div {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .absolute {
+      position: absolute;
+      top: 10px;
+      right: 0;
+      left: 10px;
+      bottom: 0;
+      color: #fff;
+    }
+
+    .flex-div {
+      display: flex;
+
+      p {
+        background: #000;
+        width: auto;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin: 5px 0;
+        font-weight: 600;
+      }
+    }
+
+    img {
+      border-radius: 5px;
+      box-shadow: 2px 2px 2px #00000042;
+      width: 97%;
+      margin-top: 3px;
+    }
+
+    .car-image-simulator {
+
+    }
+  }
+
   .best-installment-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -46,11 +94,11 @@
       text-align: center;
       font-weight: bold;
       margin-bottom: 6px;
-      font-size: 15px;
+      font-size: 14px;
     }
 
     .installment-time {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
     }
 
@@ -74,7 +122,7 @@
       font-weight: 600;
       border-radius: 6px;
       width: 100%;
-      font-size: 17px;
+      font-size: 16px;
       cursor: pointer;
     }
 
@@ -163,7 +211,7 @@
     background-color: white;
     padding: 25px;
     border-radius: 8px;
-    width: 518px;
+    /* width: 518px; */
     max-height: 90vh;
     overflow-y: auto;
     position: relative;

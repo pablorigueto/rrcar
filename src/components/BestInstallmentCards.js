@@ -48,13 +48,13 @@ const BestInstallmentCards = ({ bestOptions }) => {
               <div className='card-individual-status'>
                 PRÉ APROVADO
               </div>
-              <div className='card-individual-bank'>{bank_name}</div>
+              <div className='card-individual-bank'>Banco ******</div>
               <div className='background-installment'>
                 <div className='installment-time'>
                   {option.installments}x
                   <br />
                   <span className='installment-value'>
-                    de {maskCurrency(option.first_installment_value)}
+                    {maskCurrency(option.first_installment_value)}
                   </span>
                 </div>
                 <div className='installment-fees'>

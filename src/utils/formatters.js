@@ -45,6 +45,16 @@ export const formatCurrency = (value) => {
   return `${formattedInteger},${decimal}`;
 };
 
+export const vehiclePrice = (price) => {
+  const formattedPrice = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2,
+  }).format(price);
+
+  return <span>{formattedPrice}</span>;
+};
+
 // Parse a currency string to a numeric value (for calculations if needed)
 export const parseCurrency = (value) => {
   if (!value) return 0;
