@@ -30,11 +30,10 @@ const InstallmentOptionsStep = ({
       )} */}
 
       <h2>Melhor opção de financiamento encontrada</h2>
-      <BestInstallmentCards bestOptions={submitResponse} />
+      <BestInstallmentCards bestOptions={submitResponse}/>
 
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 24 }}>
-        <button onClick={goToPreviousStep}>Voltar</button>
-        {/* <button onClick={handleSubmit}>Finalizar</button> */}
+        <button type="button" className="btn-back" onClick={goToPreviousStep}>Voltar</button>
       </div>
 
     </div>
