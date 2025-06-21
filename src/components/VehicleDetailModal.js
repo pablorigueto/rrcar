@@ -20,9 +20,12 @@ function VehicleDetailModal({ vehicle, onClose }) {
   // Function to crawl vehicle information from the page
   const crawlVehicleInfo = () => {
     try {
+
+      const carouselSlider = document.querySelector('.carousel-slider');
+
       // Get the vehicle detail container
       const vehicleContainer = document.querySelector('.vehicle-screen-detailed');
-      
+
       if (!vehicleContainer) {
         console.error('Vehicle information container not found');
         return null;
@@ -31,7 +34,9 @@ function VehicleDetailModal({ vehicle, onClose }) {
       // Extract information
       const title = vehicleContainer.querySelector('.titleDetailed')?.textContent || '';
       const price = vehicleContainer.querySelector('.priceDetailed')?.textContent || '';
-      
+
+      const carImage = carouselSlider.querySelectorAll('.detailed-frame img')[1]?.src || '';
+
       // Extract vehicle details using the structure from your HTML
       const details = {};
       
@@ -42,6 +47,8 @@ function VehicleDetailModal({ vehicle, onClose }) {
       details.make = makeElement?.querySelector('span:last-child')?.textContent || '';
       details.model = modelElement?.querySelector('span:last-child')?.textContent || '';
       
+      details.carImage = carImage;
+
       // Get other vehicle details
       const summaryElements = vehicleContainer.querySelectorAll('.summaryDetailed');
       summaryElements.forEach(element => {

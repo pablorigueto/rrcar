@@ -180,6 +180,12 @@ function VehicleFormStep({
 
         </div>
         
+        <div className='car-image-simulator'>
+          <img
+            src={editableData.carImage}
+            alt={editableData.title}
+          />
+        </div>
 
         
         <div className="modal-actions">
