@@ -1,5 +1,6 @@
 import React from 'react';
 import { formatCurrency } from '../utils/formatters';
+import CarImageComponent  from './CarImageComponent';
 
 function VehicleFormStep({ 
   editableData, 
@@ -180,29 +181,13 @@ function VehicleFormStep({
           </div>
         </form>
 
-        <div className="image-relative-div">
-          <div className="absolute">
-            <div className="flex-div">
-              <p>{editableData.title}</p>
-            </div>
-            <div className="flex-div">
-            <p>
-              {editableData.transmission}
-            </p>
-            </div>
-            <div className="flex-div">
-              <p>
-                R$ {editableData.price}
-              </p>
-            </div>
-          </div>
-          <div className='car-image-simulator'>
-            <img
-              src={editableData.carImage}
-              alt={editableData.title}
-            />
-          </div>
-        </div>
+        <CarImageComponent
+          title={editableData.title}
+          transmission={editableData.transmission}
+          price={editableData.price}
+          carImage={editableData.carImage}
+        />
+
       </div>
       <div className="modal-actions">
         <button type="button" className="btn-cancel" onClick={onClose}>Cancelar</button>
