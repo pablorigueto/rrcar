@@ -14,9 +14,6 @@ const InstallmentOptionsStep = ({
 
   return (
     <div>
-
-      {console.log('sanitized**** ', sanitizedData)}
-      {isSubmitting ? "Realizando Simulação..." : ""}
       {submitError && <p style={{color: 'red'}}>{submitError}</p>}
 
       <h2>Melhor opção de financiamento encontrada</h2>
@@ -29,7 +26,10 @@ const InstallmentOptionsStep = ({
           carImage={sanitizedData.vehicle.carImage}
         />
 
-        <BestInstallmentCards bestOptions={submitResponse}/>
+        <BestInstallmentCards
+          bestOptions={submitResponse}
+          isSubmitting={isSubmitting}
+        />
 
       </div>
 

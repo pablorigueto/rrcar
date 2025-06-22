@@ -17,7 +17,14 @@ function maskCurrency(num) {
   });
 }
 
-const BestInstallmentCards = ({ bestOptions }) => {
+const BestInstallmentCards = ({
+    bestOptions,
+    isSubmitting 
+  }) => {
+
+  if (isSubmitting) {
+    return <div className='pulsante textcentered'>Realizando Simulação...</div>;
+  }
 
   if (
     !bestOptions ||
@@ -25,7 +32,7 @@ const BestInstallmentCards = ({ bestOptions }) => {
     typeof bestOptions.installments_details !== 'object'
   ) {
     // Pode customizar a mensagem ou só retornar null
-    return <div>Não há opções de financiamento disponíveis.</div>;
+    return <div className='textcentered'>Não há opções de financiamento disponíveis.</div>;
   }
 
   const { bank_name, bank_nickname, installments_details } = bestOptions;

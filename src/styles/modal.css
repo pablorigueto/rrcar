@@ -514,3 +514,19 @@
   }
 
 }
+
+.textcentered {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.pulsante {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
