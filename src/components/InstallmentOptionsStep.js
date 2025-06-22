@@ -16,7 +16,7 @@ const InstallmentOptionsStep = ({
     <div>
       {submitError && <p style={{color: 'red'}}>{submitError}</p>}
 
-      <h2>Melhor opção de financiamento encontrada</h2>
+      <h2>A melhor opção para você</h2>
       <div className='best-installment-main-card'>
 
         <CarImageComponent
