@@ -199,7 +199,7 @@ function CustomerFormStep({
 
       <div className="modal-actions">
         <button type="button" className="btn-back" onClick={goToPreviousStep}>Voltar</button>
-        <button type="button" className="btn-next" onClick={goToNextStep}>Revisar</button>
+        <button type="button" className="btn-next" onClick={goToNextStep}>Simular</button>
       </div>
 
     </div>
