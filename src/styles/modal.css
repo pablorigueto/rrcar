@@ -8,10 +8,10 @@
   }
 
   .best-installment-main-card {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    flex-direction: row-reverse;
+    grid-gap: 1rem;
 
     .image-relative-div {
       width: 100%;
@@ -46,7 +46,9 @@
     img {
       border-radius: 5px;
       box-shadow: 2px 2px 2px #00000042;
-      width: 97%;
+      width: 100%;
+      height: 100%;
+      max-height: 345px;
       margin-top: 3px;
     }
 
@@ -160,7 +162,7 @@
   .details-grid-editable {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 2rem;
+    column-gap: 1rem;
   }
 
   .modal-actions {
@@ -307,6 +309,11 @@
   .form-group {
     margin-bottom: 15px;
     width: 100%;
+
+    #cellphone, #email, #name, #submit, textarea {
+      margin-bottom: unset;
+    }
+
   }
 
   .form-control {
@@ -378,7 +385,7 @@
   /* Site info */
   .site-info {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding: 20px 0 0 0;
     color: #000;
@@ -410,10 +417,7 @@
   .space-between {
     display: flex;
     justify-content: space-between;
-  }
-
-  .space-between {
-    gap: 2rem;
+    gap: 1rem;
   }
 
   input {

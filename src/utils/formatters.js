@@ -55,6 +55,16 @@ export const vehiclePrice = (price) => {
   return <span>{formattedPrice}</span>;
 };
 
+export const vehiclePriceStep3 = (price) => {
+  const formattedPrice = new Intl.NumberFormat('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(price);
+
+  return <span>{formattedPrice}</span>;
+};
+
+
 // Parse a currency string to a numeric value (for calculations if needed)
 export const parseCurrency = (value) => {
   if (!value) return 0;

@@ -31,7 +31,7 @@ const CarImageComponent = ({
         />
       </div>
     </div>
-    );
+  );
 }
 
 export default CarImageComponent;

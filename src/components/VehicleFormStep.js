@@ -14,6 +14,14 @@ function VehicleFormStep({
       {/* <h2>Detalhes do Veículo</h2> */}
       
       <div className="best-installment-main-card">
+
+        <CarImageComponent
+          title={editableData.title}
+          transmission={editableData.transmission}
+          price={editableData.price}
+          carImage={editableData.carImage}
+        />
+
         <form className="vehicle-info-form" onSubmit={(e) => e.preventDefault()}>
           {/* Hidden field for site name */}
           <input 
@@ -159,7 +167,7 @@ function VehicleFormStep({
                 />
               </div> */}
             
-            <div className="form-group">
+            {/* <div className="form-group">
               <label htmlFor="condition">Condição:<span className="required">*</span></label>
               <select 
                 id="condition" 
@@ -173,20 +181,13 @@ function VehicleFormStep({
                 <option value="SEMINOVO">SEMINOVO</option>
               </select>
               {errors.condition && <div className="error-message">{errors.condition}</div>}
-            </div>
+            </div> */}
 
-            <div className="form-group site-info">
+            {/* <div className="form-group site-info">
               <small>Site: {editableData.siteName || window.location.origin }</small>
-            </div>
+            </div> */}
           </div>
         </form>
-
-        <CarImageComponent
-          title={editableData.title}
-          transmission={editableData.transmission}
-          price={editableData.price}
-          carImage={editableData.carImage}
-        />
 
       </div>
       <div className="modal-actions">

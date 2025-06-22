@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/modal.css';
 import VehicleFormStep from './VehicleFormStep';
 import CustomerFormStep from './CustomerFormStep';
-import ReviewStep from './ReviewStep';
+// import ReviewStep from './ReviewStep';
 import ProgressIndicator from './ProgressIndicator';
 import zinixdarklogo from '../assets/zinix-logo-dark.png';
 
@@ -13,6 +13,7 @@ import InstallmentOptionsStep from './InstallmentOptionsStep';
 
 
 function Modal({ isOpen, onClose, vehicleData }) {
+
   // State to store editable vehicle data
   const [editableData, setEditableData] = useState({});
   // State to track which step of the wizard we're on
@@ -196,19 +197,29 @@ function Modal({ isOpen, onClose, vehicleData }) {
           siteName: editableData.siteName || window.location.origin,
           submittedAt: new Date().toISOString()
         };
+
         setFullData(combinedData);
+
+        const sanitizedData = sanitizeLeadData(combinedData); // <<< USE O COMBINEDDATA
+
+        setFinalSanitized(sanitizedData);
+
+        // handleSubmit espera o dado atualizado:
+        handleSubmit(sanitizedData);
+
         setWizardStep(3);
       }
-    } else if (wizardStep === 3) {
-      const sanitizedData = sanitizeLeadData(fullData);
-      // submitAndProceed();
 
-      handleSubmit();
+    // } else if (wizardStep === 4) {
+    //   const sanitizedData = sanitizeLeadData(fullData);
+    //   // submitAndProceed();
+
+    //   handleSubmit();
       
-      // OPÇÕES DE PARCELA: 
-      // Se quiser, pode rodar o findBestInstallmentOptions(sanitizedData.aqui)!
-      setFinalSanitized(sanitizedData);
-      setWizardStep(4);
+    //   // OPÇÕES DE PARCELA: 
+    //   // Se quiser, pode rodar o findBestInstallmentOptions(sanitizedData.aqui)!
+    //   setFinalSanitized(sanitizedData);
+    //   setWizardStep(4);
     }
   };
   
@@ -220,15 +231,13 @@ function Modal({ isOpen, onClose, vehicleData }) {
   };
   
   // Handle final submission
-  const handleSubmit = async () => {
-    setIsSubmitting(true); // Começa o loading
-    setSubmitError(null); // Limpa erro anterior
+  const handleSubmit = async (sanitizedData) => {
+    setIsSubmitting(true);
+    setSubmitError(null);
 
-    const sanitizedData = sanitizeLeadData(fullData);
     try {
       const apiResponse = await sendLead(sanitizedData);
-      setSubmitResponse(apiResponse);    // AQUI GUARDAMOS O RETORNO!
-      // NÃO chame onClose aqui, senão o modal fecha já (a menos que seja desejado)
+      setSubmitResponse(apiResponse);
     } catch (error) {
       setSubmitError(error.message || 'Falha no envio do lead');
     } finally {
@@ -257,18 +266,19 @@ function Modal({ isOpen, onClose, vehicleData }) {
           errors={errors}
           goToNextStep={goToNextStep}
           goToPreviousStep={goToPreviousStep}
+          editableData={editableData}
         />
       );
-    } else if (wizardStep === 3 && fullData) {
-      return (
-        <ReviewStep 
-          fullData={fullData}
-          goToPreviousStep={goToPreviousStep}
-          goToNextStep={goToNextStep}
-        />
-      );
+    // } else if (wizardStep === 3 && fullData) {
+    //   return (
+    //     <ReviewStep 
+    //       fullData={fullData}
+    //       goToPreviousStep={goToPreviousStep}
+    //       goToNextStep={goToNextStep}
+    //     />
+    //   );
 
-    } else if (wizardStep === 4 && finalSanitized) {
+    } else if (wizardStep === 3 && fullData && finalSanitized) {
 
       return (
         <InstallmentOptionsStep

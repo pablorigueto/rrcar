@@ -1,6 +1,7 @@
 // src/utils/sanitizeLeadData.js
 
 export const sanitizeLeadData = (data) => {
+
   const sanitizeCurrency = (value) => {
     if (!value) return null;
     return parseFloat(value.replace(/\./g, '').replace(',', '.'));
@@ -43,6 +44,7 @@ export const sanitizeLeadData = (data) => {
       color: data.vehicle.color,
       price: sanitizeCurrency(data.vehicle.price),
       down_payment: sanitizeCurrency(data.vehicle.down_payment),
+      carImage: data.vehicle.carImage,
     },
     siteName: data.siteName,
     submittedAt: data.submittedAt,
