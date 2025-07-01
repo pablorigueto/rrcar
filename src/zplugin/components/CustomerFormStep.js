@@ -31,6 +31,7 @@ function CustomerFormStep({
 
   const [estadoSelecionado, setEstadoSelecionado] = useState('');
   const [cidadeSelecionado, setCidadeSelecionado] = useState('');
+
   const [cidades, setCidades] = useState([]);
 
   const estadoOptions = Object.entries(Estados).map(([sigla, nome]) => ({
@@ -43,14 +44,15 @@ function CustomerFormStep({
     label: nome,
   }));
 
-  // Função para pegar o objeto option do estado baseado no valor armazenado no customerInfo.state (que é string)
-  const selectedEstadoOption = estadoOptions.find(option => option.value === customerInfo.state) || null;
+  // // Função para pegar o objeto option do estado baseado no valor armazenado no customerInfo.state (que é string)
+  // const selectedEstadoOption = estadoOptions.find(option => option.value === customerInfo.state) || null;
 
-  // Para cidades também, mesmo método (mas só se cidades estiver carregado)
-  const selectedCidadeOption = cidadeOptions.find(option => option.value === customerInfo.city) || null;
+  // // Para cidades também, mesmo método (mas só se cidades estiver carregado)
+  // const selectedCidadeOption = cidadeOptions.find(option => option.value === customerInfo.city) || null;
 
   // Atualize handleEstadoChange para chamar handleCustomerInfoChange também
   const handleEstadoChange = (selectedOption) => {
+    console.log(customerInfo);
     const estadoSelecionado = selectedOption ? selectedOption.value : '';
     setEstadoSelecionado(selectedOption || null);  // Guarde o objeto para o Select
 
@@ -69,6 +71,7 @@ function CustomerFormStep({
   }
 
   const handleCidadeChange = (selectedOption) => {
+    console.log(customerInfo);
     const cidadeSelecionada = selectedOption ? selectedOption.value : '';
     setCidadeSelecionado(selectedOption || null);
     handleCustomerInfoChange('city', cidadeSelecionada);
@@ -182,26 +185,27 @@ function CustomerFormStep({
               <Select
                 id="state" 
                 options={estadoOptions}
-                value={selectedEstadoOption}
+                value={estadoSelecionado}
+                //value={selectedEstadoOption ? { value: estadoSelecionado, label: Estados[estadoSelecionado] } : null}
                 onChange={handleEstadoChange}
-                className="form-control"
+                // className="form-control"
                 placeholder="Estado"
               />
-              <label>Estado</label>
-              {errors.estado && <p>{errors.estado.message}</p>}
+              {/* <label>Estado</label>
+              {errors.estado && <p>{errors.estado.message}</p>} */}
             </div>
             
             <div className="form-group">
               <Select
                 id="city" 
                 options={cidadeOptions}
-                value={selectedCidadeOption}
+                value={cidadeSelecionado}
                 onChange={handleCidadeChange}
                 placeholder="Cidade"
-                className="form-control"
+                // className="form-control"
               />
-              <label>Cidade</label>
-              {errors.cidade && <p>{errors.cidade.message}</p>}
+              {/* <label>Cidade</label>
+              {errors.cidade && <p>{errors.cidade.message}</p>} */}
             </div>
 
             <div className="form-group">
