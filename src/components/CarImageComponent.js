@@ -14,12 +14,7 @@ const CarImageComponent = ({
           <p>{title}</p>
         </div>
         <div className="flex-div">
-        <p>
-          {transmission}
-        </p>
-        </div>
-        <div className="flex-div">
-          <p>
+          <p className="border-radius-bottom">
             R$ {price}
           </p>
         </div>

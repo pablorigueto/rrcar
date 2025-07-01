@@ -7,6 +7,28 @@
     color: #000;
   }
 
+  .final-step  {
+
+    padding-top: 7px;
+
+    .image-relative-div {
+      padding-left: 32px;
+    }
+    .absolute {
+      margin-left: 32px;
+    }
+
+    .best-installment-cards {
+      margin-left: 30px;
+    }
+
+  }
+
+  .final-step-btn {
+    padding: 0 32px;
+    padding-top: 9px;
+  }
+
   .best-installment-main-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -14,7 +36,8 @@
     grid-gap: 1rem;
 
     .image-relative-div {
-      width: 100%;
+
+      width: 453px;
       display: flex;
       justify-content: center;
       position: relative;
@@ -22,26 +45,37 @@
 
     .absolute {
       position: absolute;
-      top: 10px;
+      /* top: 0; */
       right: 0;
-      left: 10px;
-      bottom: 0;
+      left: 0;
+      bottom: -1px;
       color: #fff;
+      background: #0bb70b;
+      border-radius: 0 0 5px 5px;
     }
+
+    /* min-height: 730px;
+    min-width: 1050px;  */
 
     .flex-div {
-      display: flex;
+      /* display: flex; */
+
+      .border-radius-bottom {
+        padding-top: unset;
+        border-radius: 0 0 5px 5px;
+      }
 
       p {
-        background: #000;
+        /* background: #000; */
         width: auto;
         color: #fff;
-        padding: 10px 15px;
-        border-radius: 5px;
-        margin: 5px 0;
+        padding: 6px 15px;
         font-weight: 600;
+        margin: unset;
       }
     }
+
+
 
     img {
       border-radius: 5px;
@@ -57,41 +91,60 @@
     }
   }
 
+  div {
+    .whatsapp {
+      text-decoration: unset;
+      background-color: #0bb70b;
+      font-size: 14px;
+    }
+  }
+
   .best-installment-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
     overflow: auto;
     max-height: 362px;
+    max-width: 460px;
 
     .background-installment {
-      background: rgb(236, 236, 236);
+      /* background: rgb(236, 236, 236); */
       border-radius: 7px;
       width: 100%;
-      margin: 8px 0px;
-      padding: 5px 0;
+      /* padding: 5px 10px; */
       text-align: center;
     }
 
     .card-individual-border {
-      border: 2px solid #10d09f;
+      box-shadow: 1.5px 1.5px 1.5px 1.5px #0000002e;
+      /* border: 2px solid #10d09f; */
       border-radius: 10px;
-      /* width: 200px; */
-      padding: 16px;
-      margin: 8px;
+      width: 190px;
+      padding-bottom: 11px;
+      /* margin: 8px; */
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #fff;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
     }
 
     .card-individual-status {
-      background: rgb(16, 208, 159);
-      color: rgb(255, 255, 255);
-      border-radius: 8px;
-      padding: 2px 10px;
+      /* background: rgb(16, 208, 159); */
+      background: #0bb70b;
+      /* color: rgb(255, 255, 255); */
+      color: #fff;
+      border-radius: 5px 5px 0 0;
       font-weight: 600;
       font-size: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 0.9rem;
+      width: 100%;
+      text-align: center;
+      padding-top: 7px;
+      padding-bottom: 7px;
     }
 
     .card-individual-bank {
@@ -102,19 +155,35 @@
     }
 
     .installment-time {
-      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
       font-weight: 700;
+      background: #0000000a;
+      padding-top: 4px;
     }
 
     .installment-value {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 500;
+    }
+
+    .down-payment {
+      display: flex;
+      flex-direction: column;
+      font-weight: 100;
+      font-size: 16px;
+      padding-top: 5px;
+      padding-bottom: 4px;
     }
 
     .installment-fees {
       font-size: 12px;
-      color: rgb(102, 102, 102);
+      /* color: rgb(102, 102, 102); */
+      color: #fff;
       margin-top: 3px;
+      display: flex;
+      flex-direction: column;
     }
 
     .card-individual-action-button {
@@ -211,11 +280,12 @@
     background-color: white;
     padding: 25px;
     border-radius: 8px;
-    /* width: 518px; */
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    min-height: 680px;
+    min-width: 1000px;
   }
 
   .modal-close-zinix {
@@ -235,7 +305,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
-    margin-top: 60px;
+    margin-top: 40px;
   }
 
   .wizard-step {
@@ -266,7 +336,7 @@
   }
 
   .wizard-step.active .step-number {
-    background-color: #000;
+    background-color: #0bb70b;
     color: white;
   }
 
@@ -350,6 +420,7 @@
     border: none;
     transition: background-color 0.3s;
     border: 1px solid #00000000;
+    font-size: 14px;
   }
 
   .btn-cancel {
@@ -372,7 +443,7 @@
 
   .btn-next, .btn-submit {
     transition: all 0.5s ease;
-    background-color: #000;
+    background-color: #0bb70b;
     color: white;
   }
 
@@ -460,9 +531,13 @@
 
   .site-branding__inner  {
 
-    position: absolute;
-    top: 24px;
-    left: 24px;
+    padding-bottom: 2.5rem;
+    padding-top: 0.5rem;
+
+    .site-branding__logo span {
+      font-size: 22px;
+      font-weight: 800;
+    }
 
     img {
       width: 140px;

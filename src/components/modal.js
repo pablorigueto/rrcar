@@ -298,6 +298,11 @@ function Modal({ isOpen, onClose, vehicleData }) {
     <div className="modal-overlay-zinix" onClick={onClose}>
       <div className="modal-content-zinix wizard-modal" onClick={(e) => e.stopPropagation()}>
 
+        <button className="modal-close-zinix" onClick={onClose}>×</button>
+        
+        {/* Progress indicator */}
+        <ProgressIndicator wizardStep={wizardStep} />
+
         <div className="site-branding__inner">
           <a href="https://zinix.com.br" rel="home" target="_blank" className="site-branding__logo">
             <img 
@@ -305,14 +310,9 @@ function Modal({ isOpen, onClose, vehicleData }) {
               alt="Inicio" 
               fetchpriority="high"
             />
-            A melhor condição é aqui!
+            <span>A melhor condição para você!</span>
           </a>
         </div>
-
-        <button className="modal-close-zinix" onClick={onClose}>×</button>
-        
-        {/* Progress indicator */}
-        <ProgressIndicator wizardStep={wizardStep} />
         
         {/* Render the current step */}
         {renderStep()}

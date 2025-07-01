@@ -52,20 +52,26 @@ const BestInstallmentCards = ({
               <div className='card-individual-status'>
                 PRÉ APROVADO
               </div>
-              <div className='card-individual-bank'>Banco ******</div>
+              {/* <div className='card-individual-bank'>Banco ******</div> */}
               <div className='background-installment'>
                 <div className='installment-time'>
-                  {option.installments}x
-                  <br />
+                  <span className='installment-quantity'>
+                    {option.installments}x
+                  </span>
                   <span className='installment-value'>
                     {maskCurrency(option.first_installment_value)}
                   </span>
+                  <span className='down-payment'>
+                    <span>Entrada</span> <span>{maskCurrency(option.down_payment)}</span>
+                  </span>
                 </div>
                 <div className='installment-fees'>
-                  cet: {option.monthly_rate ? option.monthly_rate.toFixed(2) : '--'}% / mês
+                  <span>{option.interest_monthly ? option.interest_monthly.toFixed(2) : '--'}% a.m.</span>
+                  
+                  <span>{option.interest_annually ? option.interest_annually.toFixed(2) : '--'}% a.a.</span>
                 </div>
               </div>
-              <button className='card-individual-action-button'>Quero essa!</button>
+              {/* <button className='card-individual-action-button'>Quero essa!</button> */}
             </div>
           </div>
         );

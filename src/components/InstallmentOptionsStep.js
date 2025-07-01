@@ -16,8 +16,7 @@ const InstallmentOptionsStep = ({
     <div>
       {submitError && <p style={{color: 'red'}}>{submitError}</p>}
 
-      <h2>A melhor opção para você</h2>
-      <div className='best-installment-main-card'>
+      <div className='best-installment-main-card final-step'>
 
         <CarImageComponent
           title={sanitizedData.vehicle.title}
@@ -33,8 +32,9 @@ const InstallmentOptionsStep = ({
 
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 24 }}>
+      <div className='modal-actions final-step-btn'>
         <button type="button" className="btn-back" onClick={goToPreviousStep}>Voltar</button>
+        <a className="btn-submit whatsapp" href="https://wa.me/+5519978175588" rel="noreferrer" target="_blank">Fale Conosco</a>
       </div>
 
     </div>
