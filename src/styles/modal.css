@@ -555,13 +555,61 @@
 
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1023px) {
    
     .best-installment-main-card {
       display: flex;
       flex-direction: column-reverse;
+
+      .absolute {
+        bottom: -2px;
+        margin-left: unset;
+      }
+
+      .image-relative-div {
+        width: 100%;
+      }
+
+
     }
 
+    .site-branding__inner {
+      a {
+        flex-direction: column;
+      }
+    }
+
+    .modal-content-zinix {
+      min-height: unset;
+      min-width: unset;
+    }
+
+    .wizard-step-content {
+      padding: unset;
+    }
+
+    .customer-info-form {
+      width: 100%;
+    }
+
+    .final-step-btn {
+      padding: unset;
+    }
+
+
+    .final-step {
+      .image-relative-div {
+          padding-left: unset;
+      }
+
+      .best-installment-cards {
+        margin-left: unset;
+        overflow: hidden;
+        flex-direction: column;
+
+      }
+
+    }
 
   }
 
@@ -575,6 +623,15 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      max-height: unset;
+      max-width: unset;
+      flex-wrap: unset;
+
+      .card-individual-border {
+        width: 329px;
+      }
+
     }
 
     .modal-content-zinix {
@@ -599,20 +656,22 @@
 
   }
 
-}
 
-.textcentered {
-  text-align: center;
-  font-size: 20px;
-  font-weight: 600;
-}
+  .textcentered {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+  }
 
-.pulsante {
-  animation: pulse 2s infinite;
-}
+  .pulsante {
+    animation: pulse 2s infinite;
+  }
 
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+
+
 }
