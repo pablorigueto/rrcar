@@ -6,8 +6,7 @@ import backIcon from '../assets/back.png';
 import { formatPrice } from '../utils/helper'; // Import the formatPrice function
 import ContactForm from './contactForm';
 import logoImage from '../assets/logo.png';
-import Modal from './modal';
-// import ZIcon from '../assets/zicon.png';
+import Modal from '../zplugin/components/modal';
 
 function VehicleDetailModal({ vehicle, onClose }) {
 
@@ -259,7 +258,7 @@ function VehicleDetailModal({ vehicle, onClose }) {
       </div>
 
       {/* Modal with vehicle data */}
-      <Modal 
+      <Modal
         isOpen={isModalOpen} 
         onClose={closeModal} 
         vehicleData={vehicleData}
