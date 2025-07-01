@@ -165,7 +165,11 @@
 
     .installment-value {
       font-size: 16px;
-      font-weight: 500;
+      color: #0bb70b;
+    }
+
+    .green-color {
+      color: #0bb70b;
     }
 
     .down-payment {
@@ -353,6 +357,16 @@
     position: relative;
     top: -12px;
     z-index: 0;
+    transition: all 0.5s ease;
+  }
+
+  .line-active {
+    background-color: #0bb70b;
+    transition: all 0.5s ease;
+  }
+
+  .font-600 {
+    font-weight: 600;
   }
 
   /* Wizard step content */

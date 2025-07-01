@@ -58,11 +58,11 @@ const BestInstallmentCards = ({
                   <span className='installment-quantity'>
                     {option.installments}x
                   </span>
-                  <span className='installment-value'>
+                  <span className='installment-value font-600'>
                     {maskCurrency(option.first_installment_value)}
                   </span>
                   <span className='down-payment'>
-                    <span>Entrada</span> <span>{maskCurrency(option.down_payment)}</span>
+                    <span className='font-600'>Entrada</span> <span className='green-color font-600'>{maskCurrency(option.down_payment)}</span>
                   </span>
                 </div>
                 <div className='installment-fees'>
