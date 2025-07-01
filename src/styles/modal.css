@@ -50,7 +50,8 @@
       left: 0;
       bottom: -1px;
       color: #fff;
-      background: #0bb70b;
+      /* background: #0bb70b; */
+      background: linear-gradient(38deg, black 0% 40%, #0bb70b);
       border-radius: 0 0 5px 5px;
     }
 
