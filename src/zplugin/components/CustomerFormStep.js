@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { formatPhone } from '../utils/formatters';
 import CarImageComponent  from './CarImageComponent';
+
+import Estados from '../estado/estados';
+import { getCidadesPorEstado } from '../estado/estadosSwitch';
+
+import Select from 'react-select';
 
 function CustomerFormStep({ 
   customerInfo, 
@@ -23,6 +28,52 @@ function CustomerFormStep({
     
     handleCustomerInfoChange('birthDate', value);
   };
+
+  const [estadoSelecionado, setEstadoSelecionado] = useState('');
+  const [cidadeSelecionado, setCidadeSelecionado] = useState('');
+  const [cidades, setCidades] = useState([]);
+
+  const estadoOptions = Object.entries(Estados).map(([sigla, nome]) => ({
+    value: sigla,
+    label: nome,
+  }));
+
+  const cidadeOptions = Object.entries(cidades).map(([key, nome]) => ({
+    value: key,
+    label: nome,
+  }));
+
+  // Função para pegar o objeto option do estado baseado no valor armazenado no customerInfo.state (que é string)
+  const selectedEstadoOption = estadoOptions.find(option => option.value === customerInfo.state) || null;
+
+  // Para cidades também, mesmo método (mas só se cidades estiver carregado)
+  const selectedCidadeOption = cidadeOptions.find(option => option.value === customerInfo.city) || null;
+
+  // Atualize handleEstadoChange para chamar handleCustomerInfoChange também
+  const handleEstadoChange = (selectedOption) => {
+    const estadoSelecionado = selectedOption ? selectedOption.value : '';
+    setEstadoSelecionado(selectedOption || null);  // Guarde o objeto para o Select
+
+    handleCustomerInfoChange('state', estadoSelecionado);
+
+    if (estadoSelecionado) {
+      const cidadesDoEstado = getCidadesPorEstado(estadoSelecionado);
+      setCidades(cidadesDoEstado);
+      setCidadeSelecionado(null); // reseta cidade selecionada pois o estado mudou
+      handleCustomerInfoChange('city', ''); // limpa cidade no customerInfo
+    } else {
+      setCidades([]);
+      setCidadeSelecionado(null);
+      handleCustomerInfoChange('city', '');
+    }
+  }
+
+  const handleCidadeChange = (selectedOption) => {
+    const cidadeSelecionada = selectedOption ? selectedOption.value : '';
+    setCidadeSelecionado(selectedOption || null);
+    handleCustomerInfoChange('city', cidadeSelecionada);
+  }
+
 
   return (
     <div className="wizard-step-content">
@@ -128,56 +179,31 @@ function CustomerFormStep({
             </div>
             
             <div className="form-group">
-              <label htmlFor="state">Estado:</label>
-              <select 
+              <Select
                 id="state" 
-                value={customerInfo.state} 
-                onChange={(e) => handleCustomerInfoChange('state', e.target.value)}
+                options={estadoOptions}
+                value={selectedEstadoOption}
+                onChange={handleEstadoChange}
                 className="form-control"
-              >
-                <option value="">Estado</option>
-                <option value="AC">Acre</option>
-                <option value="AL">Alagoas</option>
-                <option value="AP">Amapá</option>
-                <option value="AM">Amazonas</option>
-                <option value="BA">Bahia</option>
-                <option value="CE">Ceará</option>
-                <option value="DF">Distrito Federal</option>
-                <option value="ES">Espírito Santo</option>
-                <option value="GO">Goiás</option>
-                <option value="MA">Maranhão</option>
-                <option value="MT">Mato Grosso</option>
-                <option value="MS">Mato Grosso do Sul</option>
-                <option value="MG">Minas Gerais</option>
-                <option value="PA">Pará</option>
-                <option value="PB">Paraíba</option>
-                <option value="PR">Paraná</option>
-                <option value="PE">Pernambuco</option>
-                <option value="PI">Piauí</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="RN">Rio Grande do Norte</option>
-                <option value="RS">Rio Grande do Sul</option>
-                <option value="RO">Rondônia</option>
-                <option value="RR">Roraima</option>
-                <option value="SC">Santa Catarina</option>
-                <option value="SP">São Paulo</option>
-                <option value="SE">Sergipe</option>
-                <option value="TO">Tocantins</option>
-              </select>
+                placeholder="Estado"
+              />
+              <label>Estado</label>
+              {errors.estado && <p>{errors.estado.message}</p>}
             </div>
             
             <div className="form-group">
-              <label htmlFor="city">Cidade:</label>
-              <input 
-                type="text" 
+              <Select
                 id="city" 
-                value={customerInfo.city} 
-                onChange={(e) => handleCustomerInfoChange('city', e.target.value)}
-                className="form-control"
+                options={cidadeOptions}
+                value={selectedCidadeOption}
+                onChange={handleCidadeChange}
                 placeholder="Cidade"
+                className="form-control"
               />
+              <label>Cidade</label>
+              {errors.cidade && <p>{errors.cidade.message}</p>}
             </div>
-            
+
             <div className="form-group">
               <label htmlFor="hasCNH">Possui CNH?</label>
               <select 
