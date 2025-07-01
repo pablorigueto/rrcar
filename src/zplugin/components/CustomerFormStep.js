@@ -181,31 +181,24 @@ function CustomerFormStep({
               />
             </div>
             
-            <div className="form-group">
+            <div className="form-group custom-select">
               <Select
                 id="state" 
                 options={estadoOptions}
                 value={estadoSelecionado}
-                //value={selectedEstadoOption ? { value: estadoSelecionado, label: Estados[estadoSelecionado] } : null}
                 onChange={handleEstadoChange}
-                // className="form-control"
                 placeholder="Estado"
               />
-              {/* <label>Estado</label>
-              {errors.estado && <p>{errors.estado.message}</p>} */}
             </div>
             
-            <div className="form-group">
+            <div className="form-group custom-select">
               <Select
                 id="city" 
                 options={cidadeOptions}
                 value={cidadeSelecionado}
                 onChange={handleCidadeChange}
                 placeholder="Cidade"
-                // className="form-control"
               />
-              {/* <label>Cidade</label>
-              {errors.cidade && <p>{errors.cidade.message}</p>} */}
             </div>
 
             <div className="form-group">
