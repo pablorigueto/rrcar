@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { formatPhone } from '../utils/formatters';
 import CarImageComponent  from './CarImageComponent';
@@ -71,6 +71,25 @@ function CustomerFormStep({
     setCidadeSelecionado(selectedOption || null);
     handleCustomerInfoChange('city', cidadeSelecionada);
   }
+
+  useEffect(() => {
+    if (customerInfo.state) {
+      const selectedEstado = estadoOptions.find(option => option.value === customerInfo.state);
+      setEstadoSelecionado(selectedEstado || null);
+    }
+
+    if (customerInfo.city && cidades.length > 0) {
+      const selectedCidade = cidadeOptions.find(option => option.value === customerInfo.city);
+      setCidadeSelecionado(selectedCidade || null);
+    }
+  }, [customerInfo, estadoOptions, cidadeOptions]);
+
+  useEffect(() => {
+    if (estadoSelecionado) {
+      const cidadesDoEstado = getCidadesPorEstado(estadoSelecionado.value);
+      setCidades(cidadesDoEstado);
+    }
+  }, [estadoSelecionado]);
 
   return (
     <div className="wizard-step-content">
