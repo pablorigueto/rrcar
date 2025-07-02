@@ -13,10 +13,12 @@ import Banner from './components/banner';
 
 function App() {
   const [vehiclesData, setVehiclesData] = useState([]);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [animateDetails, setAnimateDetails] = useState(false);
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [loadingFetch, setLoadingFetch] = useState(true);
+
+  const nodeRef = React.useRef(null);
 
   useEffect(() => {
     if (selectedVehicle) {
@@ -34,7 +36,7 @@ function App() {
         const initialSelectedItemId = urlParams.get('c');
 
         // Check on fetch if has the id of car to set.
-        const initialSelectedVehicle = vehiclesArray.find(vehicle => vehicle.vehicle_id == initialSelectedItemId);
+        const initialSelectedVehicle = vehiclesArray.find(vehicle => vehicle.vehicle_id === initialSelectedItemId);
   
         if (initialSelectedVehicle) {
           setSelectedVehicle(initialSelectedVehicle);
@@ -49,36 +51,36 @@ function App() {
       });
   }, []);
 
-  const calculateWidth = () => {
-    const screenWidth = window.innerWidth;
+  // const calculateWidth = () => {
+  //   const screenWidth = window.innerWidth;
 
-    if (screenWidth >= 2001) {
-      return screenWidth / 6 - 10;
-    } else if (screenWidth >= 1440 && screenWidth < 2001) {
-      return screenWidth / 5 - 10;
-    } else if (screenWidth >= 1024 && screenWidth < 1440) {
-      return screenWidth / 4 - 10;
-    } else if (screenWidth >= 767 && screenWidth < 1024) {
-      return screenWidth / 3 - 10;
-    } else if (screenWidth >= 450 && screenWidth < 767) {
-      return screenWidth / 2 - 10;
-    } else {
-      return screenWidth / 1 - 10;
-    }
-  };
+  //   if (screenWidth >= 2001) {
+  //     return screenWidth / 6 - 10;
+  //   } else if (screenWidth >= 1440 && screenWidth < 2001) {
+  //     return screenWidth / 5 - 10;
+  //   } else if (screenWidth >= 1024 && screenWidth < 1440) {
+  //     return screenWidth / 4 - 10;
+  //   } else if (screenWidth >= 767 && screenWidth < 1024) {
+  //     return screenWidth / 3 - 10;
+  //   } else if (screenWidth >= 450 && screenWidth < 767) {
+  //     return screenWidth / 2 - 10;
+  //   } else {
+  //     return screenWidth / 1 - 10;
+  //   }
+  // };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(calculateWidth());
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setWindowWidth(calculateWidth());
+  //   };
   
-    setWindowWidth(calculateWidth());
-    window.addEventListener('resize', handleResize);
+  //   setWindowWidth(calculateWidth());
+  //   window.addEventListener('resize', handleResize);
   
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
 
   useEffect(() => {
     const animationTimeout = setTimeout(() => {
@@ -163,7 +165,7 @@ function App() {
               <span
                 className={`color-transition-button price ${animateDetails ? 'animate' : ''}`}
                 >
-                {vehicle.price == 0 ? (
+                {vehicle.price === 0 ? (
                   "Consulte-nos"
                 ) : (
                   formatPrice(vehicle.price)
@@ -187,14 +189,17 @@ function App() {
       <TransitionGroup>
         {selectedVehicle && (
           <CSSTransition
+            nodeRef={nodeRef}
             key={selectedVehicle.vehicle_id}
             timeout={300}
             classNames="vehicle-details"
           >
-            <VehicleDetailModal
-              vehicle={selectedVehicle}
-              onClose={() => setSelectedVehicle(null)}
-            />
+            <div ref={nodeRef}> 
+              <VehicleDetailModal
+                vehicle={selectedVehicle}
+                onClose={() => setSelectedVehicle(null)}
+              />
+            </div>
           </CSSTransition>
         )}
       </TransitionGroup>
