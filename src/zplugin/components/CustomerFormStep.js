@@ -52,7 +52,6 @@ function CustomerFormStep({
 
   // Atualize handleEstadoChange para chamar handleCustomerInfoChange também
   const handleEstadoChange = (selectedOption) => {
-    console.log(customerInfo);
     const estadoSelecionado = selectedOption ? selectedOption.value : '';
     setEstadoSelecionado(selectedOption || null);  // Guarde o objeto para o Select
 
@@ -71,7 +70,6 @@ function CustomerFormStep({
   }
 
   const handleCidadeChange = (selectedOption) => {
-    console.log(customerInfo);
     const cidadeSelecionada = selectedOption ? selectedOption.value : '';
     setCidadeSelecionado(selectedOption || null);
     handleCustomerInfoChange('city', cidadeSelecionada);

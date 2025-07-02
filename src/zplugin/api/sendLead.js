@@ -3,6 +3,9 @@ import axios from 'axios';
 import findBestInstallmentOptions from '../utils/findBestInstallmentOptions';
 
 export const sendLead = async (data) => {
+
+  console.log(data);
+
   try {
     // Cria uma lista para armazenar os valores
     const values = [];
