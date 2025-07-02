@@ -1,6 +1,45 @@
 import React from 'react';
 import '../styles/modal.css';
 
+// Importe todas as imagens dos bancos
+import bradescoPng from '../assets/colored/bradescoc.png';
+import bvcPng from '../assets/colored/bvc.png';
+import c6cPng from '../assets/colored/c6c.png';
+import creditascPng from '../assets/colored/creditasc.png';
+import itauPng from '../assets/colored/itauc.png';
+import pancPng from '../assets/colored/panc.png';
+import portocPng from '../assets/colored/portoc.png';
+import safracPng from '../assets/colored/safrac.png';
+import santanderPng from '../assets/colored/santanderc.png';
+
+// Componente de loading rotativo
+const BankLoadingSpinner = () => {
+  const bankImages = [
+    bradescoPng, bvcPng, c6cPng, creditascPng, itauPng, 
+    pancPng, portocPng, safracPng, santanderPng
+  ];
+
+  // Duplicamos o array para criar um efeito infinito mais suave
+  const allBankImages = [...bankImages, ...bankImages];
+
+  return (
+    <div className="loading-wrapper">
+      <div className="bank-loader-container">
+              <p className="loading-text">Realizando Simulação...</p>
+        <div className="bank-loading-spinner">
+          {allBankImages.map((image, index) => (
+            <img 
+              key={index} 
+              src={image} 
+              alt={`Bank logo ${index}`} 
+              className="bank-logo-spinning"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 const installmentList = [
   'installments_12', 
   'installments_24', 
@@ -22,8 +61,12 @@ const BestInstallmentCards = ({
     isSubmitting 
   }) => {
 
+  // if (isSubmitting) {
+  //   return <div className='pulsante textcentered'>Realizando Simulação...</div>;
+  // }
+
   if (isSubmitting) {
-    return <div className='pulsante textcentered'>Realizando Simulação...</div>;
+    return <BankLoadingSpinner />;
   }
 
   if (

@@ -1,6 +1,56 @@
 /* Add this to your modal.css file */
+
+/* Adicione estes estilos ao seu CSS */
+.bank-loader-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 20px 0;
+}
+
+.bank-loading-spinner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start; /* Alterado para flex-start */
+  padding: 10px;
+  text-align: center;
+  width: max-content; /* Importante para permitir que o conteúdo seja maior que o contêiner */
+}
+
+.bank-logo-spinning {
+  animation: scroll 20s linear infinite;
+  height: 40px; /* Define uma altura fixa */
+  width: auto;
+  margin: 0 20px; /* Espaçamento entre logos */
+  /* display: inline-block; */
+}
+
+.loading-text {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  width: 100%;
+}
+
+.loading-wrapper {
+  overflow: hidden;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    /* transform: translateX(-100%); */
+    transform: translateX(calc(-200px * 7));
+  }
+}
+
 .modal-overlay-zinix {
 
+ 
 
   h2 {
     text-align: center;
@@ -76,9 +126,7 @@
       }
     }
 
-
-
-    img {
+    .car-image-simulator img {
       border-radius: 5px;
       box-shadow: 2px 2px 2px #00000042;
       width: 100%;
@@ -87,9 +135,6 @@
       margin-top: 3px;
     }
 
-    .car-image-simulator {
-
-    }
   }
 
   div {
