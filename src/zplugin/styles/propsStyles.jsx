@@ -3,7 +3,6 @@
 export const customSelectStyles = {
     control: (provided, state) => ({
         ...provided,
-        borderColor: '#ccc',
         height: '38px',
         minHeight: '38px',
         backgroundColor: '#f9f9f9',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Select from 'react-select';
 import { formatPhone } from '../utils/formatters';
 import CarImageComponent  from './CarImageComponent';
@@ -44,18 +44,13 @@ function CustomerFormStep({
     label: nome,
   }));
 
-  // // Função para pegar o objeto option do estado baseado no valor armazenado no customerInfo.state (que é string)
-  // const selectedEstadoOption = estadoOptions.find(option => option.value === customerInfo.state) || null;
-
-  // // Para cidades também, mesmo método (mas só se cidades estiver carregado)
-  // const selectedCidadeOption = cidadeOptions.find(option => option.value === customerInfo.city) || null;
-
   // Atualize handleEstadoChange para chamar handleCustomerInfoChange também
   const handleEstadoChange = (selectedOption) => {
     const estadoSelecionado = selectedOption ? selectedOption.value : '';
     setEstadoSelecionado(selectedOption || null);  // Guarde o objeto para o Select
 
-    handleCustomerInfoChange('state', estadoSelecionado);
+    // handleCustomerInfoChange('state', estadoSelecionado);
+    handleCustomerInfoChange('state', selectedOption ? selectedOption.value : '');
 
     if (estadoSelecionado) {
       const cidadesDoEstado = getCidadesPorEstado(estadoSelecionado);
@@ -70,11 +65,11 @@ function CustomerFormStep({
   }
 
   const handleCidadeChange = (selectedOption) => {
+
     const cidadeSelecionada = selectedOption ? selectedOption.value : '';
     setCidadeSelecionado(selectedOption || null);
     handleCustomerInfoChange('city', cidadeSelecionada);
   }
-
 
   return (
     <div className="wizard-step-content">
