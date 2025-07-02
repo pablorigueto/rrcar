@@ -41,7 +41,7 @@ const BestInstallmentCards = ({
     return <div className='textcentered'>Não há opções de financiamento disponíveis.</div>;
   }
 
-  const { bank_name, bank_nickname, installments_details } = bestOptions;
+  const { installments_details } = bestOptions;
 
   return (
     <div className='best-installment-cards'>
