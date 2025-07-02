@@ -16,36 +16,27 @@
   width: 100%;
 }
 
-.bank-loading-spinner {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 10px;
-  text-align: center;
-  width: max-content;
-}
-
-.bank-logo-spinning {
-  animation: scroll 20s linear infinite;
-  height: 40px; /* Define uma altura fixa */
-  width: auto;
-  /* margin: 0 20px; */
-  display: inline-block;
-}
-
 .loading-wrapper {
   overflow: hidden;
+  width: 100%;
+  padding-bottom: 3rem;
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-700%);
-    /* transform: translateX(calc(-150px * 7)); */
-  }
+.bank-loading-spinner {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 35s linear infinite;
+}
+
+.bank-loading-spinner img {
+  height: 30px;
+  width: auto;
+  margin: 0 20px;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .modal-overlay-zinix {
@@ -334,8 +325,8 @@
     overflow-y: auto;
     position: relative;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    min-height: 680px;
-    min-width: 1000px;
+    height: 680px;
+    width: 1000px;
   }
 
   .modal-close-zinix {
@@ -725,7 +716,7 @@
 }
 
 .pulsante {
-  animation: pulse 2s infinite;
+  animation: pulse 3s infinite;
 }
 
 @keyframes pulse {
