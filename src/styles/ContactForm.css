@@ -5,14 +5,14 @@
     align-items: center;
     width: 670px;
     margin: 0 auto;
-    box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
     cursor: pointer;
     border-radius: 6px;
     padding-top: 25px;
     padding-bottom: 15px;
     padding-left: 15px;
     padding-right: 15px;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .contactParent {
@@ -154,8 +154,9 @@ textarea {
 /* Mini mobile */
 @media (max-width: 424px) {
     .formContact {
-        width: 92%;
-        margin: 20px auto;
+        width: auto;
+        margin: 5px;
+        padding: 40px;
         align-items: unset;
     }
     .contactParent {
@@ -165,9 +166,11 @@ textarea {
   /* Mobile */
   @media (min-width: 425px) and (max-width: 767px) {
     .formContact {
-        width: 92%;
+        width: auto;
         margin: 0 auto;
         align-items: unset;
+        margin: 5px;
+        padding: 40px;
     }
     .contactParent {
         margin-left: -10px;

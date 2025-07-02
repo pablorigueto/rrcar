@@ -598,6 +598,8 @@ li.thumb:last-child {
 }
 
 .titleDetailedTable {
+  margin-bottom: 10px;
+  font-size: 16px;
   font-weight: 600;
   color: #312e2eeb;
 }
@@ -615,6 +617,7 @@ li.thumb:last-child {
   display: flex;
   justify-content: center;
   flex-direction: row;
+  gap: 12px;
   flex-flow: wrap;
   padding-top: 40px;
   padding-bottom: 20px;
@@ -664,12 +667,13 @@ li.thumb:last-child {
   border-radius: 6px;
   display: flex;
   max-width: 670px;
+  width: 670px;
   text-align: center;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
   /* white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; */
-  cursor: pointer;
+  /* cursor: pointer; */
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -678,10 +682,10 @@ li.thumb:last-child {
   text-align: start;
 }
 
-.descriptionsummaryDetailed:hover {
+/* .descriptionsummaryDetailed:hover {
   transition: transform 0.2s ease;
   transform: scale(1.05);
-}
+} */
 
 .fetchOverlay {
   display: flex;
@@ -698,6 +702,11 @@ li.thumb:last-child {
 
 /* Mini mobile */
 @media (max-width: 424px) {
+
+  /* .summaryDetailedParent {
+    padding-bottom: 30px;
+  } */
+
   .logo {
     height: 52px;
     padding-top: 5px;
@@ -710,6 +719,7 @@ li.thumb:last-child {
   }
   .vehicle-screen-detailed {
     padding: 5px;
+
   }
   .priceDetailed, .zinixbutton {
     margin-top: 10px;
@@ -752,6 +762,7 @@ li.thumb:last-child {
     flex-flow: unset;
     gap: 10px;
     padding-top: 0;
+    margin: 0 5px;
   }
   .summaryDetailedModel {
     min-width: 50%;
@@ -820,6 +831,7 @@ li.thumb:last-child {
     flex-flow: unset;
     gap: 10px;
     padding-top: 0;
+    margin: 0 5px;
   }
   .summaryDetailedModel {
     min-width: 50%;

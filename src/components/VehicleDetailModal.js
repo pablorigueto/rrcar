@@ -230,26 +230,30 @@ function VehicleDetailModal({ vehicle, onClose }) {
                 <span className='titleDetailedTable'>Ano</span>
                 <span>{vehicle.fabric_year}/{vehicle.year}</span>
               </div>
-              {/* <div className='summaryDetailed'>
+              <div className='summaryDetailed'>
                 <span className='titleDetailedTable'>Placa</span>
                 <span>{hideMiddleChars(vehicle.plate)}</span>
-              </div> */}
+              </div>
               <div className='summaryDetailed'>
                 <span className='titleDetailedTable'>Condição</span>
                 <span>{vehicle.condition}</span>
               </div>
-              {/* <div className='summaryDetailed'>
+              <div className='summaryDetailed'>
                 <span className='titleDetailedTable'>Portas</span>
                 <span>{vehicle.doors}</span>
-              </div> */}
+              </div>
             </div>
 
-            {/* <div className='descriptionParent'>
+            <div className='descriptionParent'>
               <div className='descriptionsummaryDetailed'>
                 <span className='titleDetailedTable'>Descrição</span>
-                <span>{vehicle.description}</span>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: vehicle.description.replace(/\r\n/g, '<br />'),
+                  }}
+                />
               </div>
-            </div> */}
+            </div>
 
           </div>
 
