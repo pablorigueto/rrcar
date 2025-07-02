@@ -116,21 +116,30 @@ function Modal({ isOpen, onClose, vehicleData }) {
   };
   
   // Handle input changes for customer info
-  const handleCustomerInfoChange = (field, value) => {
-    setCustomerInfo({
-      ...customerInfo,
-      [field]: value
-    });
+  // const handleCustomerInfoChange = (field, value) => {
+  //   setCustomerInfo({
+  //     ...customerInfo,
+  //     [field]: value
+  //   });
     
-    // Clear error for this field if it exists
-    if (errors[field]) {
-      setErrors({
-        ...errors,
-        [field]: null
-      });
-    }
-  };
+  //   // Clear error for this field if it exists
+  //   if (errors[field]) {
+  //     setErrors({
+  //       ...errors,
+  //       [field]: null
+  //     });
+  //   }
+  // };
   
+  const handleCustomerInfoChange = (field, value) => {
+    console.log('Field:', field, 'Value:', value);
+    setCustomerInfo(prevState => ({
+      ...prevState,
+      [field]: value
+    }));
+    console.log('Updated customerInfo:', customerInfo);
+  };
+
   // Validate vehicle data
   const validateVehicleData = () => {
     const newErrors = {};
@@ -231,7 +240,22 @@ function Modal({ isOpen, onClose, vehicleData }) {
   };
   
   // Handle final submission
+  // const handleSubmit = async (sanitizedData) => {
+  //   setIsSubmitting(true);
+  //   setSubmitError(null);
+
+  //   try {
+  //     const apiResponse = await sendLead(sanitizedData);
+  //     setSubmitResponse(apiResponse);
+  //   } catch (error) {
+  //     setSubmitError(error.message || 'Falha no envio do lead');
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
+
   const handleSubmit = async (sanitizedData) => {
+    console.log('Submitting data:', sanitizedData);
     setIsSubmitting(true);
     setSubmitError(null);
 
@@ -244,7 +268,6 @@ function Modal({ isOpen, onClose, vehicleData }) {
       setIsSubmitting(false);
     }
   };
-
 
   // Render the appropriate step based on wizardStep
   const renderStep = () => {

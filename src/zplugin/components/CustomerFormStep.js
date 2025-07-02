@@ -49,8 +49,9 @@ function CustomerFormStep({
     const estadoSelecionado = selectedOption ? selectedOption.value : '';
     setEstadoSelecionado(selectedOption || null);  // Guarde o objeto para o Select
 
-    // handleCustomerInfoChange('state', estadoSelecionado);
-    handleCustomerInfoChange('state', selectedOption ? selectedOption.value : '');
+    console.log(estadoSelecionado);
+
+    handleCustomerInfoChange('state', estadoSelecionado);
 
     if (estadoSelecionado) {
       const cidadesDoEstado = getCidadesPorEstado(estadoSelecionado);
