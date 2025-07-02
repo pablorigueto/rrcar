@@ -75,14 +75,18 @@ function CustomerFormStep({
   useEffect(() => {
     if (customerInfo.state) {
       const selectedEstado = estadoOptions.find(option => option.value === customerInfo.state);
-      setEstadoSelecionado(selectedEstado || null);
+      if (selectedEstado?.value !== estadoSelecionado?.value) {
+        setEstadoSelecionado(selectedEstado || null);
+      }
     }
 
     if (customerInfo.city && cidades.length > 0) {
       const selectedCidade = cidadeOptions.find(option => option.value === customerInfo.city);
-      setCidadeSelecionado(selectedCidade || null);
+      if (selectedCidade?.value !== cidadeSelecionado?.value) {
+        setCidadeSelecionado(selectedCidade || null);
+      }
     }
-  }, [customerInfo, estadoOptions, cidadeOptions]);
+  }, [customerInfo, estadoOptions, cidadeOptions, estadoSelecionado, cidadeSelecionado]);
 
   useEffect(() => {
     if (estadoSelecionado) {

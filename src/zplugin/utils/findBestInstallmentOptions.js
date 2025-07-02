@@ -6,7 +6,7 @@
 
 function findBestInstallmentOptions(data) {
 
-  console.log('findBestInstallmentOptions(data)', data);
+  // console.log('findBestInstallmentOptions(data)', data);
 
   // As propostas parecem vir em data[0], conforme a imagem
   const proposals = Array.isArray(data) ? data[0] : [];
