@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import Select from 'react-select';
 import { formatPhone } from '../utils/formatters';
 import CarImageComponent  from './CarImageComponent';
 
 import Estados from '../estado/estados';
 import { getCidadesPorEstado } from '../estado/estadosSwitch';
-
-import Select from 'react-select';
+import { customSelectStyles } from '../styles/propsStyles';
 
 function CustomerFormStep({ 
   customerInfo, 
@@ -188,6 +188,7 @@ function CustomerFormStep({
                 value={estadoSelecionado}
                 onChange={handleEstadoChange}
                 placeholder="Estado"
+                styles={customSelectStyles}
               />
             </div>
             
@@ -198,6 +199,7 @@ function CustomerFormStep({
                 value={cidadeSelecionado}
                 onChange={handleCidadeChange}
                 placeholder="Cidade"
+                styles={customSelectStyles}
               />
             </div>
 
