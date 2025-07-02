@@ -25,7 +25,7 @@ const BankLoadingSpinner = () => {
   return (
     <div className="loading-wrapper">
       <div className="bank-loader-container">
-              <p className="loading-text">Realizando Simulação...</p>
+        <p className="loading-text">Consultando os bancos...</p>
         <div className="bank-loading-spinner">
           {allBankImages.map((image, index) => (
             <img 
