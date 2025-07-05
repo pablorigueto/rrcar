@@ -34,8 +34,7 @@ const BestInstallmentCards = ({
 
   if (
     !bestOptions ||
-    !bestOptions.installments_details ||
-    typeof bestOptions.installments_details !== 'object'
+    !bestOptions.installments_details
   ) {
     // Pode customizar a mensagem ou só retornar null
     return <div className='textcentered'>Não há opções de financiamento disponíveis.</div>;
@@ -73,11 +72,9 @@ const BestInstallmentCards = ({
                 </div>
                 <div className='installment-fees'>
                   <span>{option.interest_monthly ? option.interest_monthly.toFixed(2) : '--'}% a.m.</span>
-                  
                   <span>{option.interest_annually ? option.interest_annually.toFixed(2) : '--'}% a.a.</span>
                 </div>
               </div>
-              {/* <button className='card-individual-action-button'>Quero essa!</button> */}
             </div>
           </div>
         );
