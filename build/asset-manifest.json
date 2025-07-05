@@ -1,15 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.d006f641.css",
-    "main.js": "/static/js/main.2fa6603d.js",
+    "main.css": "/static/css/main.3599f38d.css",
+    "main.js": "/static/js/main.6e32b5d8.js",
     "static/media/banner.jpg": "/static/media/banner.4a7c9616a91c1944f854.jpg",
+    "static/media/santanderc.png": "/static/media/santanderc.b601224918b9c97a4585.png",
+    "static/media/zinix-logo-dark.png": "/static/media/zinix-logo-dark.ac0ad41442fb246cd0c1.png",
     "static/media/logo.png": "/static/media/logo.dc7ed4768f816baaddc4.png",
+    "static/media/c6c.png": "/static/media/c6c.3e42b4402f88af6caceb.png",
+    "static/media/creditasc.png": "/static/media/creditasc.0e8314a43647fc28ce15.png",
+    "static/media/safrac.png": "/static/media/safrac.2ed91ef57dc735cf6a73.png",
+    "static/media/panc.png": "/static/media/panc.6e9b1f2b9a42e3c38434.png",
+    "static/media/bradescoc.png": "/static/media/bradescoc.170892522f3c8e64a42e.png",
+    "static/media/bvc.png": "/static/media/bvc.899ba86e7ac4784dc42c.png",
     "index.html": "/index.html",
-    "main.d006f641.css.map": "/static/css/main.d006f641.css.map",
-    "main.2fa6603d.js.map": "/static/js/main.2fa6603d.js.map"
+    "main.3599f38d.css.map": "/static/css/main.3599f38d.css.map",
+    "main.6e32b5d8.js.map": "/static/js/main.6e32b5d8.js.map"
   },
   "entrypoints": [
-    "static/css/main.d006f641.css",
-    "static/js/main.2fa6603d.js"
+    "static/css/main.3599f38d.css",
+    "static/js/main.6e32b5d8.js"
   ]
 }

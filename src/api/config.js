@@ -8,8 +8,8 @@ export const fetchData = async () => {
   const newURL = `${protocol}//${host}${pathname}`;
 
   try {
-    //const phpResponse = await fetch(newURL);
-    const phpResponse = await fetch('http://127.0.0.1/rrcar/index.php');
+    const phpResponse = await fetch(newURL);
+    //const phpResponse = await fetch('http://127.0.0.1/rrcar/index.php');
     const phpData = await phpResponse.json();
     const vehiclesArray = phpData.vehicles;
     return vehiclesArray;
