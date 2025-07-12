@@ -4,8 +4,6 @@ import findBestInstallmentOptions from '../utils/findBestInstallmentOptions';
 
 export const sendLead = async (data) => {
 
-  // console.log(data);
-
   try {
     // Cria uma lista para armazenar os valores
     const values = [];
@@ -29,15 +27,16 @@ export const sendLead = async (data) => {
       //https://saas.zinix.com.br/pt-br/simulator
       //https://zinix.lndo.site/pt-br/simulator',
       const { data } = await axios.get(
-        'https://saas.zinix.com.br/pt-br/simulator',
+        'https://zinix.lndo.site/pt-br/simulator',
         { params: { data: queryString } }
       )
 
+      // console.log(data);
       return findBestInstallmentOptions(data);
 
 
     } catch (error) {
-      console.error("Erro ao buscar os dados:", error);
+      console.error("SendLEAD - Erro ao buscar os dados:", error);
     }
 
   } catch (error) {

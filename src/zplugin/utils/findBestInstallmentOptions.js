@@ -1,34 +1,49 @@
-/**
- * Recebe um array de propostas (banks), verifica se pre_approval_status >= 2,
- * e retorna o banco com menor parcela média entre installments_12 e installments_60.
- * Caso todas as opções sejam null, retorna o texto padrão.
- */
-
 function findBestInstallmentOptions(data) {
 
-  // console.log('findBestInstallmentOptions(data)', data);
+  let proposals = [];
 
-  // As propostas parecem vir em data[0], conforme a imagem
-  const proposals = Array.isArray(data) ? data[0] : [];
+  // Se vier string, parse normal
+  if (Array.isArray(data) && typeof data[0] === "string") {
+    try {
+      proposals = JSON.parse(data[0]);
+      // TRATA CASO proposals seja (1) [Array(6)]
+      if (Array.isArray(proposals) && proposals.length === 1 && Array.isArray(proposals[0])) {
+        proposals = proposals[0];
+      }
+      // Também trata se tiver string dentro do array
+      if (Array.isArray(proposals) && proposals.length && typeof proposals[0] === "string") {
+        proposals = proposals.map(str => JSON.parse(str));
+      }
+    } catch (err) {
+      return "Erro ao processar dados do financiamento.";
+    }
+  } else if (Array.isArray(data) && Array.isArray(data[0])) {
+    // Também pode ser o caso
+    proposals = data[0];
+  } else if (Array.isArray(data)) {
+    proposals = data;
+  }
+
+  // LOG DE DEPURAÇÃO
+  console.log('proposals', proposals);
+  console.log('typeof proposals', typeof proposals);
+  console.log('isArray proposals', Array.isArray(proposals));
+  console.log('proposals[0]', proposals[0]);
+  console.log('typeof proposals[0]', typeof proposals[0]);
 
   let bestBank = null;
   let lowestInstallmentValue = null;
 
   proposals.forEach((bank) => {
     if (bank.pre_approval_status >= 2 && bank.installments_details) {
-      // Procurar em todas as opções (de 12 a 60)
       const options = Object.values(bank.installments_details);
-
-      // Array de first_installment_value válidos (não null)
       const validInstallmentValues = options
         .filter(opt => opt && opt.first_installment_value != null)
         .map(opt => opt.first_installment_value);
 
       if (validInstallmentValues.length > 0) {
-        // Obtém o menor valor de parcela desse banco
         const minValue = Math.min(...validInstallmentValues);
 
-        // Verifica se é a menor até aqui
         if (lowestInstallmentValue === null || minValue < lowestInstallmentValue) {
           lowestInstallmentValue = minValue;
           bestBank = bank;
@@ -41,7 +56,6 @@ function findBestInstallmentOptions(data) {
     return "não há opções de financiamento disponiveis";
   }
 
-  // Pode customizar o objeto retornado conforme necessidade
   return {
     bank_name: bestBank.bank_name,
     bank_nickname: bestBank.bank_nickname,
