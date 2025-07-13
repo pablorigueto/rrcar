@@ -1,6 +1,6 @@
 // utils/formatters.js
-// utils/formatters.js
 export const formatCurrency = (value) => {
+  
   if (!value) return '';
   
   // If it's already a string, use it; otherwise, convert to string

@@ -36,6 +36,7 @@ export const sendLead = async (data) => {
 
 
     } catch (error) {
+      console.log(data);
       console.error("SendLEAD - Erro ao buscar os dados:", error);
     }
 
