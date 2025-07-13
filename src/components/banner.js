@@ -8,7 +8,9 @@ function Banner() {
     <div className="mainBanner">
       <div className="banner">
         <div className='logo'>
-          <img className="logoImg" src={logoImage} alt="logo"/>
+          <a href="/">
+            <img className="logoImg" src={logoImage} alt="logo"/>
+          </a>
         </div>
 
         <div className='contactTop'>

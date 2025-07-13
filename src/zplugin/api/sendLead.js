@@ -27,7 +27,7 @@ export const sendLead = async (data) => {
       //https://saas.zinix.com.br/pt-br/simulator
       //https://zinix.lndo.site/pt-br/simulator',
       const { data } = await axios.get(
-        'https://zinix.lndo.site/pt-br/simulator',
+        'https://saas.zinix.com.br/pt-br/simulator',
         { params: { data: queryString } }
       )
 

@@ -25,14 +25,22 @@ function findBestInstallmentOptions(data) {
   }
 
   // LOG DE DEPURAÇÃO
-  console.log('proposals', proposals);
-  console.log('typeof proposals', typeof proposals);
-  console.log('isArray proposals', Array.isArray(proposals));
-  console.log('proposals[0]', proposals[0]);
-  console.log('typeof proposals[0]', typeof proposals[0]);
+  // console.log('proposals', proposals);
+  // console.log('typeof proposals', typeof proposals);
+  // console.log('isArray proposals', Array.isArray(proposals));
+  // console.log('proposals[0]', proposals[0]);
+  // console.log('typeof proposals[0]', typeof proposals[0]);
 
   let bestBank = null;
   let lowestInstallmentValue = null;
+
+  proposals = removeCentsFromProposals(proposals);
+
+  // console.log('removeCentsFromProposals proposals', proposals);
+  // console.log('removeCentsFromProposals typeof proposals', typeof proposals);
+  // console.log('removeCentsFromProposals isArray proposals', Array.isArray(proposals));
+  // console.log('removeCentsFromProposals proposals[0]', proposals[0]);
+  // console.log('removeCentsFromProposals typeof proposals[0]', typeof proposals[0]);
 
   proposals.forEach((bank) => {
     if (bank.pre_approval_status >= 2 && bank.installments_details) {
@@ -66,3 +74,28 @@ function findBestInstallmentOptions(data) {
 }
 
 export default findBestInstallmentOptions;
+
+
+function removeCentsFromProposals(proposals) {
+  // Itera por cada banco/proposta
+  proposals.forEach(bank => {
+    if (bank.installments_details) {
+      // Itera por cada opção de parcelamento
+      Object.values(bank.installments_details).forEach(installment => {
+        if (installment && typeof installment === "object") {
+          // Divide os campos por 100, só se forem número
+          if (typeof installment.down_payment === "number") {
+            installment.down_payment = installment.down_payment / 100;
+          }
+          if (typeof installment.financed_amount === "number") {
+            installment.financed_amount = installment.financed_amount / 100;
+          }
+          if (typeof installment.first_installment_value === "number") {
+            installment.first_installment_value = installment.first_installment_value / 100;
+          }
+        }
+      });
+    }
+  });
+  return proposals; // retorna modificado
+}

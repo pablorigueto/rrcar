@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.3599f38d.css",
-    "main.js": "/static/js/main.6e32b5d8.js",
+    "main.js": "/static/js/main.729eab71.js",
     "static/media/banner.jpg": "/static/media/banner.4a7c9616a91c1944f854.jpg",
     "static/media/santanderc.png": "/static/media/santanderc.b601224918b9c97a4585.png",
     "static/media/zinix-logo-dark.png": "/static/media/zinix-logo-dark.ac0ad41442fb246cd0c1.png",
@@ -14,10 +14,10 @@
     "static/media/bvc.png": "/static/media/bvc.899ba86e7ac4784dc42c.png",
     "index.html": "/index.html",
     "main.3599f38d.css.map": "/static/css/main.3599f38d.css.map",
-    "main.6e32b5d8.js.map": "/static/js/main.6e32b5d8.js.map"
+    "main.729eab71.js.map": "/static/js/main.729eab71.js.map"
   },
   "entrypoints": [
     "static/css/main.3599f38d.css",
-    "static/js/main.6e32b5d8.js"
+    "static/js/main.729eab71.js"
   ]
 }
